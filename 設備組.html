@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>設備組 — 正心高中教務處</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;600;700&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary:   #1a5276;
+      --primary-light: #2471a3;
+      --accent:    #c0392b;
+      --accent-soft: #e74c3c;
+      --bg:        #f4f6f9;
+      --card-bg:   #ffffff;
+      --text:      #1c2833;
+      --text-muted:#5d6d7e;
+      --border:    #d5d8dc;
+      --nav-h:     64px;
+      --shadow-sm: 0 2px 8px rgba(26,82,118,.08);
+      --shadow-md: 0 6px 24px rgba(26,82,118,.13);
+      --radius:    10px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Noto Sans TC', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    /* ===== TOP BAR ===== */
+    .topbar {
+      background: var(--primary);
+      color: #fff;
+      font-size: .78rem;
+      padding: 5px 40px;
+      display: flex;
+      justify-content: flex-end;
+      gap: 18px;
+      letter-spacing: .03em;
+    }
+    .topbar a { color: rgba(255,255,255,.75); text-decoration: none; }
+    .topbar a:hover { color: #fff; }
+
+    /* ===== HEADER ===== */
+    header {
+      background: var(--primary);
+      padding: 18px 40px 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 12px rgba(0,0,0,.25);
+    }
+
+    .header-top {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid rgba(255,255,255,.12);
+    }
+
+    .site-icon {
+      width: 46px; height: 46px;
+      background: #fff;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Noto Serif TC', serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--primary);
+      flex-shrink: 0;
+    }
+
+    .site-title {
+      font-family: 'Noto Serif TC', serif;
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: .06em;
+    }
+    .site-subtitle {
+      font-size: .78rem;
+      color: rgba(255,255,255,.65);
+      margin-top: 2px;
+      letter-spacing: .04em;
+    }
+
+    /* ===== NAV ===== */
+    nav {
+      display: flex;
+      gap: 0;
+      margin-top: 0;
+    }
+
+    .nav-item {
+      position: relative;
+    }
+
+    .nav-link {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      padding: 14px 20px 12px;
+      color: rgba(255,255,255,.85);
+      font-size: .88rem;
+      font-weight: 500;
+      letter-spacing: .04em;
+      text-decoration: none;
+      border-bottom: 3px solid transparent;
+      transition: color .2s, border-color .2s, background .2s;
+      white-space: nowrap;
+      cursor: pointer;
+      user-select: none;
+    }
+    .nav-link:hover,
+    .nav-item:hover > .nav-link {
+      color: #fff;
+      background: rgba(255,255,255,.08);
+      border-bottom-color: rgba(255,255,255,.35);
+    }
+    .nav-link.active {
+      color: #fff;
+      border-bottom-color: #fff;
+      font-weight: 700;
+    }
+    .nav-link .caret {
+      font-size: .65rem;
+      opacity: .7;
+      transition: transform .2s;
+    }
+    .nav-item:hover > .nav-link .caret { transform: rotate(180deg); }
+
+    /* dropdown */
+    .dropdown {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: #fff;
+      min-width: 160px;
+      border-radius: 0 0 var(--radius) var(--radius);
+      box-shadow: var(--shadow-md);
+      overflow: hidden;
+      z-index: 200;
+    }
+    .nav-item:hover .dropdown { display: block; }
+
+    .dropdown a {
+      display: block;
+      padding: 10px 18px;
+      font-size: .84rem;
+      color: var(--text);
+      text-decoration: none;
+      border-left: 3px solid transparent;
+      transition: background .15s, border-color .15s;
+    }
+    .dropdown a:hover {
+      background: #eaf2fb;
+      border-left-color: var(--primary-light);
+      color: var(--primary);
+    }
+    .dropdown a.active-sub {
+      background: #eaf2fb;
+      border-left-color: var(--primary);
+      color: var(--primary);
+      font-weight: 500;
+    }
+
+    /* ===== HERO BANNER ===== */
+    .hero {
+      background: linear-gradient(135deg, #1a5276 0%, #1f618d 40%, #2471a3 100%);
+      padding: 52px 40px 48px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 80% at 80% 50%, rgba(255,255,255,.05) 0%, transparent 70%),
+        url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+    .hero-content { position: relative; z-index: 1; }
+    .hero-breadcrumb {
+      font-size: .8rem;
+      color: rgba(255,255,255,.6);
+      margin-bottom: 12px;
+      letter-spacing: .03em;
+    }
+    .hero-breadcrumb span { margin: 0 6px; }
+    .hero-breadcrumb a { color: rgba(255,255,255,.75); text-decoration: none; }
+    .hero-breadcrumb a:hover { color: #fff; }
+
+    .hero h1 {
+      font-family: 'Noto Serif TC', serif;
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: .08em;
+      line-height: 1.2;
+    }
+    .hero-desc {
+      margin-top: 10px;
+      font-size: .92rem;
+      color: rgba(255,255,255,.7);
+      max-width: 480px;
+      line-height: 1.7;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 18px;
+      padding: 6px 14px;
+      background: rgba(255,255,255,.12);
+      border: 1px solid rgba(255,255,255,.25);
+      border-radius: 20px;
+      font-size: .8rem;
+      color: rgba(255,255,255,.85);
+    }
+    .hero-badge .dot { width: 7px; height: 7px; border-radius: 50%; background: #2ecc71; }
+
+    /* ===== MAIN LAYOUT ===== */
+    .layout {
+      display: grid;
+      grid-template-columns: 230px 1fr;
+      gap: 28px;
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 32px 24px 60px;
+    }
+
+    /* ===== SIDEBAR ===== */
+    .sidebar {
+      position: sticky;
+      top: calc(var(--nav-h) + 20px);
+      align-self: start;
+    }
+
+    .sidebar-card {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-sm);
+      overflow: hidden;
+    }
+
+    .sidebar-title {
+      background: var(--primary);
+      color: #fff;
+      font-size: .9rem;
+      font-weight: 700;
+      padding: 12px 18px;
+      letter-spacing: .06em;
+    }
+
+    .sidebar-menu a {
+      display: block;
+      padding: 10px 18px 10px 22px;
+      font-size: .84rem;
+      color: var(--text-muted);
+      text-decoration: none;
+      border-left: 3px solid transparent;
+      border-bottom: 1px solid var(--border);
+      transition: all .15s;
+    }
+    .sidebar-menu a:last-child { border-bottom: none; }
+    .sidebar-menu a:hover {
+      background: #eaf2fb;
+      color: var(--primary);
+      border-left-color: var(--primary-light);
+    }
+    .sidebar-menu a.active {
+      background: #eaf2fb;
+      color: var(--primary);
+      border-left-color: var(--primary);
+      font-weight: 600;
+    }
+
+    /* ===== CONTENT ===== */
+    .content {}
+
+    .section-label {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+    .section-label h2 {
+      font-family: 'Noto Serif TC', serif;
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--primary);
+      letter-spacing: .06em;
+    }
+    .section-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    /* ===== CARDS GRID ===== */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 18px;
+      margin-bottom: 36px;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-sm);
+      padding: 26px 20px 22px;
+      text-decoration: none;
+      color: var(--text);
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 10px;
+      border: 1px solid var(--border);
+      border-bottom: 3px solid transparent;
+      transition: transform .2s, box-shadow .2s, border-bottom-color .2s;
+      position: relative;
+      overflow: hidden;
+    }
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--primary), var(--primary-light));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform .25s;
+    }
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-md);
+      border-bottom-color: var(--primary-light);
+    }
+    .card:hover::before { transform: scaleX(1); }
+
+    .card-icon {
+      width: 42px; height: 42px;
+      border-radius: 10px;
+      background: #eaf2fb;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.3rem;
+    }
+    .card-title {
+      font-size: .9rem;
+      font-weight: 600;
+      color: var(--text);
+      line-height: 1.4;
+      letter-spacing: .02em;
+    }
+    .card-arrow {
+      margin-top: auto;
+      font-size: .78rem;
+      color: var(--primary-light);
+      opacity: 0;
+      transform: translateX(-6px);
+      transition: opacity .2s, transform .2s;
+    }
+    .card:hover .card-arrow {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    /* ===== INFO BOX ===== */
+    .info-box {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--border);
+      padding: 28px 32px;
+    }
+
+    .info-box h3 {
+      font-family: 'Noto Serif TC', serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 18px;
+      padding-bottom: 12px;
+      border-bottom: 2px solid var(--border);
+      letter-spacing: .06em;
+    }
+
+    .info-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .info-table tr + tr td { padding-top: 12px; }
+    .info-table td:first-child {
+      width: 110px;
+      font-size: .84rem;
+      color: var(--text-muted);
+      font-weight: 500;
+      vertical-align: top;
+      padding-right: 12px;
+      letter-spacing: .04em;
+      white-space: nowrap;
+    }
+    .info-table td:last-child {
+      font-size: .88rem;
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .tag {
+      display: inline-block;
+      padding: 3px 10px;
+      border-radius: 4px;
+      font-size: .8rem;
+      background: #eaf2fb;
+      color: var(--primary-light);
+      font-weight: 500;
+      margin: 2px 4px 2px 0;
+    }
+
+    .phone-link {
+      color: var(--primary);
+      font-weight: 600;
+      text-decoration: none;
+      font-size: .92rem;
+    }
+    .phone-link:hover { text-decoration: underline; }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: #1a2e3d;
+      color: rgba(255,255,255,.55);
+      text-align: center;
+      padding: 22px 20px;
+      font-size: .78rem;
+      letter-spacing: .04em;
+      line-height: 1.8;
+    }
+    footer a { color: rgba(255,255,255,.7); text-decoration: none; }
+    footer a:hover { color: #fff; }
+
+    /* ===== ANIMATIONS ===== */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .card {
+      animation: fadeUp .4s ease both;
+    }
+    .card:nth-child(1) { animation-delay: .05s; }
+    .card:nth-child(2) { animation-delay: .10s; }
+    .card:nth-child(3) { animation-delay: .15s; }
+    .card:nth-child(4) { animation-delay: .20s; }
+    .card:nth-child(5) { animation-delay: .25s; }
+    .card:nth-child(6) { animation-delay: .30s; }
+    .card:nth-child(7) { animation-delay: .35s; }
+    .card:nth-child(8) { animation-delay: .40s; }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 820px) {
+      .layout { grid-template-columns: 1fr; }
+      .sidebar { position: static; }
+      header { padding: 14px 16px 0; }
+      .hero { padding: 36px 20px 32px; }
+      .hero h1 { font-size: 1.7rem; }
+      nav { overflow-x: auto; }
+      .topbar { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <a href="#">學校首頁</a>
+  <a href="#">校務行政系統</a>
+  <a href="#">聯絡我們</a>
+</div>
+
+<!-- HEADER + NAV -->
+<header>
+  <div class="header-top">
+    <div class="site-icon">正心</div>
+    <div>
+      <div class="site-title">正心高中教務處</div>
+      <div class="site-subtitle">正心高級中學 Academic Affairs Office</div>
+    </div>
+  </div>
+
+  <nav>
+    <!-- 首頁 -->
+    <div class="nav-item">
+      <a class="nav-link" href="#">首頁</a>
+    </div>
+
+    <!-- 教學組 -->
+    <div class="nav-item">
+      <span class="nav-link">教學組 <span class="caret">▼</span></span>
+      <div class="dropdown">
+        <a href="#">課程計畫</a>
+        <a href="#">競賽活動</a>
+        <a href="#">各項行程</a>
+        <a href="#">教學研究會</a>
+        <a href="#">公開觀課</a>
+      </div>
+    </div>
+
+    <!-- 註冊組 -->
+    <div class="nav-item">
+      <span class="nav-link">註冊組 <span class="caret">▼</span></span>
+      <div class="dropdown">
+        <a href="#">高中部招生資訊</a>
+        <a href="#">成績評量</a>
+        <a href="#">各項減免</a>
+        <a href="#">獎助學金</a>
+        <a href="#">各項證明申請</a>
+      </div>
+    </div>
+
+    <!-- 設備組（active） -->
+    <div class="nav-item">
+      <span class="nav-link active">設備組 <span class="caret">▼</span></span>
+      <div class="dropdown">
+        <a href="設備組成員.html">設備組成員</a>
+        <a href="智慧黑板管理.html">智慧黑板管理</a>
+        <a href="奧林匹亞競賽.html">奧林匹亞競賽</a>
+        <a href="活動一覽表.html">活動一覽表</a>
+        <a href="教學設備管理規則.html">教學設備管理規則</a>
+        <a href="專科教室管理規則.html">專科教室管理規則</a>
+        <a href="科展消息.html">科展消息</a>
+        <a href="數學與自然科能力競賽.html">數學與自然科能力競賽</a>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-content">
+    <div class="hero-breadcrumb">
+      <a href="#">首頁</a><span>›</span>設備組
+    </div>
+    <h1>設備組</h1>
+    <p class="hero-desc">負責教學設備管理、智慧教室維護及各項科學競賽推廣事務。</p>
+    <div class="hero-badge">
+      <span class="dot"></span>
+      電話：(05) 5512502 轉 109
+    </div>
+  </div>
+</div>
+
+<!-- MAIN LAYOUT -->
+<div class="layout">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sidebar-card">
+      <div class="sidebar-title">設備組 · 目錄</div>
+      <div class="sidebar-menu">
+        <a href="設備組成員.html">設備組成員</a>
+        <a href="智慧黑板管理.html">智慧黑板管理</a>
+        <a href="奧林匹亞競賽.html">奧林匹亞競賽</a>
+        <a href="活動一覽表.html">活動一覽表</a>
+        <a href="教學設備管理規則.html">教學設備管理規則</a>
+        <a href="專科教室管理規則.html">專科教室管理規則</a>
+        <a href="科展消息.html">科展消息</a>
+        <a href="數學與自然科能力競賽.html">數學與自然科能力競賽</a>
+      </div>
+    </div>
+  </aside>
+
+  <!-- CONTENT -->
+  <main class="content">
+
+    <!-- Cards -->
+    <div class="section-label">
+      <h2>設備組 · 各項業務</h2>
+    </div>
+
+    <div class="cards-grid">
+
+      <a href="設備組成員.html" class="card">
+        <div class="card-icon">👥</div>
+        <div class="card-title">設備組成員</div>
+        <div class="card-arrow">前往 →</div>
+      </a>
+
+      <a href="智慧黑板管理.html" class="card">
+        <div class="card-icon">🖥️</div>
+        <div class="card-title">智慧黑板管理</div>
+        <div class="card-arrow">前往 →</div>
+      </a>
+
+      <a href="奧林匹亞競賽.html" class="card">
+        <div class="card-icon">🏆</div>
+        <div class="card-title">奧林匹亞競賽</div>
+        <div class="card-arrow">前往 →</div>
+      </a>
+
+      <a href="活動一覽表.html" class="card">
+        <div class="card-icon">📅</div>
+        <div class="card-title">活動一覽表</div>
+        <div class="card-arrow">前往 →</div>
+      </a>
+
+      <a href="教學設備管理規則.html" class="card">
+        <div class="card-icon">📋</div>
+        <div class="card-title">教學設備管理規則</div>
+        <div class="card-arrow">前往 →</div>
+      </a>
+
+      <a href="專科教室管理規則.html" class="card">
+        <div class="card-icon">🏫</div>
+        <div class="card-title">專科教室管理規則</div>
+        <div class="card-arrow">前往 →</div>
+      </a>
+
+      <a href="科展消息.html" class="card">
+        <div class="card-icon">🔬</div>
+        <div class="card-title">科展消息</div>
+        <div class="card-arrow">前往 →</div>
+      </a>
+
+      <a href="數學與自然科能力競賽.html" class="card">
+        <div class="card-icon">📐</div>
+        <div class="card-title">數學與自然科能力競賽</div>
+        <div class="card-arrow">前往 →</div>
+      </a>
+
+    </div>
+
+    <!-- Info Box -->
+    <div class="section-label">
+      <h2>聯絡資訊</h2>
+    </div>
+
+    <div class="info-box">
+      <h3>設備組 · 成員與聯絡</h3>
+      <table class="info-table">
+        <tr>
+          <td>組　　長</td>
+          <td><span class="tag">待填</span></td>
+        </tr>
+        <tr>
+          <td>組　　員</td>
+          <td><span class="tag">待填</span></td>
+        </tr>
+        <tr>
+          <td>聯絡電話</td>
+          <td>
+            <a class="phone-link" href="tel:055512502">(05) 5512502</a>
+            &nbsp;轉&nbsp;<strong>109</strong>
+          </td>
+        </tr>
+      </table>
+    </div>
+
+  </main>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div>正心高中教務處 &nbsp;|&nbsp; 正心高級中學</div>
+  <div>
+    電話：(05) 5512502 轉 109 &nbsp;·&nbsp;
+    <a href="https://sites.google.com/shsh.ylc.edu.tw/aca" target="_blank">原始網站</a>
+  </div>
+</footer>
+
+</body>
+</html>
