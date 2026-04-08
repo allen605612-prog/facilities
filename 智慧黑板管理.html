@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>智慧黑板管理 — 正心中學教務處</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;700&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="設備組-style.css">
+  <style>
+    :root{--primary:#1a5276;--primary-light:#2471a3;--bg:#f4f6f9;--card-bg:#ffffff;--text:#1c2833;--text-muted:#5d6d7e;--border:#d5d8dc;--shadow-sm:0 2px 8px rgba(26,82,118,.08);--shadow-md:0 6px 24px rgba(26,82,118,.13);--radius:10px;}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    body{font-family:'Noto Sans TC',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;}
+    .topbar{background:var(--primary);color:#fff;font-size:.78rem;padding:5px 40px;display:flex;justify-content:flex-end;gap:18px;}
+    .topbar a{color:rgba(255,255,255,.75);text-decoration:none;}
+    header{background:var(--primary);padding:18px 40px 0;position:sticky;top:0;z-index:100;box-shadow:0 2px 12px rgba(0,0,0,.25);}
+    .header-top{display:flex;align-items:center;gap:18px;padding-bottom:16px;border-bottom:1px solid rgba(255,255,255,.12);}
+    .site-icon{width:46px;height:46px;background:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Noto Serif TC',serif;font-size:1.1rem;font-weight:700;color:var(--primary);flex-shrink:0;}
+    .site-title{font-family:'Noto Serif TC',serif;font-size:1.35rem;font-weight:700;color:#fff;letter-spacing:.06em;}
+    .site-subtitle{font-size:.78rem;color:rgba(255,255,255,.65);margin-top:2px;}
+    nav{display:flex;}
+    .nav-item{position:relative;}
+    .nav-link{display:flex;align-items:center;gap:5px;padding:14px 20px 12px;color:rgba(255,255,255,.85);font-size:.88rem;font-weight:500;text-decoration:none;border-bottom:3px solid transparent;transition:all .2s;white-space:nowrap;cursor:pointer;user-select:none;}
+    .nav-link:hover,.nav-item:hover>.nav-link{color:#fff;background:rgba(255,255,255,.08);border-bottom-color:rgba(255,255,255,.35);}
+    .nav-link.active{color:#fff;border-bottom-color:#fff;font-weight:700;}
+    .nav-link .caret{font-size:.65rem;opacity:.7;transition:transform .2s;}
+    .nav-item:hover>.nav-link .caret{transform:rotate(180deg);}
+    .dropdown{display:none;position:absolute;top:100%;left:0;background:#fff;min-width:175px;border-radius:0 0 var(--radius) var(--radius);box-shadow:var(--shadow-md);overflow:hidden;z-index:200;}
+    .nav-item:hover .dropdown{display:block;}
+    .dropdown a{display:block;padding:10px 18px;font-size:.84rem;color:var(--text);text-decoration:none;border-left:3px solid transparent;transition:all .15s;}
+    .dropdown a:hover{background:#eaf2fb;border-left-color:var(--primary-light);color:var(--primary);}
+    .dropdown a.active-sub{background:#eaf2fb;border-left-color:var(--primary);color:var(--primary);font-weight:500;}
+    .hero{background:linear-gradient(135deg,#1a5276 0%,#1f618d 40%,#2471a3 100%);padding:44px 40px 40px;position:relative;overflow:hidden;}
+    .hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 80% at 80% 50%,rgba(255,255,255,.05) 0%,transparent 70%);}
+    .hero-content{position:relative;z-index:1;}
+    .hero-breadcrumb{font-size:.8rem;color:rgba(255,255,255,.6);margin-bottom:10px;}
+    .hero-breadcrumb a{color:rgba(255,255,255,.75);text-decoration:none;}
+    .hero-breadcrumb span{margin:0 6px;}
+    .hero h1{font-family:'Noto Serif TC',serif;font-size:1.9rem;font-weight:700;color:#fff;letter-spacing:.08em;}
+    .layout{display:grid;grid-template-columns:230px 1fr;gap:28px;max-width:1180px;margin:0 auto;padding:32px 24px 60px;}
+    .sidebar{position:sticky;top:100px;align-self:start;}
+    .sidebar-card{background:var(--card-bg);border-radius:var(--radius);box-shadow:var(--shadow-sm);overflow:hidden;}
+    .sidebar-title{background:var(--primary);color:#fff;font-size:.9rem;font-weight:700;padding:12px 18px;letter-spacing:.06em;}
+    .sidebar-menu a{display:block;padding:10px 18px 10px 22px;font-size:.84rem;color:var(--text-muted);text-decoration:none;border-left:3px solid transparent;border-bottom:1px solid var(--border);transition:all .15s;}
+    .sidebar-menu a:last-child{border-bottom:none;}
+    .sidebar-menu a:hover{background:#eaf2fb;color:var(--primary);border-left-color:var(--primary-light);}
+    .sidebar-menu a.active{background:#eaf2fb;color:var(--primary);border-left-color:var(--primary);font-weight:600;}
+    .section-label{display:flex;align-items:center;gap:10px;margin-bottom:20px;}
+    .section-label h2{font-family:'Noto Serif TC',serif;font-size:1.15rem;font-weight:700;color:var(--primary);letter-spacing:.06em;}
+    .section-label::after{content:'';flex:1;height:1px;background:var(--border);}
+    .content-card{background:var(--card-bg);border-radius:var(--radius);box-shadow:var(--shadow-sm);border:1px solid var(--border);padding:28px 32px;margin-bottom:24px;line-height:1.9;font-size:.9rem;color:var(--text-muted);}
+    .content-card p{margin-bottom:12px;}
+    .placeholder{display:flex;align-items:center;justify-content:center;flex-direction:column;gap:12px;padding:48px 20px;color:var(--text-muted);font-size:.9rem;}
+    .placeholder .icon{font-size:2.8rem;opacity:.4;}
+
+    .attach-list{list-style:none;padding:0;margin:0;}
+    .attach-list li{border-bottom:1px solid var(--border);padding:12px 0;}
+    .attach-list li:last-child{border-bottom:none;}
+    .attach-link{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--text);transition:color .15s;}
+    .attach-link:hover{color:var(--primary);}
+    .attach-icon{width:38px;height:38px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0;}
+    .attach-icon.doc{background:#e8f0fe;}
+    .attach-icon.sheet{background:#e6f4ea;}
+    .attach-icon.link{background:#fce8e6;}
+    .attach-name{font-size:.9rem;font-weight:500;}
+    .attach-type{font-size:.75rem;color:var(--text-muted);margin-top:2px;}
+    .section-note{font-size:.82rem;color:var(--text-muted);margin-bottom:18px;line-height:1.7;padding:10px 16px;background:#f8fbff;border-left:3px solid var(--primary-light);border-radius:0 6px 6px 0;}
+    .duty-list{list-style:none;padding:0;counter-reset:duty;}
+    .duty-list li{counter-increment:duty;display:flex;gap:12px;padding:9px 0;border-bottom:1px solid var(--border);font-size:.88rem;}
+    .duty-list li:last-child{border-bottom:none;}
+    .duty-list li::before{content:counter(duty);min-width:24px;height:24px;border-radius:50%;background:var(--primary);color:#fff;font-size:.75rem;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;}
+
+    footer{background:#1a2e3d;color:rgba(255,255,255,.55);text-align:center;padding:22px 20px;font-size:.78rem;line-height:1.8;}
+    @media(max-width:820px){.layout{grid-template-columns:1fr;}.sidebar{position:static;}header{padding:14px 16px 0;}.hero{padding:30px 20px 26px;}.topbar{display:none;}}
+  </style>
+</head>
+<body>
+<div class="topbar"><a href="#">學校首頁</a><a href="#">校務行政系統</a><a href="#">聯絡我們</a></div>
+<header>
+  <div class="header-top">
+    <div class="site-icon">正心</div>
+    <div><div class="site-title">正心中學教務處</div><div class="site-subtitle">正心高級中學 Academic Affairs Office</div></div>
+  </div>
+  <nav>
+    <div class="nav-item"><a class="nav-link" href="設備組.html">首頁</a></div>
+    <div class="nav-item"><span class="nav-link">教學組 <span class="caret">▼</span></span><div class="dropdown"><a href="#">課程計畫</a><a href="#">競賽活動</a><a href="#">各項行程</a><a href="#">教學研究會</a><a href="#">公開觀課</a></div></div>
+    <div class="nav-item"><span class="nav-link">註冊組 <span class="caret">▼</span></span><div class="dropdown"><a href="#">高中部招生資訊</a><a href="#">成績評量</a><a href="#">各項減免</a><a href="#">獎助學金</a><a href="#">各項證明申請</a></div></div>
+    <div class="nav-item">
+      <span class="nav-link active">設備組 <span class="caret">▼</span></span>
+      <div class="dropdown">
+        <a href="設備組成員.html">設備組成員</a><a href="智慧黑板管理.html" class="active-sub">智慧黑板管理</a><a href="奧林匹亞競賽.html">奧林匹亞競賽</a><a href="活動一覽表.html">活動一覽表</a><a href="教學設備管理規則.html">教學設備管理規則</a><a href="專科教室管理規則.html">專科教室管理規則</a><a href="科展消息.html">科展消息</a><a href="數學與自然科能力競賽.html">數學與自然科能力競賽</a>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="hero"><div class="hero-content">
+  <div class="hero-breadcrumb"><a href="設備組.html">首頁</a><span>›</span><a href="設備組.html">設備組</a><span>›</span>智慧黑板管理</div>
+  <h1>🖥️ 智慧黑板管理</h1>
+</div></div>
+<div class="layout">
+  <aside class="sidebar"><div class="sidebar-card"><div class="sidebar-title">設備組 · 目錄</div><div class="sidebar-menu">
+    <a href="設備組成員.html">設備組成員</a><a href="智慧黑板管理.html" class="active">智慧黑板管理</a><a href="奧林匹亞競賽.html">奧林匹亞競賽</a><a href="活動一覽表.html">活動一覽表</a><a href="教學設備管理規則.html">教學設備管理規則</a><a href="專科教室管理規則.html">專科教室管理規則</a><a href="科展消息.html">科展消息</a><a href="數學與自然科能力競賽.html">數學與自然科能力競賽</a>
+  </div></div></aside>
+  <main>
+    <div class="section-label"><h2>智慧黑板管理</h2></div>
+    <div class="content-card">
+      <p class="section-note">智慧黑板相關管理辦法與申請，請洽設備組，分機 109。</p>
+      <p style="color:var(--text-muted);font-size:.9rem;padding:32px 0;text-align:center;">相關文件待上傳，請洽設備組。</p>
+</div>
+    </div>
+  </main>
+</div>
+<footer><div>正心中學教務處 · 設備組 &nbsp;|&nbsp; 電話：(05) 5512502 轉 109</div></footer>
+</body></html>
