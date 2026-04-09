@@ -2,7 +2,7 @@
 <html lang="zh-TW">
 <head>
   <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>活動一覽表 — 正心中學教務處</title>
+  <title>各式表單下載 — 正心中學教務處</title>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;700&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
   <style>
     :root {
@@ -169,18 +169,6 @@
       font-size: 2.2rem; font-weight: 700;
       color: #fff; letter-spacing: .1em; line-height: 1.2;
     }
-    .hero-desc {
-      margin-top: 10px; font-size: .92rem;
-      color: rgba(255,255,255,.72); max-width: 480px; line-height: 1.7;
-    }
-    .hero-badge {
-      display: inline-flex; align-items: center; gap: 6px;
-      margin-top: 18px; padding: 6px 14px;
-      background: rgba(255,255,255,.14);
-      border: 1px solid rgba(255,255,255,.3);
-      border-radius: 20px; font-size: .8rem; color: rgba(255,255,255,.85);
-    }
-    .hero-badge .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--accent-light); }
 
     /* ===== LAYOUT ===== */
     .layout {
@@ -241,107 +229,6 @@
       box-shadow: var(--shadow-md);
     }
 
-    /* ===== CARDS GRID ===== */
-    .cards-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-      gap: 18px; margin-bottom: 36px;
-    }
-    .card {
-      background: var(--card-bg);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow-sm);
-      padding: 26px 20px 22px;
-      text-decoration: none; color: var(--text);
-      display: flex; flex-direction: column;
-      align-items: flex-start; gap: 10px;
-      border: 1px solid var(--border);
-      border-top: 3px solid transparent;
-      transition: transform .2s, box-shadow .2s, border-top-color .2s;
-      position: relative; overflow: hidden;
-      animation: fadeUp .4s ease both;
-    }
-    .card:hover {
-      transform: translateY(-4px);
-      box-shadow: var(--shadow-md);
-      border-top-color: var(--primary-light);
-    }
-    .card-icon {
-      width: 44px; height: 44px; border-radius: 10px;
-      background: linear-gradient(135deg, #e0f2fe, #bae6fd);
-      border: 1px solid var(--border);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.35rem;
-    }
-    .card-title { font-size: .9rem; font-weight: 600; color: var(--text); line-height: 1.4; }
-    .card-arrow {
-      margin-top: auto; font-size: .78rem;
-      color: var(--primary-light); opacity: 0;
-      transform: translateX(-6px);
-      transition: opacity .2s, transform .2s;
-    }
-    .card:hover .card-arrow { opacity: 1; transform: translateX(0); }
-
-    /* ===== INFO BOX ===== */
-    .info-box {
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow-sm);
-      padding: 28px 32px;
-      border-left: 4px solid var(--primary-light);
-    }
-    .info-box h3 {
-      font-family: 'Noto Serif TC', serif;
-      font-size: 1rem; font-weight: 700;
-      color: var(--primary); margin-bottom: 18px;
-      padding-bottom: 12px;
-      border-bottom: 1px solid var(--border);
-      letter-spacing: .06em;
-    }
-    .info-table { width: 100%; border-collapse: collapse; }
-    .info-table tr + tr td { padding-top: 12px; }
-    .info-table td:first-child {
-      width: 110px; font-size: .84rem;
-      color: var(--text-muted); font-weight: 500;
-      vertical-align: top; padding-right: 12px;
-      letter-spacing: .04em; white-space: nowrap;
-    }
-    .info-table td:last-child { font-size: .88rem; color: var(--text); line-height: 1.6; }
-    .tag {
-      display: inline-block; padding: 3px 11px;
-      border-radius: 20px; font-size: .8rem;
-      background: #e0f2fe;
-      color: var(--primary); font-weight: 500;
-      margin: 2px 4px 2px 0;
-    }
-    .phone-link { color: var(--primary); font-weight: 600; text-decoration: none; font-size: .92rem; font-family: var(--font-mono); }
-    .phone-link:hover { text-decoration: underline; }
-
-    /* ===== MEMBER TABLE ===== */
-    .member-table { width: 100%; border-collapse: collapse; font-size: .9rem; }
-    .member-table th {
-      background: linear-gradient(90deg, #e0f2fe, #f0f9ff);
-      color: var(--primary); font-weight: 700;
-      padding: 11px 16px; text-align: left;
-      letter-spacing: .06em;
-      border-bottom: 2px solid var(--border-strong);
-      font-size: .85rem;
-    }
-    .member-table td { padding: 11px 16px; border-bottom: 1px solid var(--border); color: var(--text); }
-    .member-table tr:last-child td { border-bottom: none; }
-    .member-table tr:hover td { background: #f0f9ff; }
-    .role-badge {
-      display: inline-block; padding: 3px 12px;
-      border-radius: 20px; font-size: .78rem; font-weight: 600;
-      background: #e0f2fe; color: var(--primary);
-      border: 1px solid var(--border-strong);
-    }
-    .role-badge.leader {
-      background: #ecfdf5; color: var(--accent);
-      border-color: #6ee7b7;
-    }
-
     /* ===== ATTACH LIST ===== */
     .attach-list { list-style: none; padding: 0; margin: 0; }
     .attach-list li { border-bottom: 1px solid var(--border); padding: 12px 0; }
@@ -369,24 +256,6 @@
       border-radius: 0 8px 8px 0;
     }
 
-    /* ===== DUTY LIST ===== */
-    .duty-list { list-style: none; padding: 0; counter-reset: duty; }
-    .duty-list li {
-      counter-increment: duty;
-      display: flex; gap: 12px;
-      padding: 9px 0; border-bottom: 1px solid var(--border); font-size: .88rem;
-    }
-    .duty-list li:last-child { border-bottom: none; }
-    .duty-list li::before {
-      content: counter(duty);
-      min-width: 24px; height: 24px; border-radius: 50%;
-      background: linear-gradient(135deg, var(--primary), var(--primary-light));
-      color: #fff;
-      font-size: .76rem; font-weight: 700;
-      display: flex; align-items: center; justify-content: center;
-      flex-shrink: 0; margin-top: 1px;
-    }
-
     /* ===== FOOTER ===== */
     footer {
       background: var(--primary-dark);
@@ -398,20 +267,6 @@
     }
     footer a { color: rgba(255,255,255,.75); text-decoration: none; transition: color .2s; }
     footer a:hover { color: #fff; }
-
-    /* ===== ANIMATIONS ===== */
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(16px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-    .card:nth-child(1) { animation-delay: .05s; }
-    .card:nth-child(2) { animation-delay: .10s; }
-    .card:nth-child(3) { animation-delay: .15s; }
-    .card:nth-child(4) { animation-delay: .20s; }
-    .card:nth-child(5) { animation-delay: .25s; }
-    .card:nth-child(6) { animation-delay: .30s; }
-    .card:nth-child(7) { animation-delay: .35s; }
-    .card:nth-child(8) { animation-delay: .40s; }
 
     /* ===== RESPONSIVE ===== */
     @media (max-width: 820px) {
@@ -438,39 +293,26 @@
     <div class="nav-item"><a class="nav-link" href="https://sites.google.com/shsh.ylc.edu.tw/registration/">註冊組</a></div>
     <div class="nav-item">
       <span class="nav-link active">設備組 <span class="caret">▼</span></span>
-      <div class="dropdown"><a href="設備組成員.html">設備組成員</a><a href="智慧黑板管理.html">智慧黑板管理</a><a href="設備報修系統.html">設備報修系統</a><a href="奧林匹亞競賽.html">奧林匹亞競賽</a><a href="活動一覽表.html" class="active-sub">活動一覽表</a><a href="教學設備管理規則.html">教學設備管理規則</a><a href="專科教室管理規則.html">專科教室管理規則</a><a href="科展消息.html">科展消息</a><a href="數學與自然科能力競賽.html">數學與自然科能力競賽</a><a href="設備報修系統.html">設備報修系統</a><a href="各式表單下載.html">各式表單下載</a></div>
+      <div class="dropdown"><a href="設備組成員.html">設備組成員</a><a href="智慧黑板管理.html">智慧黑板管理</a><a href="設備報修系統.html">設備報修系統</a><a href="奧林匹亞競賽.html">奧林匹亞競賽</a><a href="活動一覽表.html">活動一覽表</a><a href="教學設備管理規則.html">教學設備管理規則</a><a href="專科教室管理規則.html">專科教室管理規則</a><a href="科展消息.html">科展消息</a><a href="數學與自然科能力競賽.html">數學與自然科能力競賽</a><a href="各式表單下載.html" class="active-sub">各式表單下載</a></div>
     </div>
   </nav>
 </header>
 <div class="hero"><div class="hero-content">
-  <div class="hero-breadcrumb"><a href="設備組.html">設備組首頁</a><span>›</span><a href="設備組.html">設備組</a><span>›</span>活動一覽表</div>
-  <h1>📅 活動一覽表</h1>
+  <div class="hero-breadcrumb"><a href="設備組.html">設備組首頁</a><span>›</span><a href="設備組.html">設備組</a><span>›</span>各式表單下載</div>
+  <h1>📁 各式表單下載</h1>
 </div></div>
 <div class="layout">
-  <aside class="sidebar"><div class="sidebar-card"><div class="sidebar-title">設備組 · 目錄</div><div class="sidebar-menu"><a href="設備組成員.html">設備組成員</a><a href="智慧黑板管理.html">智慧黑板管理</a><a href="奧林匹亞競賽.html">奧林匹亞競賽</a><a href="活動一覽表.html" class="active">活動一覽表</a><a href="教學設備管理規則.html">教學設備管理規則</a><a href="專科教室管理規則.html">專科教室管理規則</a><a href="科展消息.html">科展消息</a><a href="數學與自然科能力競賽.html">數學與自然科能力競賽</a><a href="設備報修系統.html">設備報修系統</a><a href="各式表單下載.html">各式表單下載</a></div></div></aside>
+  <aside class="sidebar"><div class="sidebar-card"><div class="sidebar-title">設備組 · 目錄</div><div class="sidebar-menu"><a href="設備組成員.html">設備組成員</a><a href="智慧黑板管理.html">智慧黑板管理</a><a href="奧林匹亞競賽.html">奧林匹亞競賽</a><a href="活動一覽表.html">活動一覽表</a><a href="教學設備管理規則.html">教學設備管理規則</a><a href="專科教室管理規則.html">專科教室管理規則</a><a href="科展消息.html">科展消息</a><a href="數學與自然科能力競賽.html">數學與自然科能力競賽</a><a href="設備報修系統.html">設備報修系統</a><a href="各式表單下載.html" class="active">各式表單下載</a></div></div></aside>
   <main>
-    <div class="section-label"><h2>活動一覽表</h2></div>
+    <div class="section-label"><h2>各式表單下載</h2></div>
     <div class="content-card">
-      <p class="section-note">設備組年度工作活動一覽表（Google 試算表），點選下方連結開啟。</p>
+      <p class="section-note">以下提供設備組相關表單下載，如有需要請點選下載。</p>
       <ul class="attach-list">
-        <li><a class="attach-link" href="https://docs.google.com/spreadsheets/d/1z4IG4XpK2Cm7fD8qD6l5Za6LVURv01lUjoz0CsRdq8Q/edit?usp=sharing" target="_blank">
-          <div class="attach-icon sheet">📊</div>
-          <div><div class="attach-name">設備組年度工作活動一覽表</div><div class="attach-type">Google 試算表</div></div>
+        <li><a class="attach-link" href="#">
+          <div class="attach-icon doc">📄</div>
+          <div><div class="attach-name">（表單待新增）</div><div class="attach-type">請洽設備組</div></div>
         </a></li>
       </ul>
-      <div style="margin-top:28px;">
-        <div class="section-label"><h2>設備組常態工作業務</h2></div>
-        <ul class="duty-list">
-          <li>協辦競賽相關工作業務</li>
-          <li>維護競賽相關設備，方便使用</li>
-          <li>協助各項奧林匹亞選拔</li>
-          <li>維修各班電腦設備</li>
-          <li>維護智慧電子黑板 AB 管理</li>
-          <li>協助班級管理</li>
-          <li>協助管理處的工作</li>
-        </ul>
-      </div>
-</div>
     </div>
   </main>
 </div>
