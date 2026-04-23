@@ -153,17 +153,12 @@ eh  = bb2[3]-bb2[1]
 
 # 4. AWARD BAND ─────────────────────────────────────────── y~920
 AY = EY + eh + 50
-AH = 124
-draw.rectangle([160,AY,W-160,AY+AH], fill=GOLD, outline=GOLD_DIM, width=3)
-at  = "榮 獲「環 境 學 科」優 等"
-# Auto-scale: reduce font until text fits inside the band with padding
-at_font = f_lg
-for trial_size in range(104, 60, -4):
-    at_font = ttf(rf"{WDIR}\msjhbd.ttf", trial_size)
-    bba = draw.textbbox((0,0),at,font=at_font)
-    if (bba[2]-bba[0]) <= W-380:
-        break
-center_x(at, at_font, AY+(AH-(bba[3]-bba[1]))//2, BG_DARK)
+at      = "榮獲「環境學科」優等"
+at_font = ttf(rf"{WDIR}\msjhbd.ttf", 100)
+AH      = 160          # generously tall band
+draw.rectangle([160, AY, W-160, AY+AH], fill=GOLD, outline=GOLD_DIM, width=3)
+# anchor='mm' → draw point is the middle-centre of the text; no bbox math needed
+draw.text((W//2, AY + AH//2), at, font=at_font, fill=BG_DARK, anchor='mm')
 
 # 5. DIVIDER ────────────────────────────────────────────── y~1090
 DY1 = AY+AH+70
