@@ -153,11 +153,17 @@ eh  = bb2[3]-bb2[1]
 
 # 4. AWARD BAND ─────────────────────────────────────────── y~920
 AY = EY + eh + 50
-AH = 116
+AH = 124
 draw.rectangle([160,AY,W-160,AY+AH], fill=GOLD, outline=GOLD_DIM, width=3)
-at = "榮  獲  「 環  境  學  科 」  優  等"
-bba = draw.textbbox((0,0),at,font=f_lg)
-center_x(at, f_lg, AY+(AH-(bba[3]-bba[1]))//2, BG_DARK)
+at  = "榮 獲「環 境 學 科」優 等"
+# Auto-scale: reduce font until text fits inside the band with padding
+at_font = f_lg
+for trial_size in range(104, 60, -4):
+    at_font = ttf(rf"{WDIR}\msjhbd.ttf", trial_size)
+    bba = draw.textbbox((0,0),at,font=at_font)
+    if (bba[2]-bba[0]) <= W-380:
+        break
+center_x(at, at_font, AY+(AH-(bba[3]-bba[1]))//2, BG_DARK)
 
 # 5. DIVIDER ────────────────────────────────────────────── y~1090
 DY1 = AY+AH+70
@@ -218,7 +224,7 @@ diamond(W//2, DY3+5, 32)
 
 # 10. FOOTER ────────────────────────────────────────────── y~2100
 FY = DY3+80
-scn = "＊  學  校  名  稱  ＊"
+scn = "雲林縣私立正心高級中學"
 bsc = draw.textbbox((0,0),scn,font=f_md)
 sw  = bsc[2]-bsc[0]; sh=bsc[3]-bsc[1]
 sx  = (W-sw)//2
