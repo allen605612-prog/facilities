@@ -206,9 +206,9 @@ for cls, name in students:
     gap= 44
     total = cw+gap+nw
     xs  = (W-total)//2
-    # tag box
-    draw.rectangle([xs-12, STY2-6, xs+cw+12, STY2+ch+10], outline=GOLD_DIM, width=2)
-    draw.text((xs, STY2+(nh-ch)//2+4), cls,  font=f_xs, fill=GOLD)
+    # tag box — solid gold fill so class label is clearly readable
+    draw.rectangle([xs-14, STY2-6, xs+cw+14, STY2+ch+10], fill=GOLD, outline=GOLD_DIM, width=2)
+    draw.text((xs, STY2+(nh-ch)//2+4), cls,  font=f_xs, fill=BG_DARK)
     draw.text((xs+cw+gap, STY2),        name, font=f_sm, fill=CREAM)
     STY2 += row_gap
 
@@ -219,18 +219,10 @@ diamond(W//2, DY3+5, 32)
 
 # 10. FOOTER ────────────────────────────────────────────── y~2100
 FY = DY3+80
-scn = "雲林縣私立正心高級中學"
-bsc = draw.textbbox((0,0),scn,font=f_md)
-sw  = bsc[2]-bsc[0]; sh=bsc[3]-bsc[1]
-sx  = (W-sw)//2
-draw.rectangle([sx-20,FY-6,sx+sw+20,FY+sh+10], fill=GOLD, outline=GOLD_DIM, width=2)
-draw.text((sx,FY), scn, font=f_md, fill=BG_DARK)
-FY2 = FY+sh+32
-
-center_x("全  校  師  生  同  賀", f_sm, FY2, CREAM)
+center_x("全  校  師  生  同  賀", f_sm, FY, CREAM)
 bfc = draw.textbbox((0,0),"全  校  師  生  同  賀",font=f_sm)
-FY3 = FY2+(bfc[3]-bfc[1])+24
-center_x("A.D. 2026", f_lat, FY3, GOLD_DIM)
+FY3 = FY+(bfc[3]-bfc[1])+28
+center_x("A.D. 2026", f_latb, FY3, GOLD_LT)
 
 # 11. LARGE "66" WATERMARK ──────────────────────────────── y~2380
 WMY = FY3 + 80
@@ -276,8 +268,17 @@ draw = ImageDraw.Draw(img)
 out_img = img.convert("RGB")
 out_png = r"C:\Users\user\allen\第66屆科展榮譽海報.png"
 out_pdf = r"C:\Users\user\allen\第66屆科展榮譽海報.pdf"
-out_img.save(out_png, "PNG",  dpi=(300,300))
-out_img.save(out_pdf, "PDF",  resolution=300)
+out_img.save(out_png, "PNG", dpi=(300,300))
+
+# PDF via reportlab — zero-margin, full-bleed A4
+from reportlab.pdfgen import canvas as rl_canvas
+from reportlab.lib.pagesizes import A4
+W_pt, H_pt = A4
+c = rl_canvas.Canvas(out_pdf, pagesize=A4)
+c.drawImage(out_png, 0, 0, width=W_pt, height=H_pt, preserveAspectRatio=False)
+c.showPage()
+c.save()
+
 print("Done.")
 print(f"  PNG → {out_png}")
 print(f"  PDF → {out_pdf}")
