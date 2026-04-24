@@ -197,19 +197,22 @@ students = [
     ("高一意班","鐘  宥  昕"),
     ("高一正班","廖  柃  柃"),
 ]
-row_gap = 138
+row_gap = 148
+tag_h   = 72
 for cls, name in students:
     bc = draw.textbbox((0,0),cls,  font=f_xs)
+    cw = bc[2]-bc[0]
     bn = draw.textbbox((0,0),name, font=f_sm)
-    cw = bc[2]-bc[0]; ch=bc[3]-bc[1]
-    nw = bn[2]-bn[0]; nh=bn[3]-bn[1]
-    gap= 44
-    total = cw+gap+nw
-    xs  = (W-total)//2
-    # tag box — solid gold fill so class label is clearly readable
-    draw.rectangle([xs-14, STY2-6, xs+cw+14, STY2+ch+10], fill=GOLD, outline=GOLD_DIM, width=2)
-    draw.text((xs, STY2+(nh-ch)//2+4), cls,  font=f_xs, fill=BG_DARK)
-    draw.text((xs+cw+gap, STY2),        name, font=f_sm, fill=CREAM)
+    nw = bn[2]-bn[0]
+    gap   = 44
+    total = cw + gap + nw
+    xs    = (W - total) // 2
+    box_cx = xs + cw // 2
+    box_cy = STY2 + tag_h // 2
+    # tag box — anchor='mm' avoids textbbox top-offset overflow
+    draw.rectangle([xs-16, STY2, xs+cw+16, STY2+tag_h], fill=GOLD, outline=GOLD_DIM, width=2)
+    draw.text((box_cx, box_cy), cls,  font=f_xs, fill=BG_DARK, anchor='mm')
+    draw.text((xs+cw+gap, box_cy),    name, font=f_sm, fill=CREAM,  anchor='lm')
     STY2 += row_gap
 
 # 9. DIVIDER ────────────────────────────────────────────── bottom
@@ -247,13 +250,13 @@ draw = ImageDraw.Draw(img)
 
 # Subtitle below watermark
 ENVY = WMY + h66 + 42
-center_x("ENVIRONMENTAL  SCIENCE  EXCELLENCE", f_lat, ENVY, GOLD_DIM)
+center_x("ENVIRONMENTAL  SCIENCE  EXCELLENCE", f_lat, ENVY, GOLD)
 
 hline(ENVY+60, 420, W-420, GOLD_DIM, 1)
 
 # Bottom motto — very subtle
 MOTY = ENVY + 100
-center_x("以  知  識  護  大  地  ·  以  榮  耀  回  饋  師  恩", f_xs, MOTY, GOLD_DIM)
+center_x("以  知  識  護  大  地  ·  以  榮  耀  回  饋  師  恩", f_xs, MOTY, GOLD_LT)
 
 # 12. FINAL FOREGROUND LEAF LAYER ──── very subtle, drawn last
 draw = ImageDraw.Draw(img)   # refresh
