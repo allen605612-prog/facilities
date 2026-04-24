@@ -29,14 +29,14 @@ def ttf(path, size):
     try:    return ImageFont.truetype(path, size)
     except: return ImageFont.load_default()
 
-f_xl   = ttf(rf"{WDIR}\msjhbd.ttf",  280)   # 狂賀！
-f_lg   = ttf(rf"{WDIR}\msjhbd.ttf",  104)   # 副標 / 得獎欄
-f_md   = ttf(rf"{WDIR}\msjhbd.ttf",   82)   # 老師姓名 / 指導標籤
-f_sm   = ttf(rf"{WDIR}\msjh.ttf",     66)   # 學生姓名
-f_xs   = ttf(rf"{WDIR}\msjh.ttf",     50)   # 標籤 / 落款
-f_num  = ttf(rf"{CDIR}\CrimsonPro-Bold.ttf", 520)   # 大數字 66
-f_lat  = ttf(rf"{CDIR}\InstrumentSans-Regular.ttf",  52)
-f_latb = ttf(rf"{CDIR}\InstrumentSans-Bold.ttf",     58)
+f_xl   = ttf(rf"{WDIR}\msjhbd.ttf",  330)   # 狂賀！
+f_lg   = ttf(rf"{WDIR}\msjhbd.ttf",  126)   # 副標 / 得獎欄
+f_md   = ttf(rf"{WDIR}\msjhbd.ttf",  100)   # 老師姓名 / 指導標籤
+f_sm   = ttf(rf"{WDIR}\msjh.ttf",     82)   # 學生姓名
+f_xs   = ttf(rf"{WDIR}\msjh.ttf",     62)   # 標籤 / 落款
+f_num  = ttf(rf"{CDIR}\CrimsonPro-Bold.ttf", 460)   # 大數字 66
+f_lat  = ttf(rf"{CDIR}\InstrumentSans-Regular.ttf",  64)
+f_latb = ttf(rf"{CDIR}\InstrumentSans-Bold.ttf",     72)
 
 # ── Helpers ────────────────────────────────────────────────────────────
 def center_x(text, font, y, fill, draw_obj=None):
@@ -154,8 +154,8 @@ eh  = bb2[3]-bb2[1]
 # 4. AWARD BAND ─────────────────────────────────────────── y~920
 AY = EY + eh + 50
 at      = "榮獲「環境學科」優等"
-at_font = ttf(rf"{WDIR}\msjhbd.ttf", 100)
-AH      = 160          # generously tall band
+at_font = ttf(rf"{WDIR}\msjhbd.ttf", 120)
+AH      = 180          # generously tall band
 draw.rectangle([160, AY, W-160, AY+AH], fill=GOLD, outline=GOLD_DIM, width=3)
 # anchor='mm' → draw point is the middle-centre of the text; no bbox math needed
 draw.text((W//2, AY + AH//2), at, font=at_font, fill=BG_DARK, anchor='mm')
@@ -197,8 +197,8 @@ students = [
     ("高一意班","鐘  宥  昕"),
     ("高一正班","廖  柃  柃"),
 ]
-row_gap = 148
-tag_h   = 72
+row_gap = 174
+tag_h   = 90
 for cls, name in students:
     bc = draw.textbbox((0,0),cls,  font=f_xs)
     cw = bc[2]-bc[0]
@@ -228,7 +228,7 @@ FY3 = FY+(bfc[3]-bfc[1])+28
 center_x("A.D. 2026", f_latb, FY3, GOLD_LT)
 
 # 11. LARGE "66" WATERMARK ──────────────────────────────── y~2380
-WMY = FY3 + 80
+WMY = FY3 + 110
 bb66= draw.textbbox((0,0),"66",font=f_num)
 w66 = bb66[2]-bb66[0]; h66=bb66[3]-bb66[1]
 x66 = (W-w66)//2
@@ -255,7 +255,7 @@ center_x("ENVIRONMENTAL  SCIENCE  EXCELLENCE", f_lat, ENVY, GOLD)
 hline(ENVY+60, 420, W-420, GOLD_DIM, 1)
 
 # Bottom motto — very subtle
-MOTY = ENVY + 100
+MOTY = ENVY + 130
 center_x("以  知  識  護  大  地  ·  以  榮  耀  回  饋  師  恩", f_xs, MOTY, GOLD_LT)
 
 # 12. FINAL FOREGROUND LEAF LAYER ──── very subtle, drawn last
