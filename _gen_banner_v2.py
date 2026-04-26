@@ -39,14 +39,14 @@ def ttf(path, size):
     try:    return ImageFont.truetype(path, size)
     except: return ImageFont.load_default()
 
-f_header = ttf(rf"{WDIR}\msjhbd.ttf",  78)
-f_huge   = ttf(rf"{WDIR}\msjhbd.ttf", 178)
-f_sec    = ttf(rf"{WDIR}\msjhbd.ttf",  58)
-f_award  = ttf(rf"{WDIR}\msjhbd.ttf",  52)
-f_card   = ttf(rf"{WDIR}\msjhbd.ttf",  44)
-f_body   = ttf(rf"{WDIR}\msjhbd.ttf",  40)
-f_sm     = ttf(rf"{WDIR}\msjh.ttf",    34)
-f_xs     = ttf(rf"{WDIR}\msjh.ttf",    28)
+f_header = ttf(rf"{WDIR}\kaiu.ttf",  78)
+f_huge   = ttf(rf"{WDIR}\kaiu.ttf", 178)
+f_sec    = ttf(rf"{WDIR}\kaiu.ttf",  58)
+f_award  = ttf(rf"{WDIR}\kaiu.ttf",  52)
+f_card   = ttf(rf"{WDIR}\kaiu.ttf",  44)
+f_body   = ttf(rf"{WDIR}\kaiu.ttf",  40)
+f_sm     = ttf(rf"{WDIR}\kaiu.ttf",  34)
+f_xs     = ttf(rf"{WDIR}\kaiu.ttf",  28)
 
 PHOTO_DIR = r"D:\D\onedrive\文件"
 awards_data = [
@@ -97,13 +97,15 @@ def draw_grass(draw, start_y):
     pts2.append((W, H))
     draw.polygon(pts2, fill=(42, 138, 58))
 
-def load_fit(path, w, h):
+def load_fit(path, w, h, top_bias=0.5):
+    """Center-crop photo. top_bias=0 keeps top, 0.5=center, 1=bottom."""
     photo = Image.open(path).convert("RGB")
     pw, ph = photo.size
     scale = max(w/pw, h/ph)
     nw, nh = int(pw*scale)+1, int(ph*scale)+1
     photo = photo.resize((nw, nh), Image.LANCZOS)
-    left, top = (nw-w)//2, (nh-h)//2
+    left = (nw-w)//2
+    top  = max(0, int((nh-h)*top_bias))
     return photo.crop((left, top, left+w, top+h))
 
 # ── Banner generator ────────────────────────────────────────────────
@@ -186,7 +188,7 @@ def make_banner(with_photos=False):
     # 左側照片：獲獎與評審合照
     px0 = (DIV_X - L_PHOTO_W) // 2
     try:
-        lph = load_fit(L_PHOTO_PATH, L_PHOTO_W, L_PHOTO_H)
+        lph = load_fit(L_PHOTO_PATH, L_PHOTO_W, L_PHOTO_H, top_bias=0.12)
         img.paste(lph, (px0, y))
         draw.rectangle([px0-3, y-3, px0+L_PHOTO_W+3, y+L_PHOTO_H+3],
                        outline=TEAL, width=3)
@@ -234,25 +236,22 @@ def make_banner(with_photos=False):
         draw.rectangle([cx0,cy0,cx1,cy1], fill=WHITE, outline=(205,205,205), width=1)
 
         if with_photos:
-            TEXT_STRIP = 132
+            TEXT_STRIP = 158
             PHOTO_H    = CARD_H - TEXT_STRIP
             try:
-                ph_img = load_fit(photo_path, card_w-2, PHOTO_H)
+                ph_img = load_fit(photo_path, card_w-2, PHOTO_H, top_bias=0.2)
                 img.paste(ph_img,(cx0+1, cy0))
             except Exception as e:
                 draw.rectangle([cx0+1,cy0,cx1-1,cy0+PHOTO_H], fill=(190,205,220))
-                draw.text((ccx,cy0+PHOTO_H//2), f"照片讀取失敗", font=f_xs, fill=DARK, anchor='mm')
+                draw.text((ccx,cy0+PHOTO_H//2), "照片讀取失敗", font=f_xs, fill=DARK, anchor='mm')
 
             # Coloured strip at bottom
             strip_y = cy0 + PHOTO_H
             draw.rectangle([cx0, strip_y, cx1, cy1], fill=sc)
-            # Award label
-            label_y = strip_y + 38
-            draw.text((ccx, label_y), f"{subj}  {rank}", font=f_card, fill=WHITE, anchor='mm')
-            # Students
-            draw.text((ccx, label_y+30), students, font=f_sm, fill=CREAM, anchor='mt')
-            # Teacher — bottom of strip
-            draw.text((ccx, cy1-12), teacher, font=f_xs, fill=(255,255,200), anchor='mb')
+            # 三行各自定位，確保不重疊
+            draw.text((ccx, strip_y+44), f"{subj}  {rank}", font=f_card, fill=WHITE, anchor='mm')
+            draw.text((ccx, strip_y+86), students, font=f_sm, fill=CREAM, anchor='mt')
+            draw.text((ccx, cy1-14), teacher, font=f_xs, fill=(255,255,200), anchor='mb')
         else:
             # Coloured top band
             BAND_H = 72
@@ -260,17 +259,19 @@ def make_banner(with_photos=False):
             draw.text((ccx,cy0+BAND_H//2), f"{subj}  {rank}", font=f_card, fill=WHITE, anchor='mm')
 
             # Content block centred in remaining space
+            # G1/G2/G3 match exact gaps used in draw calls below
+            G1, G2, G3 = 16, 14, 16
             topic_h_  = th(draw,topic,   f_sm)
             stud_h_c  = th(draw,students, f_sm)
             teach_h_c = th(draw,teacher,  f_sm)
-            CONTENT   = topic_h_ + 10 + stud_h_c + 20 + teach_h_c
-            by0 = cy0 + BAND_H + (CARD_H - BAND_H - CONTENT)//2
+            CONTENT   = topic_h_ + G1 + stud_h_c + G2 + 1 + G3 + teach_h_c
+            by0 = cy0 + BAND_H + max(20, (CARD_H - BAND_H - CONTENT)//2)
 
-            draw.text((ccx, by0),          topic,    font=f_sm, fill=(90,90,90), anchor='mt')
-            draw.text((ccx, by0+topic_h_+10), students, font=f_sm, fill=DARK,   anchor='mt')
-            line_y = by0+topic_h_+10+stud_h_c+10
-            draw.line([(cx0+20,line_y),(cx1-20,line_y)], fill=(208,208,208), width=1)
-            draw.text((ccx, line_y+10), teacher, font=f_sm, fill=sc, anchor='mt')
+            draw.text((ccx, by0),                topic,    font=f_sm, fill=(110,110,110), anchor='mt')
+            draw.text((ccx, by0+topic_h_+G1),    students, font=f_sm, fill=DARK,         anchor='mt')
+            line_y = by0+topic_h_+G1+stud_h_c+G2
+            draw.line([(cx0+20,line_y),(cx1-20,line_y)], fill=(210,210,210), width=1)
+            draw.text((ccx, line_y+1+G3), teacher, font=f_sm, fill=sc, anchor='mt')
 
     # Save PNG + PPTX
     suffix   = "照片版" if with_photos else "活潑版"
