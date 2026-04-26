@@ -154,18 +154,16 @@ def make_banner(with_photos=False):
     band_h_  = at_h_ + 24
     stud_h_  = th(draw,"高一心班 宋彥霖", f_body)
     teach_h_ = th(draw,"指導老師：張祐誠老師", f_body)
-    LBH = huge_h_+14+sub_h_+16+band_h_+18+stud_h_+12+teach_h_
+    LBH = huge_h_+20+sub_h_+22+band_h_+22+stud_h_+16+teach_h_
 
     y = CONT_Y + (AVAIL-LBH)//2
 
-    bb_h = draw.textbbox((0,0),"狂賀！",font=f_huge)
-    hx_  = LEFT_CX-(bb_h[2]-bb_h[0])//2
-    draw.text((hx_+4,y+4),"狂賀！",font=f_huge,fill=(168,48,28))
-    draw.text((hx_, y),   "狂賀！",font=f_huge,fill=CORAL)
-    y += huge_h_ + 14
+    draw.text((LEFT_CX+4, y+4), "狂賀！", font=f_huge, fill=(168,48,28), anchor='mt')
+    draw.text((LEFT_CX,   y),   "狂賀！", font=f_huge, fill=CORAL,       anchor='mt')
+    y += huge_h_ + 20
 
     draw.text((LEFT_CX,y),"第 66 屆第四區分區高中科展",font=f_sec,fill=NAVY,anchor='mt')
-    y += sub_h_ + 16
+    y += sub_h_ + 22
 
     at    = "榮獲「環境學科」優等"
     bb_at = draw.textbbox((0,0),at,font=f_award)
@@ -174,11 +172,11 @@ def make_banner(with_photos=False):
     bx1   = LEFT_CX+aw//2+42
     draw.rectangle([bx0,y,bx1,y+band_h_], fill=TEAL, outline=DARK_GRN, width=2)
     draw.text((LEFT_CX,y+band_h_//2),at,font=f_award,fill=WHITE,anchor='mm')
-    y += band_h_ + 18
+    y += band_h_ + 22
 
     draw.text((LEFT_CX,y),"高一心班 宋彥霖・高一意班 鐘宥昕・高一正班 廖柃柃",
               font=f_body,fill=DARK,anchor='mt')
-    y += stud_h_ + 12
+    y += stud_h_ + 16
     draw.text((LEFT_CX,y),"指導老師：張祐誠老師",font=f_body,fill=DARK_GRN,anchor='mt')
 
     # ══ RIGHT — 縣科展 ════════════════════════════════════════════════
