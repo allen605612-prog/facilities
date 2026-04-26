@@ -154,7 +154,10 @@ def make_banner(with_photos=False):
     band_h_  = at_h_ + 24
     stud_h_  = th(draw,"高一心班 宋彥霖", f_body)
     teach_h_ = th(draw,"指導老師：張祐誠老師", f_body)
-    LBH = huge_h_+20+sub_h_+22+band_h_+22+stud_h_+16+teach_h_
+    L_PHOTO_PATH = r"C:\Users\user\Downloads\獲獎片語評審合照.jpg"
+    L_PHOTO_W    = DIV_X - 120      # 留左右各 60px 邊距
+    L_PHOTO_H    = 520
+    LBH = huge_h_+20+sub_h_+22+band_h_+22+stud_h_+16+teach_h_+24+L_PHOTO_H
 
     y = CONT_Y + (AVAIL-LBH)//2
 
@@ -178,6 +181,18 @@ def make_banner(with_photos=False):
               font=f_body,fill=DARK,anchor='mt')
     y += stud_h_ + 16
     draw.text((LEFT_CX,y),"指導老師：張祐誠老師",font=f_body,fill=DARK_GRN,anchor='mt')
+    y += teach_h_ + 24
+
+    # 左側照片：獲獎與評審合照
+    px0 = (DIV_X - L_PHOTO_W) // 2
+    try:
+        lph = load_fit(L_PHOTO_PATH, L_PHOTO_W, L_PHOTO_H)
+        img.paste(lph, (px0, y))
+        draw.rectangle([px0-3, y-3, px0+L_PHOTO_W+3, y+L_PHOTO_H+3],
+                       outline=TEAL, width=3)
+    except Exception as e:
+        draw.rectangle([px0, y, px0+L_PHOTO_W, y+L_PHOTO_H], fill=(200,215,225))
+        draw.text((LEFT_CX, y+L_PHOTO_H//2), "照片讀取失敗", font=f_sm, fill=DARK, anchor='mm')
 
     # ══ RIGHT — 縣科展 ════════════════════════════════════════════════
     RX0 = DIV_X + 20
