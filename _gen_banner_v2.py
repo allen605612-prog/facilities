@@ -44,7 +44,7 @@ f_huge   = ttf(rf"{WDIR}\kaiu.ttf", 178)
 f_sec    = ttf(rf"{WDIR}\kaiu.ttf",  58)
 f_award  = ttf(rf"{WDIR}\kaiu.ttf",  52)
 f_card   = ttf(rf"{WDIR}\kaiu.ttf",  44)
-f_body   = ttf(rf"{WDIR}\kaiu.ttf",  40)
+f_body   = ttf(rf"{WDIR}\kaiu.ttf",  48)
 f_sm     = ttf(rf"{WDIR}\kaiu.ttf",  40)
 f_xs     = ttf(rf"{WDIR}\kaiu.ttf",  34)
 
@@ -161,7 +161,7 @@ def make_banner(with_photos=False):
     L_PHOTO_H    = 520
     LBH = huge_h_+20+sub_h_+22+band_h_+22+stud_h_+16+teach_h_+24+L_PHOTO_H
 
-    y = CONT_Y + (AVAIL-LBH)//2
+    y = CONT_Y + (AVAIL-LBH)//3
 
     draw.text((LEFT_CX+4, y+4), "狂賀！", font=f_huge, fill=(168,48,28), anchor='mt')
     draw.text((LEFT_CX,   y),   "狂賀！", font=f_huge, fill=CORAL,       anchor='mt')
