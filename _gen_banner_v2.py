@@ -45,8 +45,8 @@ f_sec    = ttf(rf"{WDIR}\kaiu.ttf",  58)
 f_award  = ttf(rf"{WDIR}\kaiu.ttf",  52)
 f_card   = ttf(rf"{WDIR}\kaiu.ttf",  44)
 f_body   = ttf(rf"{WDIR}\kaiu.ttf",  40)
-f_sm     = ttf(rf"{WDIR}\kaiu.ttf",  34)
-f_xs     = ttf(rf"{WDIR}\kaiu.ttf",  28)
+f_sm     = ttf(rf"{WDIR}\kaiu.ttf",  40)
+f_xs     = ttf(rf"{WDIR}\kaiu.ttf",  34)
 
 PHOTO_DIR = r"D:\D\onedrive\文件"
 awards_data = [
@@ -236,7 +236,7 @@ def make_banner(with_photos=False):
         draw.rectangle([cx0,cy0,cx1,cy1], fill=WHITE, outline=(205,205,205), width=1)
 
         if with_photos:
-            TEXT_STRIP = 158
+            TEXT_STRIP = 190
             PHOTO_H    = CARD_H - TEXT_STRIP
             try:
                 ph_img = load_fit(photo_path, card_w-2, PHOTO_H, top_bias=0.2)
@@ -248,10 +248,10 @@ def make_banner(with_photos=False):
             # Coloured strip at bottom
             strip_y = cy0 + PHOTO_H
             draw.rectangle([cx0, strip_y, cx1, cy1], fill=sc)
-            # 三行各自定位，確保不重疊
-            draw.text((ccx, strip_y+44), f"{subj}  {rank}", font=f_card, fill=WHITE, anchor='mm')
-            draw.text((ccx, strip_y+86), students, font=f_sm, fill=CREAM, anchor='mt')
-            draw.text((ccx, cy1-14), teacher, font=f_xs, fill=(255,255,200), anchor='mb')
+            # 三行各自定位：科目名次 mm, 學生 mt, 老師 mb
+            draw.text((ccx, strip_y+52),  f"{subj}  {rank}", font=f_card, fill=WHITE,        anchor='mm')
+            draw.text((ccx, strip_y+96),  students,           font=f_sm,   fill=CREAM,        anchor='mt')
+            draw.text((ccx, cy1-12),      teacher,            font=f_xs,   fill=(255,255,200), anchor='mb')
         else:
             # Coloured top band
             BAND_H = 72
