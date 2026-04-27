@@ -139,12 +139,12 @@ centered_text(draw, "高一正班廖柃柃  同學", 522, f_names, OFF_WHITE)
 draw.line([(80, 580), (W-80, 580)], fill=GOLD_DARK, width=1)
 
 # 主要成就（金色大字）
-shadow_text(draw, "榮獲第 66 屆第四區", 598, f_achiev, GOLD_LIGHT, shadow=(80,60,0))
-shadow_text(draw, "分區高中科展", 668, f_achiev, GOLD_LIGHT, shadow=(80,60,0))
-shadow_text(draw, "「環境學科」優等！", 738, f_achiev, GOLD_LIGHT, shadow=(80,60,0))
+shadow_text(draw, "榮獲第 66 屆第四區", 728, f_achiev, GOLD_LIGHT, shadow=(80,60,0))
+shadow_text(draw, "分區高中科展", 798, f_achiev, GOLD_LIGHT, shadow=(80,60,0))
+shadow_text(draw, "「環境學科」優等！", 868, f_achiev, GOLD_LIGHT, shadow=(80,60,0))
 
 # ── 6. 金色橫條 ───────────────────────────────────────────
-bar_y = 840
+bar_y = 968
 draw.rectangle([0, bar_y, W, bar_y+56], fill=GOLD_DARK)
 draw.rectangle([0, bar_y+4, W, bar_y+52], fill=GOLD)
 # 橫條亮邊
@@ -152,7 +152,7 @@ draw.line([(0,bar_y+4),(W,bar_y+4)], fill=GOLD_LIGHT, width=3)
 draw.line([(0,bar_y+52),(W,bar_y+52)], fill=GOLD_DARK, width=2)
 
 # ── 7. 底部感謝文字 ───────────────────────────────────────
-centered_text(draw, "感謝 張祐誠 老師指導", 934, f_thanks, WHITE)
+centered_text(draw, "感謝 張祐誠 老師指導", 1058, f_thanks, WHITE)
 
 # ── 8. 輕微暗角 ───────────────────────────────────────────
 vignette = Image.new("L", (W, H), 255)
