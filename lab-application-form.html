@@ -1,0 +1,1004 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>實驗室借用暨器材申請表</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Noto+Serif+TC:wght@300;400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0f1f3d;
+    --navy-mid: #1e3a6e;
+    --gold: #b8913a;
+    --gold-light: #d4aa55;
+    --gold-pale: #f5e8c7;
+    --cream: #faf7f2;
+    --white: #ffffff;
+    --ink: #1a1a2e;
+    --mid: #4a5568;
+    --light: #a0aec0;
+    --border: #d1c4a8;
+    --section-bg: #f0ebe0;
+    --red: #c0392b;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Noto Serif TC', serif;
+    background: #e8e0d0;
+    color: var(--ink);
+    min-height: 100vh;
+    padding: 2rem 1rem;
+  }
+
+  /* ─── 整體容器 ─── */
+  .form-wrapper {
+    max-width: 900px;
+    margin: 0 auto;
+    background: var(--cream);
+    box-shadow: 0 8px 60px rgba(15,31,61,0.18), 0 2px 8px rgba(15,31,61,0.08);
+    border-top: 6px solid var(--gold);
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* 裝飾角 */
+  .form-wrapper::before {
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    width: 120px; height: 120px;
+    background: linear-gradient(225deg, var(--gold-pale) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  /* ─── 頁首 ─── */
+  .form-header {
+    background: var(--navy);
+    padding: 2.2rem 3rem 1.8rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .form-header::after {
+    content: '實';
+    position: absolute;
+    right: -10px; top: -20px;
+    font-size: 10rem;
+    font-family: 'Cormorant Garamond', serif;
+    color: rgba(255,255,255,0.04);
+    font-weight: 700;
+    line-height: 1;
+    pointer-events: none;
+    user-select: none;
+  }
+
+  .school-name {
+    font-family: 'Noto Serif TC', serif;
+    color: var(--gold-light);
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.25em;
+    margin-bottom: 0.6rem;
+    text-transform: uppercase;
+  }
+
+  .form-title {
+    font-family: 'Cormorant Garamond', serif;
+    color: var(--white);
+    font-size: 2.2rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    line-height: 1.2;
+  }
+
+  .form-title span {
+    color: var(--gold-light);
+  }
+
+  .form-subtitle {
+    color: rgba(255,255,255,0.5);
+    font-size: 0.78rem;
+    letter-spacing: 0.15em;
+    margin-top: 0.5rem;
+  }
+
+  .form-meta-row {
+    display: flex;
+    gap: 2rem;
+    margin-top: 1.4rem;
+    padding-top: 1.2rem;
+    border-top: 1px solid rgba(255,255,255,0.1);
+  }
+
+  .form-meta-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: rgba(255,255,255,0.55);
+    font-size: 0.75rem;
+    letter-spacing: 0.05em;
+  }
+
+  .form-meta-item strong {
+    color: var(--gold-light);
+  }
+
+  /* ─── 注意事項橫幅 ─── */
+  .notice-banner {
+    background: #fff8ec;
+    border-left: 4px solid var(--gold);
+    padding: 1rem 2rem;
+    font-size: 0.8rem;
+    color: #5c4a1e;
+    line-height: 1.8;
+    letter-spacing: 0.02em;
+  }
+
+  .notice-banner strong { color: var(--red); }
+
+  /* ─── 主體內容 ─── */
+  .form-body { padding: 0 2.5rem 2.5rem; }
+
+  /* ─── Section 標題 ─── */
+  .section {
+    margin-top: 2rem;
+  }
+
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .section-num {
+    width: 36px; height: 36px;
+    background: var(--navy);
+    color: var(--gold-light);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .section-title {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--navy);
+    letter-spacing: 0.12em;
+  }
+
+  .section-line {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to right, var(--border), transparent);
+  }
+
+  /* ─── 欄位群組 ─── */
+  .fields-grid {
+    display: grid;
+    gap: 0;
+    border: 1px solid var(--border);
+    background: var(--white);
+  }
+
+  .fields-grid.col-2 { grid-template-columns: 1fr 1fr; }
+  .fields-grid.col-3 { grid-template-columns: 1fr 1fr 1fr; }
+  .fields-grid.col-4 { grid-template-columns: 1fr 1fr 1fr 1fr; }
+
+  .field-cell {
+    display: flex;
+    border-right: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .field-cell:nth-last-child(-n+2).col-2-end,
+  .field-cell:last-child { border-bottom: none; }
+
+  .fields-grid .field-cell:last-child,
+  .fields-grid .field-cell:nth-child(2n):has(+ .field-cell:last-child),
+  .col-2 .field-cell:nth-child(2n) { border-right: none; }
+
+  .col-3 .field-cell:nth-child(3n) { border-right: none; }
+  .col-4 .field-cell:nth-child(4n) { border-right: none; }
+
+  .field-label {
+    background: var(--section-bg);
+    color: var(--navy-mid);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    padding: 0.6rem 0.8rem;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    border-right: 1px solid var(--border);
+    min-width: 5.5rem;
+  }
+
+  .field-label.required::after {
+    content: '＊';
+    color: var(--red);
+    margin-left: 2px;
+    font-size: 0.7rem;
+  }
+
+  .field-input {
+    flex: 1;
+    padding: 0.6rem 0.9rem;
+    font-family: 'Noto Serif TC', serif;
+    font-size: 0.82rem;
+    color: var(--ink);
+    min-height: 2.4rem;
+  }
+
+  .field-input.tall { min-height: 5rem; align-items: flex-start; padding-top: 0.8rem; }
+
+  /* ─── 器材清單表格 ─── */
+  .equipment-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--white);
+    border: 1px solid var(--border);
+    font-size: 0.8rem;
+  }
+
+  .equipment-table th {
+    background: var(--navy);
+    color: var(--gold-light);
+    padding: 0.7rem 0.6rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    font-size: 0.75rem;
+    text-align: center;
+    border-right: 1px solid rgba(255,255,255,0.15);
+  }
+
+  .equipment-table th:last-child { border-right: none; }
+
+  .equipment-table td {
+    padding: 0.55rem 0.6rem;
+    border: 1px solid var(--border);
+    text-align: center;
+    height: 2.2rem;
+    font-size: 0.8rem;
+  }
+
+  .equipment-table tr:nth-child(even) td {
+    background: #faf8f4;
+  }
+
+  .row-num {
+    color: var(--light);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    width: 2rem;
+  }
+
+  /* ─── 確認區塊 ─── */
+  .confirm-block {
+    background: var(--white);
+    border: 1px solid var(--border);
+    padding: 1.2rem 1.5rem;
+  }
+
+  .confirm-title {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--navy);
+    letter-spacing: 0.1em;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .confirm-title::before {
+    content: '';
+    width: 8px; height: 8px;
+    background: var(--gold);
+    display: inline-block;
+  }
+
+  .checklist {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .check-item {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 0.8rem;
+    color: var(--mid);
+  }
+
+  .check-box {
+    width: 16px; height: 16px;
+    border: 1.5px solid var(--border);
+    background: var(--white);
+    flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.6rem;
+  }
+
+  /* ─── 簽章列 ─── */
+  .sign-row {
+    display: grid;
+    gap: 0;
+    border: 1px solid var(--border);
+    background: var(--white);
+  }
+
+  .sign-row.col-2 { grid-template-columns: 1fr 1fr; }
+  .sign-row.col-3 { grid-template-columns: 1fr 1fr 1fr; }
+  .sign-row.col-4 { grid-template-columns: 1fr 1fr 1fr 1fr; }
+
+  .sign-cell {
+    padding: 0.8rem 1rem;
+    border-right: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+
+  .sign-cell:last-child { border-right: none; }
+
+  .sign-cell-title {
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: var(--navy-mid);
+    letter-spacing: 0.1em;
+    background: var(--section-bg);
+    padding: 0.3rem 0.5rem;
+    margin: -0.8rem -1rem 0.5rem;
+    border-bottom: 1px solid var(--border);
+    text-align: center;
+  }
+
+  .sign-line {
+    border-bottom: 1px solid var(--border);
+    min-height: 2.5rem;
+    margin: 0.2rem 0;
+  }
+
+  .sign-hint {
+    font-size: 0.65rem;
+    color: var(--light);
+    text-align: center;
+    letter-spacing: 0.05em;
+  }
+
+  /* ─── 狀態章記區 ─── */
+  .stamp-area {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px dashed var(--border);
+    min-height: 5rem;
+    color: var(--light);
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    background: #fdfaf5;
+  }
+
+  /* ─── 備注區 ─── */
+  .remark-area {
+    background: var(--white);
+    border: 1px solid var(--border);
+    min-height: 5rem;
+    padding: 0.8rem;
+    font-size: 0.78rem;
+    color: var(--light);
+    letter-spacing: 0.05em;
+  }
+
+  /* ─── 頁尾 ─── */
+  .form-footer {
+    background: var(--navy);
+    padding: 1rem 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 1rem;
+  }
+
+  .footer-text {
+    color: rgba(255,255,255,0.35);
+    font-size: 0.68rem;
+    letter-spacing: 0.12em;
+  }
+
+  .form-no {
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--gold-light);
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+  }
+
+  /* ─── 分隔線 ─── */
+  .divider {
+    border: none;
+    border-top: 1px dashed var(--border);
+    margin: 1.5rem 0;
+  }
+
+  /* ─── 標籤 Badge ─── */
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.15rem 0.6rem;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    border-radius: 2px;
+    margin-left: 0.5rem;
+  }
+
+  .badge-office { background: #eaf4ff; color: #1a5fa8; }
+  .badge-teacher { background: #fff0f0; color: #c0392b; }
+  .badge-student { background: #f0fff4; color: #276749; }
+  .badge-required { background: var(--gold-pale); color: #7a5c1e; }
+
+  /* ─── 警示列 ─── */
+  .warn-row {
+    background: #fff8ec;
+    border: 1px solid #f0c060;
+    padding: 0.7rem 1rem;
+    font-size: 0.78rem;
+    color: #7a5c1e;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.6rem;
+    margin-bottom: 0.8rem;
+  }
+
+  .warn-icon {
+    font-size: 1rem;
+    flex-shrink: 0;
+    margin-top: 0.05rem;
+  }
+
+  /* ─── 流程指示器 ─── */
+  .flow-bar {
+    display: flex;
+    align-items: stretch;
+    background: var(--navy);
+    margin: 0 -2.5rem 1.5rem;
+    overflow: hidden;
+  }
+
+  .flow-step {
+    flex: 1;
+    padding: 0.7rem 0.5rem;
+    text-align: center;
+    position: relative;
+    border-right: 1px solid rgba(255,255,255,0.1);
+  }
+
+  .flow-step:last-child { border-right: none; }
+
+  .flow-step-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem;
+    color: rgba(255,255,255,0.15);
+    line-height: 1;
+  }
+
+  .flow-step-text {
+    font-size: 0.65rem;
+    color: rgba(255,255,255,0.55);
+    letter-spacing: 0.05em;
+    margin-top: 0.15rem;
+    line-height: 1.4;
+  }
+
+  .flow-step.active .flow-step-num { color: var(--gold-light); }
+  .flow-step.active .flow-step-text { color: rgba(255,255,255,0.85); }
+
+  /* ─── 印刷優化 ─── */
+  @media print {
+    body { background: white; padding: 0; }
+    .form-wrapper { box-shadow: none; }
+    .flow-bar { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .section-num { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .form-header { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .equipment-table th { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .form-footer { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  }
+
+  @media (max-width: 640px) {
+    .form-body { padding: 0 1rem 1.5rem; }
+    .form-header { padding: 1.5rem 1.2rem 1.2rem; }
+    .fields-grid.col-2, .fields-grid.col-3, .fields-grid.col-4 { grid-template-columns: 1fr; }
+    .sign-row.col-2, .sign-row.col-3, .sign-row.col-4 { grid-template-columns: 1fr 1fr; }
+    .checklist { grid-template-columns: 1fr; }
+    .flow-bar { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="form-wrapper">
+
+  <!-- ══════════ 頁首 ══════════ -->
+  <div class="form-header">
+    <div class="school-name">○○大學 ／ ○○學系</div>
+    <div class="form-title">實驗室借用<span>暨</span>器材申請表</div>
+    <div class="form-subtitle">LABORATORY RESERVATION &amp; EQUIPMENT APPLICATION FORM</div>
+    <div class="form-meta-row">
+      <div class="form-meta-item">表單編號：<strong>LAB-____-______</strong></div>
+      <div class="form-meta-item">申請日期：<strong>____年____月____日</strong></div>
+      <div class="form-meta-item">版次：<strong>Rev. 1.0</strong></div>
+    </div>
+  </div>
+
+  <!-- ══════════ 流程指示 ══════════ -->
+  <div class="form-body">
+    <div class="flow-bar">
+      <div class="flow-step active">
+        <div class="flow-step-num">①</div>
+        <div class="flow-step-text">學生填寫<br>申請表</div>
+      </div>
+      <div class="flow-step active">
+        <div class="flow-step-num">②</div>
+        <div class="flow-step-text">指導老師<br>審核核簽</div>
+      </div>
+      <div class="flow-step active">
+        <div class="flow-step-num">③</div>
+        <div class="flow-step-text">設備組<br>確認排程</div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-step-num">④</div>
+        <div class="flow-step-text">借用當日<br>點交器材</div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-step-num">⑤</div>
+        <div class="flow-step-text">實驗完畢<br>老師清點</div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-step-num">⑥</div>
+        <div class="flow-step-text">設備組<br>歸還確認</div>
+      </div>
+    </div>
+
+    <!-- ══ 注意事項 ══ -->
+    <div class="notice-banner">
+      <strong>【重要說明】</strong>
+      申請人須於借用日期 <strong>三個工作天前</strong> 繳交本表；借用前需<strong>親洽設備組確認實驗室無人使用</strong>後方可進行；實驗結束後由指導老師進行設備清點與實驗室環境確認，如有損壞依規定賠償。
+    </div>
+
+    <!-- ══════════ 壹、申請人基本資料 ══════════ -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-num">壹</div>
+        <div class="section-title">申請人基本資料</div>
+        <div class="section-line"></div>
+        <span class="badge badge-student">學生填寫</span>
+      </div>
+
+      <div class="fields-grid col-2">
+        <div class="field-cell">
+          <div class="field-label required">姓　　名</div>
+          <div class="field-input"></div>
+        </div>
+        <div class="field-cell">
+          <div class="field-label required">學　　號</div>
+          <div class="field-input"></div>
+        </div>
+        <div class="field-cell">
+          <div class="field-label required">系所 / 班級</div>
+          <div class="field-input"></div>
+        </div>
+        <div class="field-cell">
+          <div class="field-label required">年　　級</div>
+          <div class="field-input"></div>
+        </div>
+        <div class="field-cell">
+          <div class="field-label required">聯絡電話</div>
+          <div class="field-input"></div>
+        </div>
+        <div class="field-cell">
+          <div class="field-label required">電子信箱</div>
+          <div class="field-input"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══════════ 貳、指導老師資料 ══════════ -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-num">貳</div>
+        <div class="section-title">指導老師資料</div>
+        <div class="section-line"></div>
+        <span class="badge badge-teacher">老師核簽</span>
+      </div>
+
+      <div class="fields-grid col-2">
+        <div class="field-cell">
+          <div class="field-label required">指導老師</div>
+          <div class="field-input"></div>
+        </div>
+        <div class="field-cell">
+          <div class="field-label">聯絡電話</div>
+          <div class="field-input"></div>
+        </div>
+        <div class="field-cell">
+          <div class="field-label">電子信箱</div>
+          <div class="field-input"></div>
+        </div>
+        <div class="field-cell">
+          <div class="field-label">研究室 / 分機</div>
+          <div class="field-input"></div>
+        </div>
+      </div>
+
+      <div style="margin-top: 0.8rem; border: 1px solid var(--border); background: var(--white);">
+        <div style="background: var(--section-bg); padding: 0.5rem 1rem; font-size: 0.72rem; font-weight: 700; color: var(--navy-mid); letter-spacing: 0.1em; border-bottom: 1px solid var(--border);">
+          指導老師同意聲明
+        </div>
+        <div style="padding: 0.9rem 1rem; font-size: 0.78rem; color: var(--mid); line-height: 2;">
+          本人同意上列學生申請借用實驗室，並承諾於實驗進行期間或實驗結束後親自確認實驗室安全、清潔與設備完整性。
+        </div>
+        <div style="display: flex; border-top: 1px solid var(--border);">
+          <div style="flex:1; padding: 0.6rem 1rem; border-right: 1px solid var(--border);">
+            <div style="font-size: 0.7rem; color: var(--light); margin-bottom: 0.5rem;">簽章</div>
+            <div style="min-height: 3rem;"></div>
+          </div>
+          <div style="flex:1; padding: 0.6rem 1rem;">
+            <div style="font-size: 0.7rem; color: var(--light); margin-bottom: 0.5rem;">核簽日期</div>
+            <div style="min-height: 3rem;"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══════════ 參、實驗室借用申請 ══════════ -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-num">參</div>
+        <div class="section-title">實驗室借用申請</div>
+        <div class="section-line"></div>
+        <span class="badge badge-student">學生填寫</span>
+      </div>
+
+      <div class="fields-grid col-2">
+        <div class="field-cell">
+          <div class="field-label required">實驗室名稱</div>
+          <div class="field-input"></div>
+        </div>
+        <div class="field-cell">
+          <div class="field-label required">實驗室編號</div>
+          <div class="field-input"></div>
+        </div>
+        <div class="field-cell">
+          <div class="field-label required">借用日期</div>
+          <div class="field-input"></div>
+        </div>
+        <div class="field-cell">
+          <div class="field-label required">預計人數</div>
+          <div class="field-input"></div>
+        </div>
+        <div class="field-cell">
+          <div class="field-label required">借用開始</div>
+          <div class="field-input"></div>
+        </div>
+        <div class="field-cell">
+          <div class="field-label required">預計結束</div>
+          <div class="field-input"></div>
+        </div>
+      </div>
+
+      <div class="fields-grid" style="margin-top:0; border-top: none;">
+        <div class="field-cell" style="flex-direction: column;">
+          <div style="display:flex; align-items:stretch;">
+            <div class="field-label required" style="min-width:6rem;">實驗 / 使用目的</div>
+            <div class="field-input tall" style="flex:1; min-height: 4rem;"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="fields-grid col-2" style="margin-top:0; border-top:none;">
+        <div class="field-cell">
+          <div class="field-label">課程 / 計畫名稱</div>
+          <div class="field-input"></div>
+        </div>
+        <div class="field-cell">
+          <div class="field-label">計畫編號</div>
+          <div class="field-input"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══════════ 肆、設備組借用前確認 ══════════ -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-num">肆</div>
+        <div class="section-title">設備組確認（借用前）</div>
+        <div class="section-line"></div>
+        <span class="badge badge-office">設備組填寫</span>
+      </div>
+
+      <div class="warn-row">
+        <div class="warn-icon">⚠</div>
+        <div>本欄由設備組人員親自確認後填寫，確認實驗室無人使用且設備狀況正常，方可核准借用。申請人應<strong>至少提前三個工作天</strong>與設備組確認排程。</div>
+      </div>
+
+      <div class="confirm-block">
+        <div class="confirm-title">借用前確認項目</div>
+        <div class="checklist">
+          <div class="check-item"><div class="check-box"></div>確認申請日期時段實驗室無人使用</div>
+          <div class="check-item"><div class="check-box"></div>確認實驗室設備運作正常</div>
+          <div class="check-item"><div class="check-box"></div>確認實驗室安全設備齊全（滅火器、緊急沖身）</div>
+          <div class="check-item"><div class="check-box"></div>確認實驗室整潔狀況良好</div>
+          <div class="check-item"><div class="check-box"></div>已登記於實驗室借用排程系統</div>
+          <div class="check-item"><div class="check-box"></div>指導老師聯絡資訊確認無誤</div>
+        </div>
+
+        <div class="fields-grid col-2" style="margin-top: 0.5rem;">
+          <div class="field-cell">
+            <div class="field-label">確認人員</div>
+            <div class="field-input"></div>
+          </div>
+          <div class="field-cell">
+            <div class="field-label">確認日期時間</div>
+            <div class="field-input"></div>
+          </div>
+        </div>
+
+        <div class="sign-row col-2" style="margin-top: 0.8rem;">
+          <div class="sign-cell">
+            <div class="sign-cell-title">設備組人員簽章</div>
+            <div class="sign-line"></div>
+            <div class="sign-hint">（確認核准）</div>
+          </div>
+          <div class="sign-cell">
+            <div class="sign-cell-title">設備組主管核章</div>
+            <div class="sign-line"></div>
+            <div class="sign-hint">（主管核准）</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══════════ 伍、器材借用清單 ══════════ -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-num">伍</div>
+        <div class="section-title">器材借用清單</div>
+        <div class="section-line"></div>
+        <span class="badge badge-student">學生填寫</span>
+        <span class="badge badge-office">設備組確認</span>
+      </div>
+
+      <table class="equipment-table">
+        <thead>
+          <tr>
+            <th style="width:2.5rem;">項次</th>
+            <th>器材 / 設備名稱</th>
+            <th style="width:6rem;">型號 / 規格</th>
+            <th style="width:3rem;">數量</th>
+            <th style="width:4rem;">單位</th>
+            <th style="width:5rem;">設備編號</th>
+            <th style="width:4.5rem;">借出確認</th>
+            <th style="width:4.5rem;">歸還確認</th>
+            <th style="width:6rem;">備　　註</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class="row-num">01</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+          <tr><td class="row-num">02</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+          <tr><td class="row-num">03</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+          <tr><td class="row-num">04</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+          <tr><td class="row-num">05</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+          <tr><td class="row-num">06</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+          <tr><td class="row-num">07</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+          <tr><td class="row-num">08</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+          <tr>
+            <td colspan="9" style="background: #faf8f4; color: var(--light); font-size: 0.7rem; letter-spacing: 0.08em; text-align: left; padding-left: 1rem;">
+              ＊ 器材不足請另附清單；借出確認欄請由設備組人員於點交時核簽，歸還確認欄請於歸還時核簽
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- ══════════ 陸、借用當日點交確認 ══════════ -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-num">陸</div>
+        <div class="section-title">借用當日點交確認</div>
+        <div class="section-line"></div>
+        <span class="badge badge-office">設備組填寫</span>
+        <span class="badge badge-student">學生確認</span>
+      </div>
+
+      <div class="confirm-block">
+        <div class="confirm-title">借出前實驗室狀況確認</div>
+        <div class="checklist">
+          <div class="check-item"><div class="check-box"></div>實驗室門窗、電力狀況正常</div>
+          <div class="check-item"><div class="check-box"></div>固定設備運作正常</div>
+          <div class="check-item"><div class="check-box"></div>器材清單核對完畢</div>
+          <div class="check-item"><div class="check-box"></div>已告知緊急聯絡方式</div>
+          <div class="check-item"><div class="check-box"></div>實驗室鑰匙已交付（鑰匙編號：________）</div>
+          <div class="check-item"><div class="check-box"></div>安全規則已告知借用人</div>
+        </div>
+
+        <div class="fields-grid col-2" style="margin-top:0.5rem;">
+          <div class="field-cell">
+            <div class="field-label">實際開始時間</div>
+            <div class="field-input"></div>
+          </div>
+          <div class="field-cell">
+            <div class="field-label">點交人員</div>
+            <div class="field-input"></div>
+          </div>
+        </div>
+
+        <div class="sign-row col-3" style="margin-top: 0.8rem;">
+          <div class="sign-cell">
+            <div class="sign-cell-title">設備組人員簽章</div>
+            <div class="sign-line"></div>
+            <div class="sign-hint">（器材點出確認）</div>
+          </div>
+          <div class="sign-cell">
+            <div class="sign-cell-title">學生簽章</div>
+            <div class="sign-line"></div>
+            <div class="sign-hint">（確認接收器材）</div>
+          </div>
+          <div class="sign-cell">
+            <div class="sign-cell-title">點交時間</div>
+            <div class="sign-line"></div>
+            <div class="sign-hint">____年__月__日　____時____分</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══════════ 柒、實驗完畢確認（指導老師）══════════ -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-num">柒</div>
+        <div class="section-title">實驗完畢確認</div>
+        <div class="section-line"></div>
+        <span class="badge badge-teacher">指導老師執行</span>
+        <span class="badge badge-office">設備組核認</span>
+      </div>
+
+      <div class="confirm-block" style="margin-bottom: 0.8rem;">
+        <div class="confirm-title">指導老師設備清點項目</div>
+        <div class="checklist">
+          <div class="check-item"><div class="check-box"></div>所有借用器材已全數歸還</div>
+          <div class="check-item"><div class="check-box"></div>器材無損壞、缺件情形</div>
+          <div class="check-item"><div class="check-box"></div>精密儀器已妥善清潔收納</div>
+          <div class="check-item"><div class="check-box"></div>耗材使用數量已記錄</div>
+        </div>
+
+        <div class="confirm-title" style="margin-top: 1rem;">指導老師實驗室檢查項目</div>
+        <div class="checklist">
+          <div class="check-item"><div class="check-box"></div>實驗室已清潔整理完畢</div>
+          <div class="check-item"><div class="check-box"></div>所有水電已關閉</div>
+          <div class="check-item"><div class="check-box"></div>廢液 / 廢棄物已依規定處置</div>
+          <div class="check-item"><div class="check-box"></div>固定設備歸位且電源關閉</div>
+          <div class="check-item"><div class="check-box"></div>實驗室門窗已上鎖</div>
+          <div class="check-item"><div class="check-box"></div>安全設備（滅火器等）位置正常</div>
+        </div>
+
+        <div class="fields-grid col-2" style="margin-top: 0.5rem;">
+          <div class="field-cell">
+            <div class="field-label">實際結束時間</div>
+            <div class="field-input"></div>
+          </div>
+          <div class="field-cell">
+            <div class="field-label">損壞 / 遺失情形</div>
+            <div class="field-input"></div>
+          </div>
+        </div>
+
+        <div class="sign-row col-4" style="margin-top: 0.8rem;">
+          <div class="sign-cell">
+            <div class="sign-cell-title">指導老師簽章</div>
+            <div class="sign-line"></div>
+            <div class="sign-hint">（清點確認）</div>
+          </div>
+          <div class="sign-cell">
+            <div class="sign-cell-title">學生簽章</div>
+            <div class="sign-line"></div>
+            <div class="sign-hint">（清點在場）</div>
+          </div>
+          <div class="sign-cell">
+            <div class="sign-cell-title">設備組人員簽章</div>
+            <div class="sign-line"></div>
+            <div class="sign-hint">（歸還收回確認）</div>
+          </div>
+          <div class="sign-cell">
+            <div class="sign-cell-title">鑰匙歸還確認</div>
+            <div class="sign-line"></div>
+            <div class="sign-hint">（設備組簽收）</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══════════ 捌、備　註 ══════════ -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-num">捌</div>
+        <div class="section-title">備　　　　註</div>
+        <div class="section-line"></div>
+      </div>
+      <div class="remark-area">（可填寫損壞說明、特殊狀況、或其他補充事項）</div>
+    </div>
+
+    <!-- ══════════ 注意事項條款 ══════════ -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-num">注</div>
+        <div class="section-title">借用注意事項</div>
+        <div class="section-line"></div>
+      </div>
+      <div style="background: var(--white); border: 1px solid var(--border); padding: 1rem 1.2rem;">
+        <ol style="font-size: 0.76rem; color: var(--mid); line-height: 2.1; letter-spacing: 0.02em; padding-left: 1.2rem;">
+          <li>借用申請須於借用日期<strong>三個工作天前</strong>提出，並取得指導老師核簽後送交設備組審核。</li>
+          <li>借用前須<strong>親洽設備組確認實驗室無人使用</strong>，未確認者不得擅自進入實驗室。</li>
+          <li>實驗進行期間，<strong>指導老師須全程在場或隨時可聯繫</strong>，學生不得單獨在實驗室進行危險性操作。</li>
+          <li>借用期間發生緊急事故，應立即通知指導老師及設備組，並依緊急應變程序處理。</li>
+          <li>實驗結束後由<strong>指導老師親自</strong>進行設備清點與實驗室環境確認，確認無誤後簽章。</li>
+          <li>器材如有損壞或遺失，借用人須依本系賠償標準辦理，並由指導老師確認簽章。</li>
+          <li>廢液及廢棄化學品應依環保法規及學校規定分類處理，嚴禁直接倒入水槽或一般垃圾桶。</li>
+          <li>借用後實驗室應恢復原狀，確保整潔，否則取消後續借用資格。</li>
+          <li>本表一式<strong>三聯</strong>：申請人自留、設備組存查、系辦公室備查。</li>
+        </ol>
+      </div>
+    </div>
+
+    <!-- ══════════ 核章區 ══════════ -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-num">核</div>
+        <div class="section-title">核准與用印</div>
+        <div class="section-line"></div>
+        <span class="badge badge-required">行政核章</span>
+      </div>
+      <div class="sign-row col-4">
+        <div class="sign-cell">
+          <div class="sign-cell-title">申請人</div>
+          <div class="sign-line"></div>
+          <div class="sign-hint">（本人簽章）</div>
+        </div>
+        <div class="sign-cell">
+          <div class="sign-cell-title">指導老師</div>
+          <div class="sign-line"></div>
+          <div class="sign-hint">（審核核簽）</div>
+        </div>
+        <div class="sign-cell">
+          <div class="sign-cell-title">設備組組長</div>
+          <div class="sign-line"></div>
+          <div class="sign-hint">（核准用印）</div>
+        </div>
+        <div class="sign-cell">
+          <div class="sign-cell-title">系主任</div>
+          <div class="sign-line"></div>
+          <div class="sign-hint">（備查核章）</div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- end form-body -->
+
+  <!-- ══════════ 頁尾 ══════════ -->
+  <div class="form-footer">
+    <div class="footer-text">本表格受著作權保護，僅供內部使用　｜　Laboratory Reservation & Equipment Form</div>
+    <div class="form-no">Form No. LAB-APPL　｜　Rev. 1.0</div>
+  </div>
+
+</div><!-- end form-wrapper -->
+
+</body>
+</html>

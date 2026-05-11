@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>正心高中 教務處設備組</title>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;500;700;900&family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --orange: #FF6B35;
+    --yellow: #FFD23F;
+    --teal: #1B998B;
+    --navy: #0D1B2A;
+    --pink: #FF3D77;
+    --lime: #A8E63D;
+    --white: #FAFAF7;
+    --card-bg: #FFFFFF;
+    --shadow: 6px 6px 0px var(--navy);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background-color: var(--white);
+    font-family: 'Noto Sans TC', sans-serif;
+    color: var(--navy);
+    overflow-x: hidden;
+  }
+
+  /* ─── BACKGROUND PATTERN ─── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      radial-gradient(circle at 15% 20%, rgba(255,107,53,0.08) 0%, transparent 40%),
+      radial-gradient(circle at 85% 75%, rgba(27,153,139,0.08) 0%, transparent 40%),
+      radial-gradient(circle at 50% 50%, rgba(255,210,63,0.05) 0%, transparent 60%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ─── FLOATING SHAPES ─── */
+  .shape {
+    position: fixed;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 0;
+    animation: float 8s ease-in-out infinite;
+  }
+  .shape-1 { width: 300px; height: 300px; background: rgba(255,107,53,0.06); top: -80px; right: -80px; animation-delay: 0s; }
+  .shape-2 { width: 200px; height: 200px; background: rgba(27,153,139,0.07); bottom: 10%; left: -60px; animation-delay: 3s; }
+  .shape-3 { width: 150px; height: 150px; background: rgba(255,210,63,0.08); top: 40%; right: 5%; animation-delay: 5s; border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-20px) rotate(5deg); }
+  }
+
+  /* ─── HEADER ─── */
+  header {
+    position: relative;
+    z-index: 10;
+    background: var(--navy);
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 70px;
+    border-bottom: 4px solid var(--orange);
+  }
+
+  .logo-area {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .logo-icon {
+    width: 40px; height: 40px;
+    background: var(--orange);
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.3rem;
+    animation: pulse-icon 3s ease-in-out infinite;
+  }
+
+  @keyframes pulse-icon {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.08); }
+  }
+
+  .logo-text {
+    font-family: 'Zen Maru Gothic', sans-serif;
+    font-weight: 900;
+    font-size: 1.15rem;
+    color: var(--white);
+    line-height: 1.2;
+  }
+
+  .logo-text span {
+    color: var(--yellow);
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 2px;
+  }
+
+  .header-badge {
+    background: var(--orange);
+    color: white;
+    font-weight: 700;
+    font-size: 0.8rem;
+    padding: 6px 16px;
+    border-radius: 999px;
+    letter-spacing: 1px;
+    animation: badge-glow 2s ease-in-out infinite alternate;
+  }
+
+  @keyframes badge-glow {
+    from { box-shadow: 0 0 8px rgba(255,107,53,0.4); }
+    to   { box-shadow: 0 0 20px rgba(255,107,53,0.8); }
+  }
+
+  /* ─── HERO ─── */
+  .hero {
+    position: relative;
+    z-index: 1;
+    padding: 5rem 2rem 3rem;
+    text-align: center;
+    overflow: hidden;
+  }
+
+  .hero-tag {
+    display: inline-block;
+    background: var(--yellow);
+    color: var(--navy);
+    font-weight: 700;
+    font-size: 0.78rem;
+    padding: 5px 18px;
+    border-radius: 999px;
+    letter-spacing: 3px;
+    margin-bottom: 1.2rem;
+    border: 2px solid var(--navy);
+    animation: slide-down 0.6s ease both;
+  }
+
+  .hero h1 {
+    font-family: 'Zen Maru Gothic', sans-serif;
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    font-weight: 900;
+    line-height: 1.1;
+    animation: slide-down 0.7s ease both 0.1s;
+  }
+
+  .hero h1 .accent {
+    color: var(--orange);
+    position: relative;
+    display: inline-block;
+  }
+
+  .hero h1 .accent::after {
+    content: '';
+    position: absolute;
+    left: 0; bottom: -4px;
+    width: 100%; height: 8px;
+    background: var(--yellow);
+    z-index: -1;
+    transform: skew(-5deg);
+  }
+
+  .hero-sub {
+    margin-top: 1.2rem;
+    font-size: 1.05rem;
+    color: #555;
+    animation: slide-down 0.8s ease both 0.2s;
+    line-height: 1.8;
+  }
+
+  .hero-dots {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 2rem;
+    animation: slide-down 0.9s ease both 0.3s;
+  }
+
+  .hero-dots span {
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    background: var(--orange);
+    animation: dot-bounce 1.5s ease-in-out infinite;
+  }
+  .hero-dots span:nth-child(2) { background: var(--teal); animation-delay: 0.2s; }
+  .hero-dots span:nth-child(3) { background: var(--yellow); animation-delay: 0.4s; border: 2px solid var(--navy); }
+
+  @keyframes dot-bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+  }
+
+  @keyframes slide-down {
+    from { opacity: 0; transform: translateY(-20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ─── NAV TABS ─── */
+  .nav-tabs-wrap {
+    position: relative; z-index: 2;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    padding: 0 2rem 3rem;
+    flex-wrap: wrap;
+    animation: fade-up 0.8s ease both 0.4s;
+  }
+
+  .nav-tab {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 22px;
+    border-radius: 12px;
+    border: 3px solid var(--navy);
+    background: white;
+    font-weight: 700;
+    font-size: 0.92rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    box-shadow: var(--shadow);
+    text-decoration: none;
+    color: var(--navy);
+  }
+
+  .nav-tab:hover, .nav-tab.active {
+    transform: translate(-3px, -3px);
+    box-shadow: 9px 9px 0px var(--navy);
+  }
+
+  .nav-tab.active { background: var(--orange); color: white; }
+  .nav-tab-icon { font-size: 1.1rem; }
+
+  @keyframes fade-up {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ─── MAIN ─── */
+  main {
+    position: relative; z-index: 1;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem 5rem;
+  }
+
+  /* ─── SECTION TITLE ─── */
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 2rem;
+    animation: fade-up 0.7s ease both;
+  }
+
+  .section-icon {
+    width: 52px; height: 52px;
+    border-radius: 14px;
+    border: 3px solid var(--navy);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.5rem;
+    box-shadow: var(--shadow);
+    flex-shrink: 0;
+  }
+
+  .section-title {
+    font-family: 'Zen Maru Gothic', sans-serif;
+    font-size: 1.6rem;
+    font-weight: 900;
+  }
+
+  .section-title small {
+    display: block;
+    font-family: 'Noto Sans TC', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 500;
+    color: #888;
+    letter-spacing: 2px;
+    margin-top: 2px;
+  }
+
+  /* ─── CARD GRID ─── */
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 3.5rem;
+  }
+
+  .card {
+    background: var(--card-bg);
+    border: 3px solid var(--navy);
+    border-radius: 18px;
+    padding: 1.5rem;
+    box-shadow: var(--shadow);
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    text-decoration: none;
+    color: var(--navy);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    position: relative;
+    overflow: hidden;
+    animation: fade-up 0.6s ease both;
+  }
+
+  .card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 5px;
+    border-radius: 18px 18px 0 0;
+  }
+
+  .card:hover {
+    transform: translate(-4px, -4px);
+    box-shadow: 10px 10px 0px var(--navy);
+  }
+
+  .card-emoji {
+    font-size: 2rem;
+    width: 54px; height: 54px;
+    border-radius: 12px;
+    background: rgba(0,0,0,0.04);
+    display: flex; align-items: center; justify-content: center;
+    border: 2px solid rgba(0,0,0,0.06);
+  }
+
+  .card-title {
+    font-family: 'Zen Maru Gothic', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    line-height: 1.4;
+  }
+
+  .card-desc {
+    font-size: 0.82rem;
+    color: #666;
+    line-height: 1.7;
+    flex: 1;
+  }
+
+  .card-arrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    margin-top: 4px;
+    transition: gap 0.2s;
+  }
+
+  .card:hover .card-arrow { gap: 8px; }
+
+  /* Card accent colors */
+  .card-orange::before { background: var(--orange); }
+  .card-orange .card-arrow { color: var(--orange); }
+
+  .card-teal::before { background: var(--teal); }
+  .card-teal .card-arrow { color: var(--teal); }
+
+  .card-pink::before { background: var(--pink); }
+  .card-pink .card-arrow { color: var(--pink); }
+
+  .card-lime::before { background: var(--lime); border-color: var(--navy); }
+  .card-lime .card-arrow { color: #5a8c00; }
+
+  .card-yellow::before { background: var(--yellow); }
+  .card-yellow .card-arrow { color: #b8880a; }
+
+  .card-navy::before { background: var(--navy); }
+  .card-navy .card-arrow { color: var(--navy); }
+
+  /* Animation delays */
+  .card:nth-child(1) { animation-delay: 0.05s; }
+  .card:nth-child(2) { animation-delay: 0.1s; }
+  .card:nth-child(3) { animation-delay: 0.15s; }
+  .card:nth-child(4) { animation-delay: 0.2s; }
+  .card:nth-child(5) { animation-delay: 0.25s; }
+  .card:nth-child(6) { animation-delay: 0.3s; }
+  .card:nth-child(7) { animation-delay: 0.35s; }
+  .card:nth-child(8) { animation-delay: 0.4s; }
+
+  /* ─── HIGHLIGHT BANNER ─── */
+  .highlight-banner {
+    background: var(--navy);
+    color: white;
+    border-radius: 20px;
+    border: 3px solid var(--navy);
+    padding: 2rem 2.5rem;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    margin-bottom: 3.5rem;
+    box-shadow: var(--shadow);
+    position: relative;
+    overflow: hidden;
+    animation: fade-up 0.7s ease both 0.3s;
+  }
+
+  .highlight-banner::after {
+    content: '🎓';
+    position: absolute;
+    right: 2rem;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 5rem;
+    opacity: 0.1;
+  }
+
+  .highlight-banner-icon {
+    font-size: 2.5rem;
+    background: rgba(255,255,255,0.1);
+    width: 70px; height: 70px;
+    border-radius: 18px;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    border: 2px solid rgba(255,255,255,0.2);
+  }
+
+  .highlight-banner h3 {
+    font-family: 'Zen Maru Gothic', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 900;
+    color: var(--yellow);
+    margin-bottom: 6px;
+  }
+
+  .highlight-banner p {
+    font-size: 0.88rem;
+    opacity: 0.8;
+    line-height: 1.7;
+  }
+
+  /* ─── STATS ROW ─── */
+  .stats-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 1rem;
+    margin-bottom: 3.5rem;
+    animation: fade-up 0.7s ease both 0.2s;
+  }
+
+  .stat-card {
+    background: white;
+    border: 3px solid var(--navy);
+    border-radius: 16px;
+    padding: 1.2rem;
+    text-align: center;
+    box-shadow: var(--shadow);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .stat-card:hover {
+    transform: translate(-3px, -3px);
+    box-shadow: 9px 9px 0 var(--navy);
+  }
+
+  .stat-num {
+    font-family: 'Zen Maru Gothic', sans-serif;
+    font-size: 2.2rem;
+    font-weight: 900;
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+
+  .stat-label {
+    font-size: 0.8rem;
+    color: #666;
+    font-weight: 500;
+  }
+
+  /* ─── DIVIDER ─── */
+  .divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin: 0.5rem 0 2.5rem;
+    animation: fade-up 0.6s ease both;
+  }
+
+  .divider::before, .divider::after {
+    content: '';
+    flex: 1;
+    height: 2px;
+    background: repeating-linear-gradient(90deg, var(--navy) 0, var(--navy) 6px, transparent 6px, transparent 12px);
+    opacity: 0.15;
+  }
+
+  .divider-dot {
+    width: 10px; height: 10px;
+    background: var(--orange);
+    border-radius: 50%;
+    border: 2px solid var(--navy);
+  }
+
+  /* ─── FOOTER ─── */
+  footer {
+    position: relative; z-index: 1;
+    background: var(--navy);
+    color: rgba(255,255,255,0.6);
+    text-align: center;
+    padding: 2rem;
+    font-size: 0.82rem;
+    border-top: 4px solid var(--teal);
+  }
+
+  footer strong { color: var(--yellow); }
+
+  /* ─── SCROLL TO TOP ─── */
+  .scroll-top {
+    position: fixed;
+    bottom: 2rem; right: 2rem;
+    width: 48px; height: 48px;
+    background: var(--orange);
+    border: 3px solid var(--navy);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.2rem;
+    cursor: pointer;
+    box-shadow: var(--shadow);
+    transition: transform 0.2s, box-shadow 0.2s;
+    z-index: 100;
+    text-decoration: none;
+    animation: bounce-in 0.6s cubic-bezier(0.34,1.56,0.64,1) both 1s;
+  }
+
+  .scroll-top:hover {
+    transform: translate(-3px, -3px);
+    box-shadow: 9px 9px 0 var(--navy);
+  }
+
+  @keyframes bounce-in {
+    from { opacity: 0; transform: scale(0); }
+    to   { opacity: 1; transform: scale(1); }
+  }
+
+  /* ─── MARQUEE ─── */
+  .marquee-wrap {
+    background: var(--teal);
+    border-top: 3px solid var(--navy);
+    border-bottom: 3px solid var(--navy);
+    overflow: hidden;
+    padding: 8px 0;
+    margin-bottom: 3rem;
+    position: relative; z-index: 2;
+  }
+
+  .marquee-track {
+    display: flex;
+    gap: 3rem;
+    animation: marquee 25s linear infinite;
+    white-space: nowrap;
+  }
+
+  .marquee-track span {
+    color: white;
+    font-weight: 700;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+    display: flex; align-items: center; gap: 8px;
+  }
+
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 640px) {
+    .hero h1 { font-size: 2.2rem; }
+    .highlight-banner { flex-direction: column; text-align: center; }
+    .highlight-banner::after { display: none; }
+    header { padding: 0 1rem; }
+    .header-badge { display: none; }
+    main { padding: 0 1rem 4rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Floating bg shapes -->
+<div class="shape shape-1"></div>
+<div class="shape shape-2"></div>
+<div class="shape shape-3"></div>
+
+<!-- Header -->
+<header>
+  <div class="logo-area">
+    <div class="logo-icon">🏫</div>
+    <div class="logo-text">
+      正心高中 教務處
+      <span>ZHENGXIN SENIOR HIGH SCHOOL</span>
+    </div>
+  </div>
+  <div class="header-badge">⚙️ 設備組</div>
+</header>
+
+<!-- Marquee -->
+<div class="marquee-wrap">
+  <div class="marquee-track">
+    <span>📢 設備組公告</span>
+    <span>🖥️ 智慧黑板使用說明已更新</span>
+    <span>🏆 奧林匹亞競試報名開始</span>
+    <span>🔬 科展消息請見設備組公告欄</span>
+    <span>📋 專科教室借用請提前申請</span>
+    <span>📢 設備組公告</span>
+    <span>🖥️ 智慧黑板使用說明已更新</span>
+    <span>🏆 奧林匹亞競試報名開始</span>
+    <span>🔬 科展消息請見設備組公告欄</span>
+    <span>📋 專科教室借用請提前申請</span>
+  </div>
+</div>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-tag">✦ 教務處 設備組 ✦</div>
+  <h1>歡迎來到<br><span class="accent">設備組</span>！</h1>
+  <p class="hero-sub">
+    負責教學設備管理・智慧教室維護<br>
+    競賽活動・科展資源整合，讓教學更精彩 🎉
+  </p>
+  <div class="hero-dots">
+    <span></span><span></span><span></span>
+  </div>
+</section>
+
+<!-- Nav Tabs -->
+<div class="nav-tabs-wrap">
+  <a href="#" class="nav-tab">
+    <span class="nav-tab-icon">📚</span> 教學組
+  </a>
+  <a href="#" class="nav-tab">
+    <span class="nav-tab-icon">📝</span> 註冊組
+  </a>
+  <a href="#" class="nav-tab active">
+    <span class="nav-tab-icon">⚙️</span> 設備組
+  </a>
+</div>
+
+<!-- Main Content -->
+<main>
+
+  <!-- Stats -->
+  <div class="stats-row">
+    <div class="stat-card">
+      <div class="stat-num" style="color:var(--orange)">8</div>
+      <div class="stat-label">設備組服務項目</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num" style="color:var(--teal)">智慧</div>
+      <div class="stat-label">黑板智慧教室</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num" style="color:var(--pink)">🏆</div>
+      <div class="stat-label">奧林匹亞競試</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num" style="color:var(--lime); -webkit-text-stroke: 1px var(--navy)">🔬</div>
+      <div class="stat-label">科展活動支援</div>
+    </div>
+  </div>
+
+  <!-- Highlight Banner -->
+  <div class="highlight-banner">
+    <div class="highlight-banner-icon">📣</div>
+    <div>
+      <h3>設備組最新消息</h3>
+      <p>
+        智慧黑板操作說明已更新，各班導師請至設備組網站下載最新版使用手冊。<br>
+        奧林匹亞競試活動一覽表已公布，有興趣的同學請盡早報名！
+      </p>
+    </div>
+  </div>
+
+  <!-- 設備組成員 -->
+  <div class="section-header">
+    <div class="section-icon" style="background:#FFF3E0;">👥</div>
+    <div class="section-title">
+      組員與設備管理
+      <small>MEMBERS & EQUIPMENT MANAGEMENT</small>
+    </div>
+  </div>
+
+  <div class="card-grid">
+    <a href="#" class="card card-orange">
+      <div class="card-emoji">👨‍🏫</div>
+      <div class="card-title">設備組成員介紹</div>
+      <div class="card-desc">認識設備組的每一位夥伴，了解各組員的負責業務與聯絡方式。</div>
+      <div class="card-arrow">查看成員 →</div>
+    </a>
+    <a href="#" class="card card-teal">
+      <div class="card-emoji">🖥️</div>
+      <div class="card-title">智慧黑板管理</div>
+      <div class="card-desc">智慧黑板使用規範、申請流程及常見問題解答，讓教學更順暢。</div>
+      <div class="card-arrow">了解詳情 →</div>
+    </a>
+    <a href="#" class="card card-pink">
+      <div class="card-emoji">🏫</div>
+      <div class="card-title">教學設備管理規則</div>
+      <div class="card-desc">各項教學設備借用規定、損壞賠償辦法及維修申請程序一覽。</div>
+      <div class="card-arrow">查看規則 →</div>
+    </a>
+    <a href="#" class="card card-lime">
+      <div class="card-emoji">🔬</div>
+      <div class="card-title">專科教室管理規則</div>
+      <div class="card-desc">理化、生物、電腦等專科教室使用注意事項及預約借用辦法。</div>
+      <div class="card-arrow">查看辦法 →</div>
+    </a>
+  </div>
+
+  <div class="divider"><div class="divider-dot"></div></div>
+
+  <!-- 競賽科展 -->
+  <div class="section-header">
+    <div class="section-icon" style="background:#E8F5E9;">🏆</div>
+    <div class="section-title">
+      競賽與科展活動
+      <small>COMPETITIONS & SCIENCE FAIR</small>
+    </div>
+  </div>
+
+  <div class="card-grid">
+    <a href="#" class="card card-yellow">
+      <div class="card-emoji">🥇</div>
+      <div class="card-title">奧林匹亞競試</div>
+      <div class="card-desc">數學、物理、化學、生物等各科奧林匹亞競賽相關公告與報名資訊。</div>
+      <div class="card-arrow">報名資訊 →</div>
+    </a>
+    <a href="#" class="card card-orange">
+      <div class="card-emoji">📅</div>
+      <div class="card-title">活動一覽表</div>
+      <div class="card-desc">本學年度設備組主辦或協辦的各項活動行事曆，方便師生安排行程。</div>
+      <div class="card-arrow">查看行程 →</div>
+    </a>
+    <a href="#" class="card card-teal">
+      <div class="card-emoji">🔭</div>
+      <div class="card-title">科展消息</div>
+      <div class="card-desc">全國科學展覽相關公告、參賽辦法、歷屆得獎作品及指導老師名單。</div>
+      <div class="card-arrow">科展詳情 →</div>
+    </a>
+    <a href="#" class="card card-navy" style="background:var(--navy); color:white;">
+      <div class="card-emoji">📐</div>
+      <div class="card-title" style="color:var(--yellow)">數學與自然科能力競試</div>
+      <div class="card-desc" style="color:rgba(255,255,255,0.7)">各項數學、自然學科能力測驗相關公告，協助同學掌握競試資訊。</div>
+      <div class="card-arrow" style="color:var(--orange)">查看公告 →</div>
+    </a>
+  </div>
+
+  <div class="divider"><div class="divider-dot"></div></div>
+
+  <!-- 其他業務導覽 -->
+  <div class="section-header">
+    <div class="section-icon" style="background:#EDE7F6;">🗂️</div>
+    <div class="section-title">
+      其他教務業務
+      <small>OTHER ACADEMIC AFFAIRS</small>
+    </div>
+  </div>
+
+  <div class="card-grid">
+    <a href="#" class="card card-pink">
+      <div class="card-emoji">📚</div>
+      <div class="card-title">教學組 — 課程計畫</div>
+      <div class="card-desc">各年級課程計畫、教材綱要、競賽活動及教學研究會相關資訊。</div>
+      <div class="card-arrow">前往教學組 →</div>
+    </a>
+    <a href="#" class="card card-lime">
+      <div class="card-emoji">🎓</div>
+      <div class="card-title">註冊組 — 招生資訊</div>
+      <div class="card-desc">高中部招生公告、成績評量辦法、各項減免及獎助學金申請。</div>
+      <div class="card-arrow">前往註冊組 →</div>
+    </a>
+  </div>
+
+</main>
+
+<!-- Footer -->
+<footer>
+  <p>© 2024 <strong>正心高級中學 教務處設備組</strong> ｜ shsh.ylc.edu.tw</p>
+  <p style="margin-top:6px">如有任何問題，歡迎聯繫設備組 📞</p>
+</footer>
+
+<!-- Scroll to top -->
+<a href="#" class="scroll-top" title="回到頂端">↑</a>
+
+</body>
+</html>

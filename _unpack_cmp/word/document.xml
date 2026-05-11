@@ -1,0 +1,640 @@
+<?xml version="1.0" encoding="UTF-8"?><document xmlns="http://schemas.openxmlformats.org/wordprocessingml/2006/main" xmlns:ns1="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:ns2="http://schemas.microsoft.com/office/word/2010/wordml" xmlns:ns3="http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing" xmlns:ns4="http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing" xmlns:ns5="http://schemas.openxmlformats.org/drawingml/2006/main" xmlns:ns6="http://schemas.microsoft.com/office/word/2010/wordprocessingShape" xmlns:ns7="urn:schemas-microsoft-com:vml" xmlns:ns8="urn:schemas-microsoft-com:office:office" ns1:Ignorable="w14 w15 w16se w16cid w16 w16cex w16sdtdh wp14">
+  <body>
+    <p ns2:paraId="149C6689" ns2:textId="77777777" rsidR="00D0377D" rsidRPr="00A01BC4" rsidRDefault="003E05DE" rsidP="00836780">
+      <pPr>
+        <spacing line="240" lineRule="auto" />
+        <jc val="center" />
+        <rPr>
+          <rFonts ascii="標楷體" eastAsia="標楷體" hAnsi="標楷體" />
+          <sz val="24" />
+        </rPr>
+      </pPr>
+      <r>
+        <rPr>
+          <rFonts ascii="標楷體" eastAsia="標楷體" hAnsi="標楷體" hint="eastAsia" />
+          <noProof />
+          <sz val="28" />
+          <szCs val="28" />
+        </rPr>
+        <ns1:AlternateContent>
+          <ns1:Choice Requires="wps">
+            <drawing>
+              <ns3:anchor distT="0" distB="0" distL="114300" distR="114300" simplePos="0" relativeHeight="251659264" behindDoc="0" locked="0" layoutInCell="1" allowOverlap="1" ns4:anchorId="21F9B9A2" ns4:editId="04533ACC">
+                <ns3:simplePos x="0" y="0" />
+                <ns3:positionH relativeFrom="column">
+                  <ns3:posOffset>7477760</ns3:posOffset>
+                </ns3:positionH>
+                <ns3:positionV relativeFrom="paragraph">
+                  <ns3:posOffset>-53340</ns3:posOffset>
+                </ns3:positionV>
+                <ns3:extent cx="1612900" cy="326003" />
+                <ns3:effectExtent l="0" t="0" r="6350" b="0" />
+                <ns3:wrapNone />
+                <ns3:docPr id="1" name="文字方塊 1" />
+                <ns3:cNvGraphicFramePr />
+                <ns5:graphic>
+                  <ns5:graphicData uri="http://schemas.microsoft.com/office/word/2010/wordprocessingShape">
+                    <ns6:wsp>
+                      <ns6:cNvSpPr txBox="1" />
+                      <ns6:spPr>
+                        <ns5:xfrm>
+                          <ns5:off x="0" y="0" />
+                          <ns5:ext cx="1612900" cy="326003" />
+                        </ns5:xfrm>
+                        <ns5:prstGeom prst="rect">
+                          <ns5:avLst />
+                        </ns5:prstGeom>
+                        <ns5:solidFill>
+                          <ns5:schemeClr val="lt1" />
+                        </ns5:solidFill>
+                        <ns5:ln w="6350">
+                          <ns5:noFill />
+                        </ns5:ln>
+                        <ns5:effectLst />
+                      </ns6:spPr>
+                      <ns6:style>
+                        <ns5:lnRef idx="0">
+                          <ns5:schemeClr val="accent1" />
+                        </ns5:lnRef>
+                        <ns5:fillRef idx="0">
+                          <ns5:schemeClr val="accent1" />
+                        </ns5:fillRef>
+                        <ns5:effectRef idx="0">
+                          <ns5:schemeClr val="accent1" />
+                        </ns5:effectRef>
+                        <ns5:fontRef idx="minor">
+                          <ns5:schemeClr val="dk1" />
+                        </ns5:fontRef>
+                      </ns6:style>
+                      <ns6:txbx>
+                        <txbxContent>
+                          <p ns2:paraId="234DAE13" ns2:textId="77777777" rsidR="0062726C" rsidRDefault="009D3B49">
+                            <r>
+                              <rPr>
+                                <rFonts ascii="標楷體" eastAsia="標楷體" hAnsi="標楷體" hint="eastAsia" />
+                                <sz val="24" />
+                              </rPr>
+                              <t>1</t>
+                            </r>
+                            <r>
+                              <rPr>
+                                <rFonts ascii="標楷體" eastAsia="標楷體" hAnsi="標楷體" />
+                                <sz val="24" />
+                              </rPr>
+                              <t>15</t>
+                            </r>
+                            <r>
+                              <rPr>
+                                <rFonts ascii="標楷體" eastAsia="標楷體" hAnsi="標楷體" hint="eastAsia" />
+                                <sz val="24" />
+                              </rPr>
+                              <t xml:space="preserve">年 </t>
+                            </r>
+                            
+                            <r>
+                              <rPr>
+                                <rFonts ascii="標楷體" eastAsia="標楷體" hAnsi="標楷體" />
+                                <sz val="24" />
+                              </rPr>
+                              <t>人事事項</t>
+                            </r>
+                          </p>
+                        </txbxContent>
+                      </ns6:txbx>
+                      <ns6:bodyPr rot="0" spcFirstLastPara="0" vertOverflow="overflow" horzOverflow="overflow" vert="horz" wrap="square" lIns="91440" tIns="45720" rIns="91440" bIns="45720" numCol="1" spcCol="0" rtlCol="0" fromWordArt="0" anchor="t" anchorCtr="0" forceAA="0" compatLnSpc="1">
+                        <ns5:prstTxWarp prst="textNoShape">
+                          <ns5:avLst />
+                        </ns5:prstTxWarp>
+                        <ns5:noAutofit />
+                      </ns6:bodyPr>
+                    </ns6:wsp>
+                  </ns5:graphicData>
+                </ns5:graphic>
+                <ns4:sizeRelH relativeFrom="margin">
+                  <ns4:pctWidth>0</ns4:pctWidth>
+                </ns4:sizeRelH>
+              </ns3:anchor>
+            </drawing>
+          </ns1:Choice>
+          <ns1:Fallback>
+            <pict>
+              <ns7:shapetype ns2:anchorId="21F9B9A2" id="_x0000_t202" coordsize="21600,21600" ns8:spt="202" path="m,l,21600r21600,l21600,xe">
+                <ns7:stroke joinstyle="miter" />
+                <ns7:path gradientshapeok="t" ns8:connecttype="rect" />
+              </ns7:shapetype>
+              <ns7:shape id="文字方塊 1" ns8:spid="_x0000_s1026" type="#_x0000_t202" style="position:absolute;left:0;text-align:left;margin-left:588.8pt;margin-top:-4.2pt;width:127pt;height:25.65pt;z-index:251659264;visibility:visible;mso-wrap-style:square;mso-width-percent:0;mso-wrap-distance-left:9pt;mso-wrap-distance-top:0;mso-wrap-distance-right:9pt;mso-wrap-distance-bottom:0;mso-position-horizontal:absolute;mso-position-horizontal-relative:text;mso-position-vertical:absolute;mso-position-vertical-relative:text;mso-width-percent:0;mso-width-relative:margin;v-text-anchor:top" ns8:gfxdata="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&#10;" fillcolor="white [3201]" stroked="f" strokeweight=".5pt">
+                <ns7:textbox>
+                  <txbxContent>
+                    <p ns2:paraId="234DAE13" ns2:textId="77777777" rsidR="0062726C" rsidRDefault="009D3B49">
+                      <r>
+                        <rPr>
+                          <rFonts ascii="標楷體" eastAsia="標楷體" hAnsi="標楷體" hint="eastAsia" />
+                          <sz val="24" />
+                        </rPr>
+                        <t>1</t>
+                      </r>
+                      <r>
+                        <rPr>
+                          <rFonts ascii="標楷體" eastAsia="標楷體" hAnsi="標楷體" />
+                          <sz val="24" />
+                        </rPr>
+                        <t>15</t>
+                      </r>
+                      <r>
+                        <rPr>
+                          <rFonts ascii="標楷體" eastAsia="標楷體" hAnsi="標楷體" hint="eastAsia" />
+                          <sz val="24" />
+                        </rPr>
+                        <t xml:space="preserve">年 </t>
+                      </r>
+                      
+                      <r>
+                        <rPr>
+                          <rFonts ascii="標楷體" eastAsia="標楷體" hAnsi="標楷體" />
+                          <sz val="24" />
+                        </rPr>
+                        <t>人事事項</t>
+                      </r>
+                    </p>
+                  </txbxContent>
+                </ns7:textbox>
+              </ns7:shape>
+            </pict>
+          </ns1:Fallback>
+        </ns1:AlternateContent>
+      </r>
+      <r>
+        <rPr>
+          <rFonts ascii="標楷體" eastAsia="標楷體" hAnsi="標楷體" hint="eastAsia" />
+          <sz val="28" />
+          <szCs val="28" />
+        </rPr>
+        <t>修正對照表</t>
+      </r>
+    </p>
+    <tbl>
+      <tblPr>
+        <tblW w="14204" type="dxa" />
+        <tblInd w="108" type="dxa" />
+        <tblBorders>
+          <top val="single" sz="4" space="0" color="auto" />
+          <left val="single" sz="4" space="0" color="auto" />
+          <bottom val="single" sz="4" space="0" color="auto" />
+          <right val="single" sz="4" space="0" color="auto" />
+          <insideH val="single" sz="4" space="0" color="auto" />
+          <insideV val="single" sz="4" space="0" color="auto" />
+        </tblBorders>
+        <tblLook val="00A0" firstRow="1" lastRow="0" firstColumn="1" lastColumn="0" noHBand="0" noVBand="0" />
+      </tblPr>
+      <tblGrid>
+        <gridCol w="5983" />
+        <gridCol w="5670" />
+        <gridCol w="2551" />
+      </tblGrid>
+      <tr rsidR="00A01BC4" rsidRPr="00A01BC4" ns2:paraId="7C9C8723" ns2:textId="77777777" rsidTr="00B91802">
+        <trPr>
+          <trHeight val="680" />
+          <tblHeader />
+        </trPr>
+        <tc>
+          <tcPr>
+            <tcW w="5983" type="dxa" />
+            <vAlign val="center" />
+          </tcPr>
+          <p ns2:paraId="4F165708" ns2:textId="77777777" rsidR="00D0377D" rsidRPr="00A01BC4" rsidRDefault="00D0377D" rsidP="00B6243C">
+            <pPr>
+              <spacing before="100" beforeAutospacing="1" after="100" afterAutospacing="1" line="240" lineRule="auto" />
+              <jc val="center" />
+              <rPr>
+                <rFonts ascii="標楷體" eastAsia="標楷體" hAnsi="標楷體" />
+                <sz val="24" />
+              </rPr>
+            </pPr>
+            <r>
+              <rPr>
+                <rFonts ascii="標楷體" eastAsia="標楷體" hAnsi="標楷體" />
+                <sz val="24" />
+              </rPr>
+              <t>修　正　規　定</t>
+            </r>
+            
+            
+            
+            
+          </p>
+        </tc>
+        <tc>
+          <tcPr>
+            <tcW w="5670" type="dxa" />
+            <vAlign val="center" />
+          </tcPr>
+          <p ns2:paraId="2715AFC4" ns2:textId="77777777" rsidR="00D0377D" rsidRPr="00A01BC4" rsidRDefault="00D0377D" rsidP="00B6243C">
+            <pPr>
+              <spacing before="100" beforeAutospacing="1" after="100" afterAutospacing="1" line="240" lineRule="auto" />
+              <jc val="center" />
+              <rPr>
+                <rFonts ascii="標楷體" eastAsia="標楷體" hAnsi="標楷體" />
+                <sz val="24" />
+              </rPr>
+            </pPr>
+            <r>
+              <rPr>
+                <rFonts ascii="標楷體" eastAsia="標楷體" hAnsi="標楷體" />
+                <sz val="24" />
+              </rPr>
+              <t>現　行　規　定</t>
+            </r>
+            
+            
+            
+            
+          </p>
+        </tc>
+        <tc>
+          <tcPr>
+            <tcW w="2551" type="dxa" />
+            <vAlign val="center" />
+          </tcPr>
+          <p ns2:paraId="0604AE39" ns2:textId="77777777" rsidR="00D0377D" rsidRPr="00A01BC4" rsidRDefault="00D0377D" rsidP="00B6243C">
+            <pPr>
+              <spacing before="100" beforeAutospacing="1" after="100" afterAutospacing="1" line="240" lineRule="auto" />
+              <jc val="center" />
+              <rPr>
+                <rFonts ascii="標楷體" eastAsia="標楷體" hAnsi="標楷體" />
+                <sz val="24" />
+              </rPr>
+            </pPr>
+            <r>
+              <rPr>
+                <rFonts ascii="標楷體" eastAsia="標楷體" hAnsi="標楷體" />
+                <sz val="24" />
+              </rPr>
+              <t>說　　　　明</t>
+            </r>
+          </p>
+        </tc>
+      </tr>
+      <tr rsidR="00B91802" rsidRPr="00B91802" ns2:paraId="12959B86" ns2:textId="77777777" rsidTr="00B91802">
+        <trPr>
+          <trHeight val="822" />
+          <tblHeader />
+        </trPr>
+        <tc>
+          <tcPr>
+            <tcW w="5983" type="dxa" />
+            <vAlign val="center" />
+          </tcPr>
+          <p ns2:paraId="0D7007B6" ns2:textId="4C0C26C6" rsidR="00B91802" rsidRPr="00B91802" rsidRDefault="00B91802" rsidP="00B91802">
+            <pPr>
+              <spacing before="100" beforeAutospacing="1" after="100" afterAutospacing="1" line="240" lineRule="auto" />
+              <jc val="left" />
+              <rPr>
+                <rFonts ascii="標楷體" eastAsia="標楷體" hAnsi="標楷體" />
+                <sz val="28" />
+                <szCs val="28" />
+              </rPr>
+            </pPr>
+            <r>
+              <rPr>
+                <rFonts ascii="標楷體" eastAsia="標楷體" hAnsi="標楷體" hint="eastAsia" />
+                <sz val="28" />
+                <szCs val="28" />
+                <u val="single" />
+              </rPr>
+              <t>刪除</t>
+            </r>
+          </p>
+        </tc>
+        <tc>
+          <tcPr>
+            <tcW w="5670" type="dxa" />
+            <vAlign val="center" />
+          </tcPr>
+          <p ns2:paraId="1DE49168" ns2:textId="3EC44B7B" rsidR="00B91802" rsidRPr="00B91802" rsidRDefault="00B91802" rsidP="00B91802">
+            <pPr>
+              <pStyle val="2" />
+              <ind leftChars="200" left="440" firstLineChars="4" firstLine="11" />
+              <rPr>
+                <rFonts ascii="標楷體" eastAsia="標楷體" hAnsi="標楷體" hint="eastAsia" />
+                <szCs val="28" />
+              </rPr>
+            </pPr>
+            <r>
+              <rPr>
+                <rFonts ascii="標楷體" eastAsia="標楷體" hAnsi="標楷體" hint="eastAsia" />
+                <szCs val="28" />
+              </rPr>
+              <t>系統開發及程式修改作業</t>
+            </r>
+            <r>
+              <rPr>
+                <rFonts ascii="標楷體" eastAsia="標楷體" hAnsi="標楷體" />
+                <szCs val="28" />
+              </rPr>
+              <br />
+              <t>P166~P169</t>
+            </r>
+          </p>
+        </tc>
+        <tc>
+          <tcPr>
+            <tcW w="2551" type="dxa" />
+            <vAlign val="center" />
+          </tcPr>
+          <p ns2:paraId="64AB16C6" ns2:textId="417E1EEE" rsidR="00B91802" rsidRPr="00B91802" rsidRDefault="00B91802" rsidP="00B6243C">
+            <pPr>
+              <spacing before="100" beforeAutospacing="1" after="100" afterAutospacing="1" line="240" lineRule="auto" />
+              <jc val="center" />
+              <rPr>
+                <rFonts ascii="標楷體" eastAsia="標楷體" hAnsi="標楷體" />
+                <sz val="28" />
+                <szCs val="28" />
+              </rPr>
+            </pPr>
+            <r>
+              <rPr>
+                <rFonts ascii="標楷體" eastAsia="標楷體" hAnsi="標楷體" hint="eastAsia" />
+                <sz val="28" />
+                <szCs val="28" />
+              </rPr>
+              <t>本校無該項業務</t>
+            </r>
+          </p>
+        </tc>
+      </tr>
+      <tr rsidR="00B91802" rsidRPr="00B91802" ns2:paraId="1064251F" ns2:textId="77777777" rsidTr="00543A35">
+        <trPr>
+          <trHeight val="822" />
+          <tblHeader />
+        </trPr>
+        <tc>
+          <tcPr>
+            <tcW w="5983" type="dxa" />
+          </tcPr>
+          <p ns2:paraId="5FCDBF41" ns2:textId="53CEF305" rsidR="00B91802" rsidRPr="00B91802" rsidRDefault="00B91802" rsidP="00B91802">
+            <pPr>
+              <spacing before="100" beforeAutospacing="1" after="100" afterAutospacing="1" line="240" lineRule="auto" />
+              <jc val="left" />
+              <rPr>
+                <rFonts ascii="標楷體" eastAsia="標楷體" hAnsi="標楷體" hint="eastAsia" />
+                <sz val="28" />
+                <szCs val="28" />
+                <u val="single" />
+              </rPr>
+            </pPr>
+            <r>
+              <rPr>
+                <rFonts ascii="標楷體" eastAsia="標楷體" hAnsi="標楷體" hint="eastAsia" />
+                <sz val="28" />
+                <szCs val="28" />
+                <u val="single" />
+              </rPr>
+              <t>刪除</t>
+            </r>
+          </p>
+        </tc>
+        <tc>
+          <tcPr>
+            <tcW w="5670" type="dxa" />
+          </tcPr>
+          <p ns2:paraId="732F1C04" ns2:textId="5728A4A4" rsidR="00B91802" rsidRPr="00B91802" rsidRDefault="00B91802" rsidP="00B91802">
+            <pPr>
+              <pStyle val="2" />
+              <ind leftChars="200" left="440" firstLineChars="4" firstLine="11" />
+              <rPr>
+                <rFonts ascii="標楷體" eastAsia="標楷體" hAnsi="標楷體" hint="eastAsia" />
+                <szCs val="28" />
+              </rPr>
+            </pPr>
+            <r>
+              <rPr>
+                <rFonts ascii="標楷體" eastAsia="標楷體" hAnsi="標楷體" hint="eastAsia" />
+                <szCs val="28" />
+              </rPr>
+              <t>系統文書編製作業</t>
+            </r>
+          </p>
+        </tc>
+        <tc>
+          <tcPr>
+            <tcW w="2551" type="dxa" />
+          </tcPr>
+          <p ns2:paraId="7152CBDF" ns2:textId="454DDE1C" rsidR="00B91802" rsidRPr="00B91802" rsidRDefault="00B91802" rsidP="00B91802">
+            <pPr>
+              <spacing before="100" beforeAutospacing="1" after="100" afterAutospacing="1" line="240" lineRule="auto" />
+              <jc val="center" />
+              <rPr>
+                <rFonts ascii="標楷體" eastAsia="標楷體" hAnsi="標楷體" hint="eastAsia" />
+                <sz val="28" />
+                <szCs val="28" />
+              </rPr>
+            </pPr>
+            <r>
+              <rPr>
+                <rFonts ascii="標楷體" eastAsia="標楷體" hAnsi="標楷體" hint="eastAsia" />
+                <sz val="28" />
+                <szCs val="28" />
+              </rPr>
+              <t>本校無該項業務</t>
+            </r>
+          </p>
+        </tc>
+      </tr>
+      <tr rsidR="00B91802" rsidRPr="00B91802" ns2:paraId="3F1278A5" ns2:textId="77777777" rsidTr="00606ADD">
+        <trPr>
+          <trHeight val="1011" />
+        </trPr>
+        <tc>
+          <tcPr>
+            <tcW w="5983" type="dxa" />
+          </tcPr>
+          <p ns2:paraId="392B5BB0" ns2:textId="2953509D" rsidR="00B91802" rsidRPr="00B91802" rsidRDefault="00B91802" rsidP="00B91802">
+            <pPr>
+              <snapToGrid val="0" />
+              <spacing line="240" lineRule="atLeast" />
+              <rPr>
+                <rFonts ascii="標楷體" eastAsia="標楷體" hAnsi="標楷體" />
+                <sz val="28" />
+                <szCs val="28" />
+                <u val="single" />
+              </rPr>
+            </pPr>
+            <r>
+              <rPr>
+                <rFonts ascii="標楷體" eastAsia="標楷體" hAnsi="標楷體" hint="eastAsia" />
+                <sz val="28" />
+                <szCs val="28" />
+                <u val="single" />
+              </rPr>
+              <t>刪除</t>
+            </r>
+          </p>
+        </tc>
+        <tc>
+          <tcPr>
+            <tcW w="5670" type="dxa" />
+          </tcPr>
+          <p ns2:paraId="700E4F48" ns2:textId="6E3B795B" rsidR="00B91802" rsidRPr="00B91802" rsidRDefault="00B91802" rsidP="00B91802">
+            <pPr>
+              <pStyle val="2" />
+              <ind leftChars="200" left="440" firstLineChars="4" firstLine="11" />
+              <rPr>
+                <rFonts ascii="標楷體" eastAsia="標楷體" hAnsi="標楷體" hint="eastAsia" />
+                <szCs val="28" />
+              </rPr>
+            </pPr>
+            <r>
+              <rPr>
+                <rFonts ascii="標楷體" eastAsia="標楷體" hAnsi="標楷體" hint="eastAsia" />
+                <color val="000000" themeColor="text1" />
+                <kern val="0" />
+                <szCs val="28" />
+              </rPr>
+              <t>程式及資料之存取作業</t>
+            </r>
+            <r>
+              <rPr>
+                <rFonts ascii="標楷體" eastAsia="標楷體" hAnsi="標楷體" />
+                <color val="000000" themeColor="text1" />
+                <kern val="0" />
+                <szCs val="28" />
+              </rPr>
+              <br />
+              <t>P170~P172</t>
+            </r>
+          </p>
+        </tc>
+        <tc>
+          <tcPr>
+            <tcW w="2551" type="dxa" />
+          </tcPr>
+          <p ns2:paraId="72B25923" ns2:textId="057219D1" rsidR="00B91802" rsidRPr="00B91802" rsidRDefault="00B91802" rsidP="00B91802">
+            <pPr>
+              <pStyle val="2" />
+              <ind left="-108" />
+              <jc val="left" />
+              <rPr>
+                <rFonts ascii="標楷體" eastAsia="標楷體" hAnsi="標楷體" />
+                <szCs val="28" />
+              </rPr>
+            </pPr>
+            <r>
+              <rPr>
+                <rFonts ascii="標楷體" eastAsia="標楷體" hAnsi="標楷體" hint="eastAsia" />
+                <szCs val="28" />
+              </rPr>
+              <t>本校無該項業務</t>
+            </r>
+          </p>
+        </tc>
+      </tr>
+      <tr rsidR="00B91802" rsidRPr="00B91802" ns2:paraId="452D2351" ns2:textId="77777777" rsidTr="00606ADD">
+        <trPr>
+          <trHeight val="1011" />
+        </trPr>
+        <tc>
+          <tcPr>
+            <tcW w="5983" type="dxa" />
+          </tcPr>
+          <p ns2:paraId="6FC6E5D2" ns2:textId="0228F377" rsidR="00B91802" rsidRPr="00B91802" rsidRDefault="00B91802" rsidP="00B91802">
+            <pPr>
+              <snapToGrid val="0" />
+              <spacing line="240" lineRule="atLeast" />
+              <rPr>
+                <rFonts ascii="標楷體" eastAsia="標楷體" hAnsi="標楷體" hint="eastAsia" />
+                <sz val="28" />
+                <szCs val="28" />
+                <u val="single" />
+              </rPr>
+            </pPr>
+            <r>
+              <rPr>
+                <rFonts ascii="標楷體" eastAsia="標楷體" hAnsi="標楷體" hint="eastAsia" />
+                <sz val="28" />
+                <szCs val="28" />
+                <u val="single" />
+              </rPr>
+              <t>刪除</t>
+            </r>
+          </p>
+        </tc>
+        <tc>
+          <tcPr>
+            <tcW w="5670" type="dxa" />
+          </tcPr>
+          <p ns2:paraId="3C6BA7C5" ns2:textId="136ABCA8" rsidR="00B91802" rsidRPr="00B91802" rsidRDefault="00B91802" rsidP="00B91802">
+            <pPr>
+              <pStyle val="2" />
+              <ind leftChars="200" left="440" firstLineChars="4" firstLine="11" />
+              <rPr>
+                <rFonts ascii="標楷體" eastAsia="標楷體" hAnsi="標楷體" hint="eastAsia" />
+                <color val="000000" themeColor="text1" />
+                <kern val="0" />
+                <szCs val="28" />
+              </rPr>
+            </pPr>
+            <r>
+              <rPr>
+                <rFonts ascii="標楷體" eastAsia="標楷體" hAnsi="標楷體" hint="eastAsia" />
+                <color val="000000" themeColor="text1" />
+                <kern val="0" />
+                <szCs val="28" />
+              </rPr>
+              <t>資料輸出入及處理作業</t>
+            </r>
+            <r>
+              <rPr>
+                <rFonts ascii="標楷體" eastAsia="標楷體" hAnsi="標楷體" />
+                <color val="000000" themeColor="text1" />
+                <kern val="0" />
+                <szCs val="28" />
+              </rPr>
+              <br />
+              <t>P173~P175</t>
+            </r>
+          </p>
+        </tc>
+        <tc>
+          <tcPr>
+            <tcW w="2551" type="dxa" />
+          </tcPr>
+          <p ns2:paraId="090FFB6C" ns2:textId="43A1875A" rsidR="00B91802" rsidRPr="00B91802" rsidRDefault="00B91802" rsidP="00B91802">
+            <pPr>
+              <pStyle val="2" />
+              <ind left="-108" />
+              <jc val="left" />
+              <rPr>
+                <rFonts ascii="標楷體" eastAsia="標楷體" hAnsi="標楷體" hint="eastAsia" />
+                <szCs val="28" />
+              </rPr>
+            </pPr>
+            <r>
+              <rPr>
+                <rFonts ascii="標楷體" eastAsia="標楷體" hAnsi="標楷體" hint="eastAsia" />
+                <szCs val="28" />
+              </rPr>
+              <t>本校無該項業務</t>
+            </r>
+          </p>
+        </tc>
+      </tr>
+      <bookmarkEnd id="0" />
+    <tr><trPr><trHeight val="1011" /></trPr><tc><tcPr><tcW w="5983" type="dxa" /></tcPr><p><pPr><snapToGrid val="0" /><spacing line="240" lineRule="atLeast" /><rPr><rFonts ascii="標楷體" eastAsia="標楷體" hAnsi="標楷體" hint="eastAsia" /><sz val="28" /><szCs val="28" /></rPr></pPr><r><rPr><rFonts ascii="標楷體" eastAsia="標楷體" hAnsi="標楷體" hint="eastAsia" /><sz val="28" /><szCs val="28" /></rPr><t>3.4.異地備援：</t></r></p></tc><tc><tcPr><tcW w="5670" type="dxa" /></tcPr><p><pPr><pStyle val="2" /><ind leftChars="200" left="440" firstLineChars="4" firstLine="11" /><rPr><rFonts ascii="標楷體" eastAsia="標楷體" hAnsi="標楷體" hint="eastAsia" /><color val="000000" themeColor="text1" /><kern val="0" /><szCs val="28" /></rPr></pPr><r><rPr><rFonts ascii="標楷體" eastAsia="標楷體" hAnsi="標楷體" hint="eastAsia" /><color val="000000" themeColor="text1" /><kern val="0" /><szCs val="28" /></rPr><t xml:space="preserve">3.4.異地備援：(因經費與管理的緣故尚未施行)</t></r><r><rPr><rFonts ascii="標楷體" eastAsia="標楷體" hAnsi="標楷體" /><color val="000000" themeColor="text1" /><kern val="0" /><szCs val="28" /></rPr><br /><t>P177</t></r></p></tc><tc><tcPr><tcW w="2551" type="dxa" /></tcPr><p><pPr><pStyle val="2" /><ind left="-108" /><jc val="left" /><rPr><rFonts ascii="標楷體" eastAsia="標楷體" hAnsi="標楷體" hint="eastAsia" /><szCs val="28" /></rPr></pPr><r><rPr><rFonts ascii="標楷體" eastAsia="標楷體" hAnsi="標楷體" hint="eastAsia" /><szCs val="28" /></rPr><t>異地備援措施已逐步實施，刪除「尚未施行」括號說明文字</t></r></p></tc></tr><tr><trPr><trHeight val="1011" /></trPr><tc><tcPr><tcW w="5983" type="dxa" /></tcPr><p><pPr><snapToGrid val="0" /><spacing line="240" lineRule="atLeast" /><rPr><rFonts ascii="標楷體" eastAsia="標楷體" hAnsi="標楷體" hint="eastAsia" /><sz val="28" /><szCs val="28" /></rPr></pPr><r><rPr><rFonts ascii="標楷體" eastAsia="標楷體" hAnsi="標楷體" hint="eastAsia" /><sz val="28" /><szCs val="28" /></rPr><t>3.4.1.檔案備份資料存放於異地或雲端，是否具備保全性及完整記載資料存放紀錄。</t></r></p></tc><tc><tcPr><tcW w="5670" type="dxa" /></tcPr><p><pPr><pStyle val="2" /><ind leftChars="200" left="440" firstLineChars="4" firstLine="11" /><rPr><rFonts ascii="標楷體" eastAsia="標楷體" hAnsi="標楷體" hint="eastAsia" /><color val="000000" themeColor="text1" /><kern val="0" /><szCs val="28" /></rPr></pPr><r><rPr><rFonts ascii="標楷體" eastAsia="標楷體" hAnsi="標楷體" hint="eastAsia" /><color val="000000" themeColor="text1" /><kern val="0" /><szCs val="28" /></rPr><t xml:space="preserve">3.4.1.檔案備份資料存放於異地，是否具備保全性及完整記載資料存放紀錄。</t></r><r><rPr><rFonts ascii="標楷體" eastAsia="標楷體" hAnsi="標楷體" /><color val="000000" themeColor="text1" /><kern val="0" /><szCs val="28" /></rPr><br /><t>P177</t></r></p></tc><tc><tcPr><tcW w="2551" type="dxa" /></tcPr><p><pPr><pStyle val="2" /><ind left="-108" /><jc val="left" /><rPr><rFonts ascii="標楷體" eastAsia="標楷體" hAnsi="標楷體" hint="eastAsia" /><szCs val="28" /></rPr></pPr><r><rPr><rFonts ascii="標楷體" eastAsia="標楷體" hAnsi="標楷體" hint="eastAsia" /><szCs val="28" /></rPr><t>因應雲端備份趨勢，增列「雲端」作為備援存放選項</t></r></p></tc></tr><tr><trPr><trHeight val="1011" /></trPr><tc><tcPr><tcW w="5983" type="dxa" /></tcPr><p><pPr><snapToGrid val="0" /><spacing line="240" lineRule="atLeast" /><rPr><rFonts ascii="標楷體" eastAsia="標楷體" hAnsi="標楷體" hint="eastAsia" /><sz val="28" /><szCs val="28" /></rPr></pPr><r><rPr><rFonts ascii="標楷體" eastAsia="標楷體" hAnsi="標楷體" hint="eastAsia" /><sz val="28" /><szCs val="28" /></rPr><t>3.4.2.每學期進行一次異地備份還原演練，確保回復程序能在指定時間內完成復原作業程序。</t></r></p></tc><tc><tcPr><tcW w="5670" type="dxa" /></tcPr><p><pPr><pStyle val="2" /><ind leftChars="200" left="440" firstLineChars="4" firstLine="11" /><rPr><rFonts ascii="標楷體" eastAsia="標楷體" hAnsi="標楷體" hint="eastAsia" /><color val="000000" themeColor="text1" /><kern val="0" /><szCs val="28" /></rPr></pPr><r><rPr><rFonts ascii="標楷體" eastAsia="標楷體" hAnsi="標楷體" hint="eastAsia" /><color val="000000" themeColor="text1" /><kern val="0" /><szCs val="28" /></rPr><t xml:space="preserve">3.4.2.於異地設置實體主機，是否定期檢查測試回復程序，確保回復程序能在指定時間內完成復原作業程序。</t></r><r><rPr><rFonts ascii="標楷體" eastAsia="標楷體" hAnsi="標楷體" /><color val="000000" themeColor="text1" /><kern val="0" /><szCs val="28" /></rPr><br /><t>P177</t></r></p></tc><tc><tcPr><tcW w="2551" type="dxa" /></tcPr><p><pPr><pStyle val="2" /><ind left="-108" /><jc val="left" /><rPr><rFonts ascii="標楷體" eastAsia="標楷體" hAnsi="標楷體" hint="eastAsia" /><szCs val="28" /></rPr></pPr><r><rPr><rFonts ascii="標楷體" eastAsia="標楷體" hAnsi="標楷體" hint="eastAsia" /><szCs val="28" /></rPr><t>明確規定異地備援測試頻率，以每學期辦理一次演練取代模糊之「定期」規定</t></r></p></tc></tr><tr><trPr><trHeight val="1011" /></trPr><tc><tcPr><tcW w="5983" type="dxa" /></tcPr><p><pPr><snapToGrid val="0" /><spacing line="240" lineRule="atLeast" /><rPr><rFonts ascii="標楷體" eastAsia="標楷體" hAnsi="標楷體" hint="eastAsia" /><sz val="28" /><szCs val="28" /></rPr></pPr><r><rPr><rFonts ascii="標楷體" eastAsia="標楷體" hAnsi="標楷體" hint="eastAsia" /><sz val="28" /><szCs val="28" /></rPr><t>5.1.正心中學電腦主機房管理辦法。</t></r></p></tc><tc><tcPr><tcW w="5670" type="dxa" /></tcPr><p><pPr><pStyle val="2" /><ind leftChars="200" left="440" firstLineChars="4" firstLine="11" /><rPr><rFonts ascii="標楷體" eastAsia="標楷體" hAnsi="標楷體" hint="eastAsia" /><color val="000000" themeColor="text1" /><kern val="0" /><szCs val="28" /></rPr></pPr><r><rPr><rFonts ascii="標楷體" eastAsia="標楷體" hAnsi="標楷體" hint="eastAsia" /><color val="000000" themeColor="text1" /><kern val="0" /><szCs val="28" /></rPr><t xml:space="preserve">5.1.正心中學電子計算機中心電腦主機房管理辦法。</t></r><r><rPr><rFonts ascii="標楷體" eastAsia="標楷體" hAnsi="標楷體" /><color val="000000" themeColor="text1" /><kern val="0" /><szCs val="28" /></rPr><br /><t>P177</t></r></p></tc><tc><tcPr><tcW w="2551" type="dxa" /></tcPr><p><pPr><pStyle val="2" /><ind left="-108" /><jc val="left" /><rPr><rFonts ascii="標楷體" eastAsia="標楷體" hAnsi="標楷體" hint="eastAsia" /><szCs val="28" /></rPr></pPr><r><rPr><rFonts ascii="標楷體" eastAsia="標楷體" hAnsi="標楷體" hint="eastAsia" /><szCs val="28" /></rPr><t>配合組織名稱調整，刪除「電子計算機中心」，精簡文件名稱</t></r></p></tc></tr><tr><trPr><trHeight val="1011" /></trPr><tc><tcPr><tcW w="5983" type="dxa" /></tcPr><p><pPr><snapToGrid val="0" /><spacing line="240" lineRule="atLeast" /><rPr><rFonts ascii="標楷體" eastAsia="標楷體" hAnsi="標楷體" hint="eastAsia" /><sz val="28" /><szCs val="28" /></rPr></pPr><r><rPr><rFonts ascii="標楷體" eastAsia="標楷體" hAnsi="標楷體" hint="eastAsia" /><sz val="28" /><szCs val="28" /></rPr><t>2.3.3.設備組不定期實體稽查及程式軟體稽查是否有使用未經授權之軟體及其他不當之軟體。</t></r></p></tc><tc><tcPr><tcW w="5670" type="dxa" /></tcPr><p><pPr><pStyle val="2" /><ind leftChars="200" left="440" firstLineChars="4" firstLine="11" /><rPr><rFonts ascii="標楷體" eastAsia="標楷體" hAnsi="標楷體" hint="eastAsia" /><color val="000000" themeColor="text1" /><kern val="0" /><szCs val="28" /></rPr></pPr><r><rPr><rFonts ascii="標楷體" eastAsia="標楷體" hAnsi="標楷體" hint="eastAsia" /><color val="000000" themeColor="text1" /><kern val="0" /><szCs val="28" /></rPr><t xml:space="preserve">2.3.3.電子計算機中心不定期實體稽查及程式軟體稽查是否有使用未經授權之軟體及其他不當之軟體。</t></r><r><rPr><rFonts ascii="標楷體" eastAsia="標楷體" hAnsi="標楷體" /><color val="000000" themeColor="text1" /><kern val="0" /><szCs val="28" /></rPr><br /><t>P179</t></r></p></tc><tc><tcPr><tcW w="2551" type="dxa" /></tcPr><p><pPr><pStyle val="2" /><ind left="-108" /><jc val="left" /><rPr><rFonts ascii="標楷體" eastAsia="標楷體" hAnsi="標楷體" hint="eastAsia" /><szCs val="28" /></rPr></pPr><r><rPr><rFonts ascii="標楷體" eastAsia="標楷體" hAnsi="標楷體" hint="eastAsia" /><szCs val="28" /></rPr><t>配合組織名稱調整，將「電子計算機中心」更正為「設備組」</t></r></p></tc></tr><tr><trPr><trHeight val="1011" /></trPr><tc><tcPr><tcW w="5983" type="dxa" /></tcPr><p><pPr><snapToGrid val="0" /><spacing line="240" lineRule="atLeast" /><rPr><rFonts ascii="標楷體" eastAsia="標楷體" hAnsi="標楷體" hint="eastAsia" /><sz val="28" /><szCs val="28" /><u val="single" /></rPr></pPr><r><rPr><rFonts ascii="標楷體" eastAsia="標楷體" hAnsi="標楷體" hint="eastAsia" /><sz val="28" /><szCs val="28" /><u val="single" /></rPr><t>刪除</t></r></p></tc><tc><tcPr><tcW w="5670" type="dxa" /></tcPr><p><pPr><pStyle val="2" /><ind leftChars="200" left="440" firstLineChars="4" firstLine="11" /><rPr><rFonts ascii="標楷體" eastAsia="標楷體" hAnsi="標楷體" hint="eastAsia" /><color val="000000" themeColor="text1" /><kern val="0" /><szCs val="28" /></rPr></pPr><r><rPr><rFonts ascii="標楷體" eastAsia="標楷體" hAnsi="標楷體" hint="eastAsia" /><color val="000000" themeColor="text1" /><kern val="0" /><szCs val="28" /></rPr><t xml:space="preserve">．由不同單位人員參加成立緊急應變小組，並加強訓練其緊急事故應變能力。（系統復原計畫及測試作業 2.2）</t></r><r><rPr><rFonts ascii="標楷體" eastAsia="標楷體" hAnsi="標楷體" /><color val="000000" themeColor="text1" /><kern val="0" /><szCs val="28" /></rPr><br /><t>P182</t></r></p></tc><tc><tcPr><tcW w="2551" type="dxa" /></tcPr><p><pPr><pStyle val="2" /><ind left="-108" /><jc val="left" /><rPr><rFonts ascii="標楷體" eastAsia="標楷體" hAnsi="標楷體" hint="eastAsia" /><szCs val="28" /></rPr></pPr><r><rPr><rFonts ascii="標楷體" eastAsia="標楷體" hAnsi="標楷體" hint="eastAsia" /><szCs val="28" /></rPr><t>目前無此業務，刪除緊急應變小組相關作業程序條文</t></r></p></tc></tr><tr><trPr><trHeight val="1011" /></trPr><tc><tcPr><tcW w="5983" type="dxa" /></tcPr><p><pPr><snapToGrid val="0" /><spacing line="240" lineRule="atLeast" /><rPr><rFonts ascii="標楷體" eastAsia="標楷體" hAnsi="標楷體" hint="eastAsia" /><sz val="28" /><szCs val="28" /></rPr></pPr><r><rPr><rFonts ascii="標楷體" eastAsia="標楷體" hAnsi="標楷體" hint="eastAsia" /><sz val="28" /><szCs val="28" /></rPr><t>．重大事故硬體或軟體復原，應由庶務組與電腦廠商簽訂重大意外事故系統復原合約。合約內容應包含修護完成交期、保固期間、違約損失賠償罰則及應變方式等條文。</t></r></p></tc><tc><tcPr><tcW w="5670" type="dxa" /></tcPr><p><pPr><pStyle val="2" /><ind leftChars="200" left="440" firstLineChars="4" firstLine="11" /><rPr><rFonts ascii="標楷體" eastAsia="標楷體" hAnsi="標楷體" hint="eastAsia" /><color val="000000" themeColor="text1" /><kern val="0" /><szCs val="28" /></rPr></pPr><r><rPr><rFonts ascii="標楷體" eastAsia="標楷體" hAnsi="標楷體" hint="eastAsia" /><color val="000000" themeColor="text1" /><kern val="0" /><szCs val="28" /></rPr><t xml:space="preserve">．重大事故硬體或軟體復原，應由設備組與電腦廠商簽訂重大意外事故系統復原合約。合約內容應包含修護完成交期、保固期間、違約損失賠償罰則及應變方式等條文。</t></r><r><rPr><rFonts ascii="標楷體" eastAsia="標楷體" hAnsi="標楷體" /><color val="000000" themeColor="text1" /><kern val="0" /><szCs val="28" /></rPr><br /><t>P182</t></r></p></tc><tc><tcPr><tcW w="2551" type="dxa" /></tcPr><p><pPr><pStyle val="2" /><ind left="-108" /><jc val="left" /><rPr><rFonts ascii="標楷體" eastAsia="標楷體" hAnsi="標楷體" hint="eastAsia" /><szCs val="28" /></rPr></pPr><r><rPr><rFonts ascii="標楷體" eastAsia="標楷體" hAnsi="標楷體" hint="eastAsia" /><szCs val="28" /></rPr><t>依採購及合約作業職責分工，簽訂廠商合約由庶務組辦理，非設備組職掌</t></r></p></tc></tr><tr><trPr><trHeight val="1011" /></trPr><tc><tcPr><tcW w="5983" type="dxa" /></tcPr><p><pPr><snapToGrid val="0" /><spacing line="240" lineRule="atLeast" /><rPr><rFonts ascii="標楷體" eastAsia="標楷體" hAnsi="標楷體" hint="eastAsia" /><sz val="28" /><szCs val="28" /></rPr></pPr><r><rPr><rFonts ascii="標楷體" eastAsia="標楷體" hAnsi="標楷體" hint="eastAsia" /><sz val="28" /><szCs val="28" /></rPr><t>．設備組人員或維修外包廠商應將測試結果對使用方詳述說明。</t></r></p></tc><tc><tcPr><tcW w="5670" type="dxa" /></tcPr><p><pPr><pStyle val="2" /><ind leftChars="200" left="440" firstLineChars="4" firstLine="11" /><rPr><rFonts ascii="標楷體" eastAsia="標楷體" hAnsi="標楷體" hint="eastAsia" /><color val="000000" themeColor="text1" /><kern val="0" /><szCs val="28" /></rPr></pPr><r><rPr><rFonts ascii="標楷體" eastAsia="標楷體" hAnsi="標楷體" hint="eastAsia" /><color val="000000" themeColor="text1" /><kern val="0" /><szCs val="28" /></rPr><t xml:space="preserve">．設備組人員應將測試結果詳述說明。併同測試資料及程式規範送交教務主任核示後建檔。</t></r><r><rPr><rFonts ascii="標楷體" eastAsia="標楷體" hAnsi="標楷體" /><color val="000000" themeColor="text1" /><kern val="0" /><szCs val="28" /></rPr><br /><t>P182</t></r></p></tc><tc><tcPr><tcW w="2551" type="dxa" /></tcPr><p><pPr><pStyle val="2" /><ind left="-108" /><jc val="left" /><rPr><rFonts ascii="標楷體" eastAsia="標楷體" hAnsi="標楷體" hint="eastAsia" /><szCs val="28" /></rPr></pPr><r><rPr><rFonts ascii="標楷體" eastAsia="標楷體" hAnsi="標楷體" hint="eastAsia" /><szCs val="28" /></rPr><t>增列「維修外包廠商」為說明義務人，明確對象為「使用方」；刪除送交教務主任核示建檔程序</t></r></p></tc></tr><tr><trPr><trHeight val="1011" /></trPr><tc><tcPr><tcW w="5983" type="dxa" /></tcPr><p><pPr><snapToGrid val="0" /><spacing line="240" lineRule="atLeast" /><rPr><rFonts ascii="標楷體" eastAsia="標楷體" hAnsi="標楷體" hint="eastAsia" /><sz val="28" /><szCs val="28" /><u val="single" /></rPr></pPr><r><rPr><rFonts ascii="標楷體" eastAsia="標楷體" hAnsi="標楷體" hint="eastAsia" /><sz val="28" /><szCs val="28" /><u val="single" /></rPr><t>刪除</t></r></p></tc><tc><tcPr><tcW w="5670" type="dxa" /></tcPr><p><pPr><pStyle val="2" /><ind leftChars="200" left="440" firstLineChars="4" firstLine="11" /><rPr><rFonts ascii="標楷體" eastAsia="標楷體" hAnsi="標楷體" hint="eastAsia" /><color val="000000" themeColor="text1" /><kern val="0" /><szCs val="28" /></rPr></pPr><r><rPr><rFonts ascii="標楷體" eastAsia="標楷體" hAnsi="標楷體" hint="eastAsia" /><color val="000000" themeColor="text1" /><kern val="0" /><szCs val="28" /></rPr><t xml:space="preserve">．是否規劃由不同單位人員參加成立緊急應變小組，並加強訓練其緊急應變能力。（系統復原計畫及測試作業 3.2）</t></r><r><rPr><rFonts ascii="標楷體" eastAsia="標楷體" hAnsi="標楷體" /><color val="000000" themeColor="text1" /><kern val="0" /><szCs val="28" /></rPr><br /><t>P183</t></r></p></tc><tc><tcPr><tcW w="2551" type="dxa" /></tcPr><p><pPr><pStyle val="2" /><ind left="-108" /><jc val="left" /><rPr><rFonts ascii="標楷體" eastAsia="標楷體" hAnsi="標楷體" hint="eastAsia" /><szCs val="28" /></rPr></pPr><r><rPr><rFonts ascii="標楷體" eastAsia="標楷體" hAnsi="標楷體" hint="eastAsia" /><szCs val="28" /></rPr><t>配合作業程序修訂，同步刪除緊急應變小組之對應控制重點</t></r></p></tc></tr><tr><trPr><trHeight val="1011" /></trPr><tc><tcPr><tcW w="5983" type="dxa" /></tcPr><p><pPr><snapToGrid val="0" /><spacing line="240" lineRule="atLeast" /><rPr><rFonts ascii="標楷體" eastAsia="標楷體" hAnsi="標楷體" hint="eastAsia" /><sz val="28" /><szCs val="28" /><u val="single" /></rPr></pPr><r><rPr><rFonts ascii="標楷體" eastAsia="標楷體" hAnsi="標楷體" hint="eastAsia" /><sz val="28" /><szCs val="28" /><u val="single" /></rPr><t>刪除</t></r></p></tc><tc><tcPr><tcW w="5670" type="dxa" /></tcPr><p><pPr><pStyle val="2" /><ind leftChars="200" left="440" firstLineChars="4" firstLine="11" /><rPr><rFonts ascii="標楷體" eastAsia="標楷體" hAnsi="標楷體" hint="eastAsia" /><color val="000000" themeColor="text1" /><kern val="0" /><szCs val="28" /></rPr></pPr><r><rPr><rFonts ascii="標楷體" eastAsia="標楷體" hAnsi="標楷體" hint="eastAsia" /><color val="000000" themeColor="text1" /><kern val="0" /><szCs val="28" /></rPr><t xml:space="preserve">3.3.本校郵件伺服器是否設置防火牆及防毒軟體，以防止駭客或電腦病毒之侵害。(現在都是Google雲端檢查)</t></r><r><rPr><rFonts ascii="標楷體" eastAsia="標楷體" hAnsi="標楷體" /><color val="000000" themeColor="text1" /><kern val="0" /><szCs val="28" /></rPr><br /><t>P184</t></r></p></tc><tc><tcPr><tcW w="2551" type="dxa" /></tcPr><p><pPr><pStyle val="2" /><ind left="-108" /><jc val="left" /><rPr><rFonts ascii="標楷體" eastAsia="標楷體" hAnsi="標楷體" hint="eastAsia" /><szCs val="28" /></rPr></pPr><r><rPr><rFonts ascii="標楷體" eastAsia="標楷體" hAnsi="標楷體" hint="eastAsia" /><szCs val="28" /></rPr><t>本校郵件服務已改用Google雲端，由Google提供安全防護，無需自設防火牆，刪除此控制重點</t></r></p></tc></tr><tr><trPr><trHeight val="1011" /></trPr><tc><tcPr><tcW w="5983" type="dxa" /></tcPr><p><pPr><snapToGrid val="0" /><spacing line="240" lineRule="atLeast" /><rPr><rFonts ascii="標楷體" eastAsia="標楷體" hAnsi="標楷體" hint="eastAsia" /><sz val="28" /><szCs val="28" /></rPr></pPr><r><rPr><rFonts ascii="標楷體" eastAsia="標楷體" hAnsi="標楷體" hint="eastAsia" /><sz val="28" /><szCs val="28" /></rPr><t>3.5.網管人員是否定期檢視郵件伺服器上郵件收發情形，若有異常狀況是否陳報權責主管處理。</t></r></p></tc><tc><tcPr><tcW w="5670" type="dxa" /></tcPr><p><pPr><pStyle val="2" /><ind leftChars="200" left="440" firstLineChars="4" firstLine="11" /><rPr><rFonts ascii="標楷體" eastAsia="標楷體" hAnsi="標楷體" hint="eastAsia" /><color val="000000" themeColor="text1" /><kern val="0" /><szCs val="28" /></rPr></pPr><r><rPr><rFonts ascii="標楷體" eastAsia="標楷體" hAnsi="標楷體" hint="eastAsia" /><color val="000000" themeColor="text1" /><kern val="0" /><szCs val="28" /></rPr><t xml:space="preserve">3.5.設備組人員是否定期檢視郵件伺服器上郵件收發情形，若有異常狀況是否陳報權責主管處理。</t></r><r><rPr><rFonts ascii="標楷體" eastAsia="標楷體" hAnsi="標楷體" /><color val="000000" themeColor="text1" /><kern val="0" /><szCs val="28" /></rPr><br /><t>P185</t></r></p></tc><tc><tcPr><tcW w="2551" type="dxa" /></tcPr><p><pPr><pStyle val="2" /><ind left="-108" /><jc val="left" /><rPr><rFonts ascii="標楷體" eastAsia="標楷體" hAnsi="標楷體" hint="eastAsia" /><szCs val="28" /></rPr></pPr><r><rPr><rFonts ascii="標楷體" eastAsia="標楷體" hAnsi="標楷體" hint="eastAsia" /><szCs val="28" /></rPr><t>明確指定由「網管人員」負責郵件伺服器監控，使職責劃分更清晰</t></r></p></tc></tr></tbl>
+    <p ns2:paraId="495A22E6" ns2:textId="77777777" rsidR="00B6243C" rsidRPr="00B91802" rsidRDefault="00B6243C" rsidP="00A646AB">
+      <pPr>
+        <spacing line="240" lineRule="auto" />
+        <rPr>
+          <rFonts ascii="標楷體" eastAsia="標楷體" hAnsi="標楷體" />
+          <sz val="28" />
+          <szCs val="28" />
+        </rPr>
+      </pPr>
+    </p>
+    <sectPr rsidR="00B6243C" rsidRPr="00B91802" rsidSect="00901450">
+      <pgSz w="16840" h="23814" code="8" />
+      <pgMar top="1134" right="1134" bottom="1134" left="1134" header="851" footer="992" gutter="0" />
+      <cols space="425" />
+      <docGrid type="lines" linePitch="360" />
+    </sectPr>
+  </body>
+</document>

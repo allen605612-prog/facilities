@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>美股市場研究報告：輝達 (NVDA) 與台積電 (TSM)</title>
+  <style>
+    :root {
+      --primary: #1E5C9B;
+      --secondary: #2E75B6;
+      --accent: #4BAEE8;
+      --bg: #F4F8FD;
+      --card: #FFFFFF;
+      --text: #1A2740;
+      --muted: #6B7A99;
+      --warn-bg: #FFF8E1;
+      --warn-border: #FFA000;
+      --up: #1B7A3E;
+      --down: #B71C1C;
+      --base: #5C4800;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: "Noto Sans TC", "Microsoft JhengHei", Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 15px;
+      line-height: 1.75;
+    }
+    /* ── Header ── */
+    .report-header {
+      background: linear-gradient(135deg, #0D2E5A 0%, #1E5C9B 60%, #2E75B6 100%);
+      color: #fff;
+      padding: 52px 40px 36px;
+      position: relative;
+      overflow: hidden;
+    }
+    .report-header::after {
+      content: "";
+      position: absolute;
+      right: -60px; top: -60px;
+      width: 320px; height: 320px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.06);
+    }
+    .report-header .tag {
+      display: inline-block;
+      background: rgba(255,255,255,0.18);
+      border: 1px solid rgba(255,255,255,0.3);
+      border-radius: 20px;
+      padding: 3px 14px;
+      font-size: 12px;
+      letter-spacing: 1px;
+      margin-bottom: 14px;
+    }
+    .report-header h1 { font-size: 2rem; font-weight: 800; line-height: 1.2; }
+    .report-header h2 { font-size: 1.15rem; font-weight: 400; margin-top: 6px; opacity: .85; }
+    .report-header .meta { margin-top: 18px; font-size: 13px; opacity: .7; }
+
+    /* ── Layout ── */
+    .container { max-width: 960px; margin: 0 auto; padding: 36px 20px 60px; }
+
+    /* ── Section titles ── */
+    .section-title {
+      display: flex; align-items: center; gap: 10px;
+      font-size: 1.25rem; font-weight: 700;
+      color: var(--primary);
+      margin: 40px 0 18px;
+      padding-bottom: 8px;
+      border-bottom: 2.5px solid var(--primary);
+    }
+    .section-title .num {
+      background: var(--primary); color: #fff;
+      border-radius: 6px; padding: 2px 10px;
+      font-size: 0.9rem;
+    }
+    .sub-title {
+      font-size: 1rem; font-weight: 700;
+      color: var(--secondary);
+      margin: 22px 0 10px;
+    }
+    .sub-sub-title {
+      font-size: 0.9rem; font-weight: 700;
+      color: var(--text);
+      margin: 14px 0 6px;
+      padding-left: 10px;
+      border-left: 3px solid var(--accent);
+    }
+
+    /* ── Cards ── */
+    .card {
+      background: var(--card);
+      border-radius: 10px;
+      box-shadow: 0 2px 12px rgba(30,92,155,0.08);
+      padding: 22px 26px;
+      margin-bottom: 20px;
+    }
+
+    /* ── Tables ── */
+    table {
+      width: 100%; border-collapse: collapse;
+      margin: 14px 0 20px;
+      font-size: 14px;
+      border-radius: 8px; overflow: hidden;
+      box-shadow: 0 1px 6px rgba(30,92,155,0.08);
+    }
+    thead tr { background: var(--primary); color: #fff; }
+    thead th { padding: 10px 14px; text-align: left; font-weight: 600; }
+    tbody tr:nth-child(even) { background: #EBF3FB; }
+    tbody tr:nth-child(odd) { background: #fff; }
+    tbody td { padding: 9px 14px; border-bottom: 1px solid #DDE8F5; }
+    tbody tr:last-child td { border-bottom: none; }
+
+    /* ── Bullet list ── */
+    ul.report-list {
+      list-style: none;
+      padding-left: 0;
+      margin: 8px 0 14px;
+    }
+    ul.report-list li {
+      padding: 5px 0 5px 22px;
+      position: relative;
+    }
+    ul.report-list li::before {
+      content: "▸";
+      color: var(--accent);
+      position: absolute; left: 0;
+      font-size: 14px;
+    }
+
+    /* ── Scenario badges ── */
+    .badge-up   { background: #E8F5E9; color: var(--up);   border: 1px solid #A5D6A7; border-radius: 4px; padding: 1px 7px; font-size: 13px; font-weight: 700; }
+    .badge-base { background: #FFF8E1; color: var(--base); border: 1px solid #FFE082; border-radius: 4px; padding: 1px 7px; font-size: 13px; font-weight: 700; }
+    .badge-down { background: #FFEBEE; color: var(--down); border: 1px solid #FFCDD2; border-radius: 4px; padding: 1px 7px; font-size: 13px; font-weight: 700; }
+
+    /* ── Flow diagram ── */
+    .flow {
+      display: flex; flex-direction: column; align-items: center;
+      gap: 0; margin: 20px auto; max-width: 520px;
+    }
+    .flow-box {
+      background: var(--primary); color: #fff;
+      border-radius: 8px; padding: 10px 28px;
+      font-size: 14px; font-weight: 600;
+      text-align: center; width: 100%;
+    }
+    .flow-box.light { background: #EBF3FB; color: var(--primary); }
+    .flow-arrow {
+      font-size: 22px; color: var(--secondary); line-height: 1.4;
+    }
+    .flow-note {
+      background: #E3F0FF; border-left: 4px solid var(--primary);
+      border-radius: 6px; padding: 12px 18px;
+      font-size: 14px; color: var(--primary); font-weight: 600;
+      margin-top: 18px; width: 100%;
+    }
+
+    /* ── Checklist ── */
+    .checklist li { list-style: none; padding: 5px 0 5px 26px; position: relative; }
+    .checklist li::before { content: "☐"; position: absolute; left: 0; color: var(--secondary); font-size: 15px; }
+
+    /* ── Warning box ── */
+    .warning-box {
+      background: var(--warn-bg);
+      border-left: 4px solid var(--warn-border);
+      border-radius: 6px;
+      padding: 14px 18px;
+      font-size: 14px;
+      color: #4A3800;
+      margin: 16px 0;
+    }
+    .warning-box strong { color: var(--warn-border); }
+
+    /* ── Source line ── */
+    .source { font-size: 12px; color: var(--muted); margin-top: 24px; padding-top: 12px; border-top: 1px solid #DDE8F5; }
+
+    /* ── Footer ── */
+    footer {
+      text-align: center;
+      font-size: 12px; color: var(--muted);
+      padding: 24px 20px 32px;
+      border-top: 1px solid #DDE8F5;
+    }
+  </style>
+</head>
+<body>
+
+<div class="report-header">
+  <div class="tag">MARKET RESEARCH REPORT</div>
+  <h1>美股市場研究報告</h1>
+  <h2>輝達 (NVDA) 與台積電 (TSM) 本週動態</h2>
+  <div class="meta">報告日期：2026 年 4 月 4 日 &nbsp;｜&nbsp; 資料來源：NVIDIA / TSMC 官方法說會、CNBC、WCCFTech 等（共 22 項）</div>
+</div>
+
+<div class="container">
+
+  <!-- ───────────── SECTION 1: NVIDIA ───────────── -->
+  <div class="section-title">
+    <span class="num">一</span> 輝達 (NVIDIA / NVDA)
+  </div>
+
+  <div class="card">
+    <div class="sub-title">最新財報概況（FY2026 Q1）</div>
+    <table>
+      <thead><tr><th>項目</th><th>數據</th></tr></thead>
+      <tbody>
+        <tr><td>季度總營收</td><td><strong>$440.62 億美元</strong></td></tr>
+        <tr><td>GAAP 毛利率</td><td>60.5%（不計 H20 費用為 71.3%）</td></tr>
+        <tr><td>非 GAAP EPS</td><td>$0.81（不計 H20 費用為 $0.96）</td></tr>
+        <tr><td>計算與網路部門營收</td><td>$395.89 億美元（主要成長動能）</td></tr>
+        <tr><td>Q2 FY2026 營收指引</td><td><strong>~$450 億 ±2%</strong>（已計入 H20 損失）</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <div class="sub-title">關鍵新聞摘要</div>
+
+    <div class="sub-sub-title">H20 出口管制衝擊（最大近期風險）</div>
+    <ul class="report-list">
+      <li>美國政府於 2025 年 4 月 9 日通知輝達，H20 晶片出口至中國須申請許可證</li>
+      <li>Q1 已認列 <strong>$45 億美元</strong> 超額庫存與採購義務費用</li>
+      <li>Q2 預計 H20 營收缺口約 <strong>$80 億美元</strong></li>
+    </ul>
+
+    <div class="sub-sub-title">Blackwell 架構創紀錄量產</div>
+    <ul class="report-list">
+      <li>Blackwell（NVL72）已進入全面量產，為公司史上最快速的產品爬坡</li>
+      <li>本季貢獻資料中心計算營收比重接近 <strong>70%</strong></li>
+      <li>網路部門營收達 ~$50 億美元</li>
+    </ul>
+
+    <div class="sub-sub-title">超大規模訂單積壓</div>
+    <ul class="report-list">
+      <li>Blackwell 與 Rubin 架構訂單積壓估計達 <strong>$1 兆美元</strong>（至 2027 年）</li>
+      <li>已確認合作夥伴：Marvell（$20 億 NVLink 整合協議）、CoreWeave、Foxconn、Argonne 國家實驗室等</li>
+      <li>下一代 Vera Rubin 架構已進入生產階段</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <div class="sub-title">輝達股價敏感因子</div>
+    <table>
+      <thead><tr><th>情境</th><th>主要觸發條件</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><span class="badge-up">上行</span></td>
+          <td>H20 出口許可核發、Blackwell/Rubin 積壓訂單如期轉換出貨</td>
+        </tr>
+        <tr>
+          <td><span class="badge-base">基準</span></td>
+          <td>依照 Q2 指引執行（$450 億）、逐季出口管制影響可控</td>
+        </tr>
+        <tr>
+          <td><span class="badge-down">下行</span></td>
+          <td>出口管制持續延伸、台積電先進製程產能瓶頸拖累出貨時程</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ───────────── SECTION 2: TSMC ───────────── -->
+  <div class="section-title">
+    <span class="num">二</span> 台積電 (TSMC / TSM)
+  </div>
+
+  <div class="card">
+    <div class="sub-title">最新財報概況（2025 Q4 / 2026 Q1 指引）</div>
+    <table>
+      <thead><tr><th>項目</th><th>數據</th></tr></thead>
+      <tbody>
+        <tr><td>2025 Q4 合併營收</td><td><strong>$337.3 億美元</strong></td></tr>
+        <tr><td>Q4 毛利率</td><td>62.3%</td></tr>
+        <tr><td>Q4 淨利率</td><td>48.3%</td></tr>
+        <tr><td>先進製程（7nm 以下）佔比</td><td>77% 晶圓營收</td></tr>
+        <tr><td>3nm / 5nm 佔比</td><td>3nm 28%；5nm 35%</td></tr>
+        <tr><td>2026 Q1 營收指引</td><td><strong>$346 億 ~ $358 億美元</strong></td></tr>
+        <tr><td>2026 年資本支出計畫</td><td><strong>$520 億 ~ $560 億美元</strong></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <div class="sub-title">關鍵新聞摘要</div>
+
+    <div class="sub-sub-title">2nm 量產啟動</div>
+    <ul class="report-list">
+      <li>2nm（N2）製程於 2025 Q4 正式進入量產，採用奈米片電晶體（Nanosheet）技術</li>
+      <li>A16 超級電源軌（Super Power Rail）整合進入部署</li>
+    </ul>
+
+    <div class="sub-sub-title">3nm 產能接近上限</div>
+    <ul class="report-list">
+      <li>業界報告顯示 3nm 月產能已超過 <strong>15 萬片晶圓</strong>，2026 年接近滿載</li>
+      <li>客戶需支付優先排程溢價，台積電持續擴建 Fab 15B、Fab 18B 等廠區</li>
+    </ul>
+
+    <div class="sub-sub-title">亞利桑那超級廠區加速推進</div>
+    <ul class="report-list">
+      <li>台積電 2026 年資本支出較 2025 年（$409 億）大幅提升</li>
+      <li>70~80% 資本支出集中於先進製程與先進封裝</li>
+      <li>亞利桑那廠區升級為「超級廠群（Gigafab Cluster）」，對美投資總額達 <strong>$1,650 億美元</strong></li>
+      <li>同步布局：日本、德國廠區持續推進</li>
+      <li>⚠️ 台積電管理層已明確警示，海外廠利潤率低於台灣本島廠</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <div class="sub-title">台積電股價敏感因子</div>
+    <table>
+      <thead><tr><th>項目</th><th>影響方向</th></tr></thead>
+      <tbody>
+        <tr><td>2nm/3nm 良率與產能爬坡速度</td><td>供給端最大驅動力</td></tr>
+        <tr><td>亞利桑那廠資本支出執行</td><td>執行風險 / 毛利率壓力</td></tr>
+        <tr><td>AI 加速器客戶訂單轉換率</td><td>需求端支撐</td></tr>
+        <tr><td>海外廠利潤率稀釋幅度</td><td>中期毛利率下行風險</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ───────────── SECTION 3 ───────────── -->
+  <div class="section-title">
+    <span class="num">三</span> 市場互動關係分析
+  </div>
+
+  <div class="card">
+    <div class="flow">
+      <div class="flow-box">AI 超大規模需求<br><small style="font-weight:400;opacity:.85">Meta・AWS・Google・Microsoft</small></div>
+      <div class="flow-arrow">↓</div>
+      <div class="flow-box">輝達 Blackwell / Rubin 訂單積壓 ~$1 兆</div>
+      <div class="flow-arrow">↓</div>
+      <div class="flow-box light">台積電 3nm / 2nm 先進製程產能瓶頸</div>
+      <div class="flow-arrow">↑</div>
+      <div class="flow-box light">$520~560 億資本支出擴產計畫（2026）</div>
+      <div class="flow-note">
+        核心觀察：台積電先進製程產能執行進度，是決定輝達訂單積壓能否如期轉換為實際營收的<strong>最關鍵供應鏈變數</strong>。
+      </div>
+    </div>
+  </div>
+
+  <!-- ───────────── SECTION 4 ───────────── -->
+  <div class="section-title">
+    <span class="num">四</span> 近期需追蹤的關鍵指標
+  </div>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+    <div class="card">
+      <div class="sub-title">輝達方面</div>
+      <ul class="checklist">
+        <li>H20 出口許可申請進度與監管機構最終裁定</li>
+        <li>Blackwell / Rubin 實際出貨數量與超大規模客戶部署公告</li>
+        <li>下季財報電話會議管理層指引更新</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="sub-title">台積電方面</div>
+      <ul class="checklist">
+        <li>2026 Q1 實際營收是否落在指引區間（$346~358 億）</li>
+        <li>2nm 良率爬坡與月產能公告</li>
+        <li>亞利桑那廠設備安裝與量產時間表更新</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ───────────── SECTION 5 ───────────── -->
+  <div class="section-title">
+    <span class="num">五</span> 重要風險提示
+  </div>
+
+  <div class="warning-box">
+    <strong>⚠ 免責聲明：</strong>
+    本報告基於公開新聞與法說會資料彙整，<strong>不構成投資建議</strong>。相關個股近期即時股價走勢、分析師目標價調整、13F 法人持股異動等市場微觀數據，建議另行參閱 Bloomberg、Reuters 等即時金融資訊平台。
+  </div>
+
+  <div class="source">
+    資料來源：NVIDIA FY2026 Q1 財報、台積電 2025 Q4 法說會、CNBC、WCCFTech、TechBuzz.ai 等（共 22 項一手資料）
+  </div>
+
+</div>
+
+<footer>
+  美股市場研究報告：輝達 (NVDA) 與台積電 (TSM) &nbsp;｜&nbsp; 2026 年 4 月 4 日 &nbsp;｜&nbsp; 本報告不構成投資建議
+</footer>
+
+</body>
+</html>

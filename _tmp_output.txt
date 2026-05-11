@@ -1,0 +1,8 @@
+欄位: ['學校平板編號末三碼', '機器編碼全部', '位置', 'Unnamed: 3', 'Unnamed: 4', 'Unnamed: 5', 'Unnamed: 6', 'Unnamed: 7', 'Unnamed: 8', 'Unnamed: 9']
+筆數: 200
+   學校平板編號末三碼          機器編碼全部     位置  Unnamed: 3  Unnamed: 4      Unnamed: 5           Unnamed: 6  Unnamed: 7      Unnamed: 8           Unnamed: 9
+0          1  0B33T9G222333F  印刷室A車         NaN         NaN  0B33RTH222333F  2025-05-15 23:53:55         NaN  0B33RTH222333F  2025-05-14 15:53:55
+1          2  0B364PD222233F  印刷室A車         NaN         NaN  0B33RCY222333F  2025-08-27 01:22:58         NaN  0B33RCY222333F  2025-08-25 17:22:58
+2          3  0B36DFD222233F  印刷室A車         NaN         NaN  0B364XH222233F  2025-09-30 05:45:25         NaN  0B364XH222233F  2025-09-28 21:45:25
+3          4  0B33BDB222333F  印刷室A車         NaN         NaN  0B33T6B222333F  2025-11-19 07:12:55         NaN  0B33T6B222333F  2025-11-17 23:12:55
+4          5  0B36VTC222233F  印刷室A車         NaN         NaN  0B36WFM222233F  2025-11-29 18:28:46         NaN  0B36WFM222233F  2025-11-28 10:28:46
