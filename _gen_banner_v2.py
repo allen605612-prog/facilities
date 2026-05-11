@@ -6,6 +6,8 @@
 """
 import math
 from PIL import Image, ImageDraw, ImageFont
+from pptx import Presentation
+from pptx.util import Emu
 
 W, H = 5100, 1602
 
@@ -279,8 +281,6 @@ def make_banner(with_photos=False):
     out_pptx = rf"C:\Users\user\allen\第66屆科展得獎橫幅_{suffix}.pptx"
     img.save(out_png, "PNG")
 
-    from pptx import Presentation
-    from pptx.util import Emu
     prs = Presentation()
     prs.slide_width  = Emu(40684450)
     prs.slide_height = Emu(12780963)

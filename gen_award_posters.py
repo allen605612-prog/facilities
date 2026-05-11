@@ -6,10 +6,16 @@
   uv run --with pillow --with python-docx --with numpy --with img2pdf gen_award_posters.py <docx路徑> [輸出資料夾]
 """
 import sys, os, re, math, random, argparse
+from functools import lru_cache
 import numpy as np
 from pathlib import Path
 from PIL import Image, ImageDraw, ImageFont
 import docx as _docx
+
+try:
+    import img2pdf as _img2pdf
+except ImportError:
+    _img2pdf = None
 
 # ── A1 @ 300 DPI ─────────────────────────────────────────────
 _BASE_W, _BASE_H = 800, 1200       # 原設計基準（僅用來算比例）
@@ -32,6 +38,7 @@ _FONT_PATHS = [
     r"C:\Windows\Fonts\mingliu.ttc",
 ]
 
+@lru_cache(maxsize=128)
 def _load_font(size: int) -> ImageFont.FreeTypeFont:
     for fp in _FONT_PATHS:
         try:
@@ -333,18 +340,14 @@ def make_poster(award, year, region, event_type, out_path, seed=42):
     img.save(str(out_path), "PNG", dpi=(DPI, DPI))
     print(f"  PNG: {out_path}  ({W}×{H} @ {DPI} DPI)")
 
-    # 個別 PDF
-    pdf_path = out_path.with_suffix('.pdf')
-    try:
-        import img2pdf
-        layout = img2pdf.get_layout_fun(
-            (img2pdf.mm_to_pt(A1_W_MM), img2pdf.mm_to_pt(A1_H_MM))
+    if _img2pdf:
+        pdf_path = out_path.with_suffix('.pdf')
+        layout = _img2pdf.get_layout_fun(
+            (_img2pdf.mm_to_pt(A1_W_MM), _img2pdf.mm_to_pt(A1_H_MM))
         )
         with open(pdf_path, 'wb') as f:
-            f.write(img2pdf.convert(str(out_path), layout_fun=layout))
+            f.write(_img2pdf.convert(str(out_path), layout_fun=layout))
         print(f"  PDF: {pdf_path}")
-    except ImportError:
-        pass   # img2pdf 未安裝時跳過
 
 
 # ══════════════════════════════════════════════════════════════
@@ -380,18 +383,14 @@ def main():
         out_pngs.append(str(out_path))
 
     # 合併 PDF
-    if out_pngs:
-        try:
-            import img2pdf
-            merged = outdir / f"海報集_第{year}屆_A1_300dpi.pdf"
-            layout = img2pdf.get_layout_fun(
-                (img2pdf.mm_to_pt(A1_W_MM), img2pdf.mm_to_pt(A1_H_MM))
-            )
-            with open(merged, 'wb') as f:
-                f.write(img2pdf.convert(out_pngs, layout_fun=layout))
-            print(f"\n合併 PDF: {merged}")
-        except ImportError:
-            pass
+    if out_pngs and _img2pdf:
+        merged = outdir / f"海報集_第{year}屆_A1_300dpi.pdf"
+        layout = _img2pdf.get_layout_fun(
+            (_img2pdf.mm_to_pt(A1_W_MM), _img2pdf.mm_to_pt(A1_H_MM))
+        )
+        with open(merged, 'wb') as f:
+            f.write(_img2pdf.convert(out_pngs, layout_fun=layout))
+        print(f"\n合併 PDF: {merged}")
 
     print(f"\n完成！共 {len(awards)} 張，儲存於：{outdir}")
 

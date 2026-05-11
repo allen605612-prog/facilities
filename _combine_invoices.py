@@ -1,4 +1,5 @@
 import fitz  # pymupdf
+from pathlib import Path
 
 PDF_FILES = [
     r"C:\Users\user\Downloads\QZ00313561.pdf",
@@ -10,11 +11,10 @@ PDF_FILES = [
     r"C:\Users\user\Downloads\QZ01000069.pdf",
     r"C:\Users\user\Downloads\QZ01065948.pdf",
 ]
-OUTPUT = r"C:\Users\user\Downloads\invoices_A4_v2.pdf"
+OUTPUT = r"C:\Users\user\Downloads\invoices_A4.pdf"
 
 A4_W, A4_H = 595.28, 841.89
 COLS, ROWS = 4, 2
-MARGIN = 0  # 緊密排列，無間距
 
 cell_w = A4_W / COLS
 cell_h = A4_H / ROWS
@@ -71,7 +71,7 @@ for i, path in enumerate(PDF_FILES):
     target = fitz.Rect(ox, oy, ox + sw, oy + sh)
     out_page.show_pdf_page(target, doc, 0, clip=clip)
 
-    name = path.split("\\")[-1]
+    name = Path(path).name
     print(f"[{i+1}/8] {name}  clip={clip}  scale={scale:.3f}")
     doc.close()
 
