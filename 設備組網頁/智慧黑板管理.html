@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="zh-TW">
 <head>
   <meta charset="UTF-8" />
@@ -8,14 +8,173 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,800;1,700&family=Noto+Serif+TC:wght@400;500;600;700&family=Noto+Sans+TC:wght@300;400;500;700&family=Share+Tech+Mono&display=swap" crossorigin="anonymous" rel="stylesheet">
   <link rel="stylesheet" href="設備組-style.css">
+  <style>
+    /* ── 管理要點條文樣式 ── */
+    .policy-meta {
+      font-size: .82rem;
+      color: var(--text-muted);
+      font-family: var(--font-mono);
+      margin-bottom: 1.2rem;
+      letter-spacing: .04em;
+    }
+    .policy-intro {
+      font-size: .97rem;
+      line-height: 1.85;
+      color: var(--text);
+      padding: .8rem 1rem;
+      background: var(--gold-pale);
+      border-left: 4px solid var(--accent);
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      margin-bottom: 1.6rem;
+    }
+    .policy-chapter {
+      font-family: var(--font-serif);
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .18em;
+      color: var(--bg-panel);
+      background: var(--primary);
+      display: inline-block;
+      padding: .22rem .7rem;
+      border-radius: 2px;
+      margin: 1.4rem 0 .8rem;
+    }
+    .policy-article {
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+      padding: .75rem 0;
+      border-bottom: 1px solid var(--border-light);
+      font-size: .95rem;
+      line-height: 1.85;
+      color: var(--text);
+    }
+    .policy-article:last-child { border-bottom: none; }
+    .article-num {
+      flex-shrink: 0;
+      font-family: var(--font-mono);
+      font-size: .73rem;
+      font-weight: 700;
+      color: var(--accent-dark);
+      background: var(--gold-pale);
+      border: 1px solid var(--accent);
+      border-radius: 2px;
+      padding: .15rem .45rem;
+      margin-top: .28rem;
+      min-width: 2.4rem;
+      text-align: center;
+      letter-spacing: .03em;
+    }
+    .article-body { flex: 1; }
+
+    /* ── 講義樣式 ── */
+    .guide-section-title {
+      font-family: var(--font-serif);
+      font-size: .92rem;
+      font-weight: 700;
+      color: var(--primary);
+      padding-bottom: .6rem;
+      border-bottom: 2px solid var(--primary);
+      margin-bottom: 1rem;
+      letter-spacing: .06em;
+    }
+    .guide-section-title.alert-title {
+      color: #b84a1e;
+      border-bottom-color: #b84a1e;
+    }
+    .guide-list {
+      padding-left: 1.4rem;
+      margin: 0;
+      counter-reset: guide-counter;
+      list-style: none;
+    }
+    .guide-list li {
+      counter-increment: guide-counter;
+      position: relative;
+      padding: .55rem 0 .55rem 2.2rem;
+      border-bottom: 1px solid var(--border-light);
+      font-size: .95rem;
+      line-height: 1.85;
+      color: var(--text);
+    }
+    .guide-list li:last-child { border-bottom: none; }
+    .guide-list li::before {
+      content: counter(guide-counter);
+      position: absolute;
+      left: 0;
+      top: .62rem;
+      font-family: var(--font-mono);
+      font-size: .7rem;
+      font-weight: 700;
+      color: var(--bg-panel);
+      background: var(--primary);
+      border-radius: 50%;
+      width: 1.4rem;
+      height: 1.4rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      line-height: 1;
+    }
+    .alert-list li::before { background: #b84a1e; }
+
+    /* ── 賠償價格表 ── */
+    .compensation-table { width: 100%; }
+    .compensation-table thead th {
+      background: var(--primary);
+      color: #fff;
+      font-family: var(--font-serif);
+      font-size: .78rem;
+      letter-spacing: .08em;
+      padding: .6rem 1rem;
+      border-bottom: 3px solid var(--accent);
+    }
+    .compensation-table tbody td {
+      padding: .6rem 1rem;
+      font-size: .94rem;
+      border-bottom: 1px solid var(--border-light);
+    }
+    .compensation-table tbody td:last-child {
+      font-family: var(--font-mono);
+      font-size: .88rem;
+      color: var(--accent-dark);
+      font-weight: 700;
+      text-align: right;
+    }
+    .compensation-table tbody tr:hover td { background: var(--gold-pale); }
+
+    .section-meta {
+      font-family: var(--font-mono);
+      font-size: .72rem;
+      color: var(--text-dim);
+      letter-spacing: .06em;
+      margin-left: .8rem;
+    }
+    .pdf-links {
+      margin-top: 1.2rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border-light);
+      font-size: .86rem;
+      color: var(--text-muted);
+    }
+    .pdf-links a {
+      color: var(--primary);
+      font-weight: 700;
+      text-decoration: underline;
+    }
+  </style>
 </head>
 <body>
+
+<!-- TOP BAR -->
 <div class="topbar">
   <a href="https://www.shsh.ylc.edu.tw/">學校首頁</a>
   <a href="https://school.shsh.ylc.edu.tw/ecampus/Login.action">高中校務行政系統</a>
   <a href="https://school.shsh.ylc.edu.tw/portfolio/Login.action">國中校務行政系統</a>
   <a href="設備組成員.html">聯絡我們</a>
 </div>
+
+<!-- HEADER + NAV -->
 <header>
   <div class="header-top">
     <div class="site-icon"><img src="jhs-logo.png" alt="正心校徽"></div>
@@ -46,18 +205,26 @@
   </nav>
 </header>
 
+<!-- HERO -->
 <div class="hero">
   <div class="hero-particles">
     <span class="particle"></span><span class="particle"></span>
     <span class="particle"></span><span class="particle"></span><span class="particle"></span>
   </div>
   <div class="hero-content">
-    <div class="hero-breadcrumb"><a href="設備組.html">設備組首頁</a><span>›</span><a href="設備組.html">設備組</a><span>›</span>智慧黑板管理</div>
-    <h1>🖥️ 智慧黑板管理</h1>
+    <div class="hero-breadcrumb">
+      <a href="設備組.html">設備組首頁</a><span>›</span><a href="設備組.html">設備組</a><span>›</span>智慧黑板管理
+    </div>
+    <h1>智慧黑板管理</h1>
+    <p class="hero-desc">管理要點 · 使用規範 · 故障排除</p>
+    <div class="hero-badge"><span class="dot"></span>分機 109 · 誠意樓設備組辦公室</div>
   </div>
 </div>
 
+<!-- MAIN LAYOUT -->
 <div class="layout">
+
+  <!-- SIDEBAR -->
   <aside class="sidebar">
     <div class="sidebar-card">
       <div class="sidebar-title">設備組 · 目錄</div>
@@ -75,31 +242,200 @@
       </div>
     </div>
   </aside>
+
+  <!-- CONTENT -->
   <main>
-    <div class="section-label reveal"><h2>智慧黑板管理</h2></div>
-    <div class="content-card reveal">
-      <p class="section-note">智慧黑板相關管理辦法與申請，請洽設備組，分機 109。</p>
-      <ul class="attach-list">
-        <li>
-          <a class="attach-link" href="外部資源/智慧黑板管理要點.pdf" target="_blank" rel="noopener noreferrer">
-            <div class="attach-icon pdf">📄</div>
-            <div><div class="attach-name">智慧黑板管理要點</div><div class="attach-type">PDF 文件</div></div>
-          </a>
-        </li>
-        <li>
-          <a class="attach-link" href="外部資源/資訊股長講義.pdf" target="_blank" rel="noopener noreferrer">
-            <div class="attach-icon pdf">📄</div>
-            <div><div class="attach-name">資訊股長講義</div><div class="attach-type">PDF 文件</div></div>
-          </a>
-        </li>
-      </ul>
+
+    <!-- ══ 管理要點 ══ -->
+    <div class="section-label reveal">
+      <h2>智慧黑板管理要點<span class="section-meta">113年12月3日 行政會議核定</span></h2>
     </div>
+
+    <div class="content-card reveal">
+      <p class="policy-intro">
+        一、為有效維護、管理本校各班教室智慧黑板（下稱本設備），提升教學效能與行政效率，特擬定此要點。
+      </p>
+
+      <div class="policy-chapter">總則</div>
+
+      <div class="policy-article">
+        <span class="article-num">二</span>
+        <div class="article-body">
+          <strong>各班教室智慧黑板包括：</strong><br>
+          隨選視訊系統：86 吋觸控顯示器含遙控器乙隻、APPLE TV 視訊盒含遙控器乙隻，HDMI 視訊線、電源線、擴大機、喇叭等。
+        </div>
+      </div>
+      <div class="policy-article">
+        <span class="article-num">三</span>
+        <div class="article-body">
+          本設備之使用以協助教學、支援校務行政為使用範圍，班級由<strong>資訊股長</strong>負責控管器材使用，未經授權其他同學禁止操作。資訊股長代理人由導師指派。
+        </div>
+      </div>
+      <div class="policy-article">
+        <span class="article-num">四</span>
+        <div class="article-body">
+          資訊股長之選任，建議由具基礎電腦能力之同學擔任之，將於幹部訓練時教授基礎使用方式與狀況排除，以應付簡單的狀況處理。
+        </div>
+      </div>
+
+      <div class="policy-chapter">管理部分</div>
+
+      <div class="policy-article">
+        <span class="article-num">五</span>
+        <div class="article-body">
+          各班導師應督導資訊股長每日到校後，應立即檢查本設備，如發現損壞或遺失，應立即向<strong>誠意樓設備組辦公室</strong>報告，若不當使用損壞則使用班級需負責賠償。
+        </div>
+      </div>
+      <div class="policy-article">
+        <span class="article-num">六</span>
+        <div class="article-body">
+          課間由任課教師督飭學生使用與保管，如遇故障時，由資訊股長至誠意樓設備組辦公室報修並報告班導師。經查明係學生個人損壞者，由個人賠償，無法查明係何人損壞者，由使用班級賠償。經判定為自然損壞者由學校負責修繕。
+        </div>
+      </div>
+      <div class="policy-article">
+        <span class="article-num">七</span>
+        <div class="article-body">
+          選修課程、社團課及重補修課程之任課教師，應負責控管器材使用，課程結束後，應巡視門窗是否關閉，檢查本設備是否完整。如果有損壞應立刻向誠意樓設備組辦公室通知請修，以釐清相關責任。
+        </div>
+      </div>
+      <div class="policy-article">
+        <span class="article-num">八</span>
+        <div class="article-body">
+          使用教室前該班資訊股長或任課教師（含前項之教師）應立即檢查本配備，如發現損壞或遺失，立即向誠意樓設備組辦公室報告，本設備之賠償由前一個使用班級負責。
+        </div>
+      </div>
+      <div class="policy-article">
+        <span class="article-num">九</span>
+        <div class="article-body">
+          每班教室於上非班級教室課及放學後須確實上鎖，巡堂人員若發現有未上鎖情事時，登記於巡堂紀錄表內，並通知學務處。
+        </div>
+      </div>
+      <div class="policy-article">
+        <span class="article-num">十</span>
+        <div class="article-body">
+          教室為公共空間，上課時間歸各班級使用，非上課時間各班需使用上述設備，需導師同意。
+        </div>
+      </div>
+      <div class="policy-article">
+        <span class="article-num">十一</span>
+        <div class="article-body">
+          非經同意擅自使用本設備則依<strong>學生獎懲實施要點第 11 條第 26 項</strong>處分。
+        </div>
+      </div>
+
+      <div class="policy-chapter">維修部分</div>
+
+      <div class="policy-article">
+        <span class="article-num">十二</span>
+        <div class="article-body">
+          非正常使用損壞、遺失公物，須照價或以同等品賠償。
+        </div>
+      </div>
+      <div class="policy-article">
+        <span class="article-num">十三</span>
+        <div class="article-body">
+          本要點經行政會議通過後陳請校長核定後實施，修正時亦同。
+        </div>
+      </div>
+
+      <div class="pdf-links">
+        原始文件：
+        <a href="外部資源/智慧黑板管理要點.pdf" target="_blank" rel="noopener noreferrer">下載 PDF</a>
+      </div>
+    </div>
+
+    <!-- ══ 資訊股長講義 — 基本規範 ══ -->
+    <div class="section-label reveal">
+      <h2>資訊股長講義<span class="section-meta">設備使用規範 · 故障排除 · 注意事項</span></h2>
+    </div>
+
+    <div class="content-card reveal">
+      <div class="guide-section-title">基本使用規範</div>
+      <ol class="guide-list">
+        <li>各班教室智慧黑板包括：隨選視訊系統：86 吋觸控顯示器含遙控器乙隻、APPLE TV 視訊盒含遙控器乙支、觸控筆乙支、HDMI 視訊線、電源線、擴大機、喇叭等。這些設備都在年度教室交接時移交給下一個使用班級。</li>
+        <li>請老師上課時若非必要則請<strong>勿拉上窗簾</strong>，因為智慧黑板的亮度很高，低光源下使用會有藍光傷害同學眼睛。</li>
+        <li>智慧黑板請<strong>非必要人員不要觸碰</strong>，以免到時候問題責任難釐清。</li>
+        <li>提醒同學只有老師上課才可使用智慧黑板、擴大機等資訊設備。下課時間、午休、與放學後皆<strong>不可</strong>私自使用，所有操作須經老師同意。</li>
+        <li>使用時請注意音量，音量或回音過大會影響其他班級上課。</li>
+        <li>提醒同學如果在未經師長允許開啟智慧黑板進行非教學用途，則<strong>使用者與資訊股長皆須受罰</strong>（資訊股長不得以無法規範使用者規避責任），請資訊股長務必確實監督。如遇頑劣份子可以請導師或行政端協助。</li>
+        <li>提醒資訊股長先在前一節下課時間協助下一堂課的老師將智慧黑板開啟，但不得操作與課程無關的操作。</li>
+        <li>老師自備電腦到教室請記得接牆壁上留的 HDMI 線（若老師電腦無 HDMI 接頭請自備轉接頭）及 USB Type-A 觸屏線，此時訊號源請切 <strong>HDMI 1</strong>。此時智慧黑板可以當觸屏操作電腦同步使用。</li>
+        <li>若老師單純使用白板功能，請在初始狀態下按「白板」，選擇想使用的主題與顏色即可上課使用。</li>
+        <li>下課前請按下側邊欄，將本節課使用的軟體按 ✕ 關掉，以減低智慧黑板系統負載。</li>
+        <li>使用完畢，若下一節課老師不使用，則可以暫時關閉螢幕進入待機狀態（<strong>五指點智慧黑板螢幕直到黑屏</strong>）。等待放學後務必將智慧黑板電源及延長線開關關閉。</li>
+        <li>智慧黑板關閉電源的方法：<strong>長按遙控器電源鍵 10 秒放開後</strong>黑板會出現關機的提示，請按確定就可直接關機。</li>
+      </ol>
+    </div>
+
+    <!-- ══ 故障排除 ══ -->
+    <div class="content-card reveal">
+      <div class="guide-section-title alert-title">智慧黑板無法開機 — 狀況排除</div>
+      <ol class="guide-list alert-list">
+        <li>可能是遙控器沒電，試試直接按智慧黑板右下方<strong>電源鈕</strong>（電池沒電可到總務處領取新電池）。</li>
+        <li>請確認連接智慧黑板<strong>延長線電源</strong>是否接通（未接通請打開電源）。</li>
+        <li>若接通電源仍未亮起，請到<strong>誠意樓設備組辦公室</strong>報修。</li>
+      </ol>
+    </div>
+
+    <!-- ══ 其他狀況 ══ -->
+    <div class="content-card reveal">
+      <div class="guide-section-title">其他狀況處理</div>
+      <ol class="guide-list">
+        <li><strong>智慧黑板側邊欄消失</strong> → 請到設備組辦公室報修。</li>
+        <li><strong>APPLE TV 無訊號</strong>：檢查 APPLE TV 電源燈是否恆亮，若未亮請先用 APPLE TV 遙控器開啟電源，並於開啟後檢查訊號源 HDMI 2 的燈號是否亮起，若亮起則故障排除。</li>
+        <li><strong>智慧黑板不能上網</strong>：請老師在開機畫面下檢查右上方網路狀況，最右端的有線網路是不是被打 ✕，被打 ✕ 的話請直接按圖示進入設定畫面，將乙太網路打開即可恢復上網。如果上述方式也不能上網，就請老師重新開機後再連網。再不行就通報設備組（分機 109）。</li>
+        <li><strong>無聲廣播注意事項</strong>：學校在 7:50 進行全校廣播，請導師轉知資訊股長早上 <strong>7:45 開機</strong>，檢查有線網路是否暢通（最右邊符號是否暢通，其他三個符號一定要關掉）。無聲廣播需要連有線網才能作動，如果按照前面說明處置仍然不能連網，則通知設備組檢查。</li>
+        <li><strong>中午自動關機</strong>：為維護同學眼睛與智慧黑板充分休息，中午 <strong>12:10</strong> 設定關機，下午上課再開機。</li>
+        <li><strong>幽靈開機</strong>：請資訊股長每天用完智慧黑板後，務必將延長線的電源關閉。智慧黑板偶爾在電源燈紅燈（紅火）下會自動開機，請最後一節使用的老師或班級資訊股長在每天下午最後一堂課結束後，務必將<strong>總電源的延長線排插關閉</strong>。</li>
+        <li><strong>粉筆書寫</strong>：請老師水粉筆務必在兩側黑板書寫，<strong>不要在智慧黑板書寫</strong>，因為會有油漬留在上面，需要每次用完後使用酵素清洗。智慧黑板請用觸控筆書寫。</li>
+        <li>智慧黑板每天中午 12:10 與下午 17:25 會關機，請老師不要再開機使用；如有需要請提前通知教務主任與設備組再開機。</li>
+        <li>午休期間請勿使用智慧黑板當作點名表，讓智慧黑板休息，節電也保護同學眼睛與身體健康。有需要的請使用旁邊的水洗黑板。</li>
+        <li>段考期間座位表書寫也請使用水洗黑板，不要使用智慧黑板，達成節電與延長液晶面板壽命。</li>
+        <li>智慧黑板左上角如果出現「<strong>熱點 AndroidAP_XXXX 密碼：12345678</strong>」請老師麻煩關閉一下，這是熱點分享，學生會偷連該熱點上網並在上學期間使用手機。</li>
+        <li>智慧黑板<strong>請勿私自安裝 Google Play 商店</strong>，因為會使得內建的 Office 更新為 O365 需要帳號登入，學校無任何 O365 公務帳號提供。</li>
+        <li>若老師自備電腦投影，請將訊號源切到 HDMI 1。若無法顯示（可能電腦無法與訊號分配器相容），請到設備組借用 HDMI 線，接前面面板的 HDMI，訊號源切 <strong>HDMI 3</strong> 即可投影。</li>
+        <li>班上的遙控器有兩部，一部為智慧黑板專用，另一部為 Apple TV 專用，另外班上也有觸控筆一隻。如果沒有請跟原班級導師接洽交接事宜（<strong>這三項都要留在班上</strong>）。</li>
+        <li>觸控筆筆頭學期初總務處庶務組會發給各班，請各班要小心使用。如果不夠使用請用班費到總務處購買。</li>
+      </ol>
+
+      <div class="pdf-links">
+        原始文件：
+        <a href="外部資源/資訊股長講義.pdf" target="_blank" rel="noopener noreferrer">下載 PDF</a>
+      </div>
+    </div>
+
+    <!-- ══ 賠償價格表 ══ -->
+    <div class="section-label reveal">
+      <h2>設備賠償參考價格</h2>
+    </div>
+
+    <div class="glass-card reveal">
+      <h3 style="font-family:var(--font-serif);font-size:1rem;font-weight:700;color:var(--primary);margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid var(--border);letter-spacing:.06em;">
+        非正常使用損壞賠償 · 價格僅供參考，實際依廠商報價辦理
+      </h3>
+      <table class="info-table compensation-table">
+        <thead>
+          <tr><th>設備品項</th><th style="text-align:right;">參考價格</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>86 吋觸控黑板</td><td>92,000 元</td></tr>
+          <tr><td>副板（左右邊黑板，每片）</td><td>10,000 元</td></tr>
+          <tr><td>Apple TV</td><td>4,490 元</td></tr>
+          <tr><td>Apple TV 遙控器</td><td>1,790 元</td></tr>
+          <tr><td>擴大機</td><td>3,500 元</td></tr>
+          <tr><td>喇叭</td><td>1,500 元</td></tr>
+        </tbody>
+      </table>
+    </div>
+
   </main>
 </div>
 
+<!-- FOOTER -->
 <footer>
   <div>正心中學教務處 · 設備組 &nbsp;|&nbsp; 電話：(05) 5512502 轉 109</div>
 </footer>
+
 <script>
 (function(){if(!('IntersectionObserver'in window)){document.querySelectorAll('.reveal').forEach(el=>el.classList.add('visible'));return;}const io=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target);}});},{threshold:0.12,rootMargin:'0px 0px -40px 0px'});document.querySelectorAll('.reveal').forEach(el=>io.observe(el));})();
 </script>
