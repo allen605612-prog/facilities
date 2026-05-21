@@ -54,9 +54,9 @@
   --glass-blur: 0px;
 
   /* Typography */
-  --font-sans:     'Noto Sans TC', sans-serif;
-  --font-serif:    'Noto Serif TC', serif;
-  --font-display:  'Playfair Display', 'Noto Serif TC', serif;
+  --font-sans:     '標楷體', 'DFKai-SB', 'BiauKai', 'KaiTi', 'Noto Sans TC', sans-serif;
+  --font-serif:    '標楷體', 'DFKai-SB', 'BiauKai', 'KaiTi', 'Noto Serif TC', serif;
+  --font-display:  'Playfair Display', '標楷體', 'DFKai-SB', 'BiauKai', 'KaiTi', 'Noto Serif TC', serif;
   --font-mono:     'Share Tech Mono', monospace;
 }
 
