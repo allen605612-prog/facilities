@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>七月初東北七天・函館・青森・山形（含函館版）</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Noto+Serif+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy:       #1A3557;
+  --navy-deep:  #0f2035;
+  --navy-mid:   #2E6DA4;
+  --gold:       #D4A843;
+  --gold-light: #e8c96a;
+  --cream:      #FAF7F0;
+  --cream-dark: #F0EAE0;
+  --light-blue: #D6E8F7;
+  --pale-blue:  #EEF5FB;
+  --text:       #1e2b3a;
+  --text-mid:   #4a5568;
+  --text-light: #718096;
+  --star:       #C0392B;
+  /* Hakodate accent — teal/sea */
+  --teal:       #1a6a6a;
+  --teal-light: #d0eaea;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Noto Serif TC', serif;
+  background: var(--cream);
+  color: var(--text);
+  line-height: 1.8;
+}
+
+/* ── VERSION SWITCHER ── */
+.version-bar {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: var(--navy-deep);
+  display: flex; align-items: center; justify-content: center; gap: 0;
+  height: 42px;
+  border-bottom: 2px solid var(--gold);
+}
+.version-bar a {
+  font-family: 'Noto Serif TC', serif;
+  font-size: .78rem; font-weight: 500; letter-spacing: .06em;
+  color: rgba(255,255,255,.55); text-decoration: none;
+  padding: 0 24px; height: 100%; display: flex; align-items: center;
+  border-right: 1px solid rgba(255,255,255,.12);
+  transition: all .25s;
+}
+.version-bar a:first-child { border-left: 1px solid rgba(255,255,255,.12); }
+.version-bar a.active {
+  color: var(--gold);
+  background: rgba(212,168,67,.1);
+}
+.version-bar a:not(.active):hover { color: #fff; background: rgba(255,255,255,.06); }
+
+/* ── HERO ── */
+.hero {
+  margin-top: 42px;
+  min-height: 88vh;
+  background:
+    radial-gradient(ellipse 70% 55% at 70% 25%, rgba(26,106,106,.2) 0%, transparent 65%),
+    radial-gradient(ellipse 55% 70% at 15% 75%, rgba(212,168,67,.07) 0%, transparent 55%),
+    linear-gradient(155deg, #0a1e30 0%, #122840 40%, #1A3557 70%, #1e4d60 100%);
+  display: flex; align-items: center; justify-content: center;
+  padding: 80px 24px 60px;
+  position: relative; overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image:
+    repeating-linear-gradient(0deg, transparent, transparent 59px, rgba(255,255,255,.02) 60px),
+    repeating-linear-gradient(90deg, transparent, transparent 59px, rgba(255,255,255,.02) 60px);
+  pointer-events: none;
+}
+/* Decorative circles - night sky feel */
+.hero::after {
+  content: '';
+  position: absolute; bottom: 0; left: 0; right: 0; height: 4px;
+  background: linear-gradient(90deg, transparent, var(--gold), var(--teal), var(--gold), transparent);
+}
+.hero-deco {
+  position: absolute; top: 18%; right: 8%;
+  width: 220px; height: 220px; border-radius: 50%;
+  border: 1px solid rgba(212,168,67,.08);
+  pointer-events: none;
+}
+.hero-deco::before {
+  content: '';
+  position: absolute; top: 20px; left: 20px; right: 20px; bottom: 20px;
+  border-radius: 50%; border: 1px solid rgba(212,168,67,.05);
+}
+.hero-inner { max-width: 820px; text-align: center; position: relative; z-index: 1; }
+.hero-badge {
+  display: inline-block;
+  border: 1px solid rgba(26,200,200,.35);
+  color: #7ecfcf; font-size: .72rem; letter-spacing: .2em;
+  padding: 5px 18px; margin-bottom: 28px;
+  font-family: 'Cormorant Garamond', serif; font-style: italic;
+}
+.hero h1 {
+  font-family: 'Noto Serif TC', serif;
+  font-weight: 700; font-size: clamp(2rem, 5.5vw, 3.6rem);
+  color: #fff; line-height: 1.25; margin-bottom: 18px;
+  text-shadow: 0 2px 24px rgba(0,0,0,.5);
+}
+.hero-sub {
+  font-family: 'Cormorant Garamond', serif; font-style: italic;
+  font-size: clamp(1rem, 2.2vw, 1.4rem); color: rgba(255,255,255,.65);
+  margin-bottom: 32px;
+}
+.hero-route {
+  display: inline-block;
+  border-top: 1px solid var(--gold); border-bottom: 1px solid var(--gold);
+  padding: 12px 0; margin: 0 auto 32px;
+  font-size: .88rem; color: var(--light-blue); letter-spacing: .05em;
+  line-height: 1.7;
+}
+.hero-highlight {
+  display: inline-block;
+  background: rgba(26,106,106,.35); border: 1px solid rgba(26,200,200,.25);
+  padding: 4px 14px; margin-bottom: 28px; border-radius: 2px;
+  color: #7ecfcf; font-size: .78rem; letter-spacing: .1em;
+}
+.hero-meta {
+  display: flex; gap: 32px; justify-content: center; flex-wrap: wrap;
+  margin-top: 8px;
+}
+.hero-meta span {
+  font-size: .8rem; color: rgba(255,255,255,.55); letter-spacing: .05em;
+}
+.hero-meta strong { color: var(--gold-light); }
+.hero-scroll {
+  position: absolute; bottom: 28px; left: 50%; transform: translateX(-50%);
+  display: flex; flex-direction: column; align-items: center; gap: 6px;
+}
+.hero-scroll span { font-size: .65rem; color: rgba(255,255,255,.3); letter-spacing: .15em; }
+.scroll-line {
+  width: 1px; height: 40px;
+  background: linear-gradient(to bottom, var(--gold), transparent);
+  animation: scrollPulse 1.8s ease-in-out infinite;
+}
+@keyframes scrollPulse { 0%,100%{opacity:.3;transform:scaleY(1)} 50%{opacity:1;transform:scaleY(1.15)} }
+
+/* ── NAV ── */
+.sticky-nav {
+  position: sticky; top: 42px; z-index: 90;
+  background: var(--navy);
+  border-bottom: 1px solid rgba(212,168,67,.3);
+  overflow-x: auto; white-space: nowrap;
+}
+.sticky-nav ul { display: flex; list-style: none; max-width: 1100px; margin: 0 auto; }
+.sticky-nav a {
+  display: block; padding: 14px 20px;
+  font-size: .75rem; letter-spacing: .1em; color: rgba(255,255,255,.55);
+  text-decoration: none; transition: color .2s;
+  border-right: 1px solid rgba(255,255,255,.06);
+}
+.sticky-nav a:hover { color: var(--gold); }
+
+/* ── SECTION ── */
+.section { max-width: 1000px; margin: 0 auto; padding: 70px 24px 40px; }
+.section-title {
+  display: flex; align-items: center; gap: 16px; margin-bottom: 40px;
+}
+.section-title::before {
+  content: ''; display: block; width: 4px; height: 36px;
+  background: linear-gradient(to bottom, var(--gold), var(--teal));
+  flex-shrink: 0; border-radius: 2px;
+}
+.section-title h2 {
+  font-weight: 700; font-size: 1.5rem; color: var(--navy); letter-spacing: .05em;
+}
+.section-title .en {
+  font-family: 'Cormorant Garamond', serif; font-style: italic;
+  font-size: .9rem; color: var(--text-light); letter-spacing: .12em; margin-top: 2px;
+}
+
+/* ── OVERVIEW FLOW ── */
+.overview-flow {
+  display: flex; align-items: center; flex-wrap: wrap; gap: 0;
+  background: var(--navy); border-radius: 2px;
+  padding: 22px 28px; margin-bottom: 32px;
+  border: 1px solid rgba(212,168,67,.2);
+}
+.flow-item { display: flex; align-items: center; }
+.flow-stop {
+  font-size: .82rem; color: var(--light-blue); padding: 4px 10px; white-space: nowrap;
+}
+.flow-stop.hakodate { color: #7ecfcf; font-weight: 600; }
+.flow-nights {
+  font-size: .65rem; color: rgba(255,255,255,.4); display: block; text-align: center;
+}
+.flow-arr { color: var(--gold); padding: 0 4px; font-size: 1rem; flex-shrink: 0; }
+
+/* ── CLIMATE ── */
+.climate-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px; margin-top: 8px;
+}
+.climate-card {
+  background: #fff; border: 1px solid var(--light-blue);
+  padding: 20px; border-radius: 2px;
+  border-top: 3px solid var(--navy-mid);
+  transition: transform .2s;
+}
+.climate-card.hakodate { border-top-color: var(--teal); }
+.climate-card:hover { transform: translateY(-2px); }
+.climate-card .region { font-size: .72rem; letter-spacing: .12em; color: var(--navy-mid); margin-bottom: 4px; }
+.climate-card.hakodate .region { color: var(--teal); }
+.climate-card .temp { font-size: 1.4rem; font-weight: 700; color: var(--navy); margin-bottom: 6px; }
+.climate-card .desc { font-size: .78rem; color: var(--text-mid); line-height: 1.6; }
+
+/* ── HAKODATE BANNER ── */
+.hakodate-banner {
+  background: linear-gradient(135deg, #0f2035 0%, #0a2a2a 100%);
+  border: 1px solid rgba(26,200,200,.2);
+  border-left: 3px solid var(--teal);
+  padding: 16px 22px; margin-bottom: 28px;
+  border-radius: 2px;
+  display: flex; align-items: center; gap: 14px;
+}
+.hakodate-banner .icon { font-size: 1.6rem; flex-shrink: 0; }
+.hakodate-banner p { font-size: .83rem; color: rgba(255,255,255,.7); line-height: 1.65; }
+.hakodate-banner strong { color: #7ecfcf; }
+
+/* ── TIMELINE ── */
+.timeline { position: relative; }
+.timeline::before {
+  content: ''; position: absolute; left: 32px; top: 0; bottom: 0; width: 2px;
+  background: linear-gradient(to bottom, var(--gold), var(--teal), var(--light-blue), var(--gold));
+}
+.day-card {
+  position: relative; margin-bottom: 12px; margin-left: 80px;
+  background: #fff; border: 1px solid #e8eef5; border-radius: 2px;
+  overflow: hidden; transition: box-shadow .25s;
+}
+.day-card:hover { box-shadow: 0 4px 24px rgba(26,53,87,.1); }
+.day-card.hakodate-day { border-color: rgba(26,106,106,.2); }
+.day-marker {
+  position: absolute; left: -58px; top: 22px;
+  width: 36px; height: 36px; border-radius: 50%;
+  background: var(--navy); border: 3px solid var(--gold);
+  display: flex; align-items: center; justify-content: center;
+  font-size: .65rem; font-weight: 700; color: var(--gold);
+  font-family: 'Cormorant Garamond', serif; letter-spacing: .05em;
+  flex-shrink: 0; z-index: 1;
+}
+.day-card.hakodate-day .day-marker {
+  background: #0d2a2a; border-color: #7ecfcf; color: #7ecfcf;
+}
+.day-header {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 18px 22px; cursor: pointer;
+  background: var(--navy); user-select: none;
+}
+.day-card.hakodate-day .day-header { background: #0d2a2a; }
+.day-header:hover { filter: brightness(1.08); }
+.day-title-wrap { display: flex; align-items: center; gap: 12px; }
+.day-num {
+  font-family: 'Cormorant Garamond', serif; font-size: 1.05rem;
+  color: var(--gold); font-weight: 600; white-space: nowrap;
+}
+.day-card.hakodate-day .day-num { color: #7ecfcf; }
+.day-title-text { font-size: .88rem; font-weight: 500; color: #fff; }
+.day-toggle { color: var(--gold); font-size: 1.1rem; transition: transform .3s; flex-shrink: 0; }
+.day-card.open .day-toggle { transform: rotate(180deg); }
+.day-body {
+  padding: 0 22px; max-height: 0; overflow: hidden;
+  transition: max-height .4s ease, padding .3s;
+}
+.day-card.open .day-body { max-height: 600px; padding: 20px 22px; }
+.day-items { list-style: none; margin-bottom: 14px; }
+.day-items li {
+  padding: 7px 0 7px 22px; position: relative;
+  font-size: .85rem; color: var(--text-mid); border-bottom: 1px solid #f0f4f8; line-height: 1.65;
+}
+.day-items li:last-child { border-bottom: none; }
+.day-items li::before { content: '・'; position: absolute; left: 4px; color: var(--navy-mid); }
+.day-items li.star { color: var(--text); font-weight: 500; }
+.day-items li.star::before { content: '★'; color: var(--star); font-size: .7rem; top: 9px; }
+.day-stay {
+  background: var(--pale-blue); border-left: 3px solid var(--navy-mid);
+  padding: 10px 14px; font-size: .82rem;
+  display: flex; gap: 8px; align-items: flex-start;
+}
+.day-card.hakodate-day .day-stay { background: #e8f5f5; border-left-color: var(--teal); }
+.stay-label { color: var(--navy-mid); font-weight: 700; white-space: nowrap; }
+.day-card.hakodate-day .stay-label { color: var(--teal); }
+.stay-name { color: var(--text-mid); }
+
+/* ── TABLES ── */
+.data-table {
+  width: 100%; border-collapse: collapse; font-size: .82rem;
+  border: 1px solid var(--light-blue);
+}
+.data-table th {
+  background: var(--navy); color: #fff;
+  padding: 12px 16px; text-align: left; font-weight: 500;
+  letter-spacing: .05em; font-size: .78rem;
+}
+.data-table td {
+  padding: 11px 16px; border-bottom: 1px solid #eef2f7;
+  color: var(--text-mid); vertical-align: top; line-height: 1.6;
+}
+.data-table tr:nth-child(even) td { background: var(--pale-blue); }
+.data-table tr:last-child td { font-weight: 700; background: var(--navy); color: var(--gold); }
+.table-notes { margin-top: 12px; }
+.table-note {
+  font-size: .78rem; color: var(--text-light);
+  padding: 4px 0 4px 16px; position: relative;
+}
+.table-note::before { content: '▸'; position: absolute; left: 0; color: var(--navy-mid); }
+
+/* ── NOTES ── */
+.notes-list { list-style: none; }
+.notes-list li {
+  padding: 14px 18px 14px 52px; position: relative;
+  background: #fff; border: 1px solid #e8eef5;
+  margin-bottom: 8px; border-radius: 2px;
+  font-size: .84rem; color: var(--text-mid); line-height: 1.7;
+  border-left: 3px solid var(--navy-mid);
+}
+.notes-list li::before {
+  content: attr(data-n);
+  position: absolute; left: 14px; top: 13px;
+  width: 26px; height: 26px; border-radius: 50%;
+  background: var(--navy); color: var(--gold);
+  display: flex; align-items: center; justify-content: center;
+  font-size: .7rem; font-weight: 700;
+  font-family: 'Cormorant Garamond', serif;
+}
+
+/* ── EXTRAS ── */
+.extras-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px;
+}
+.extra-card {
+  background: #fff; border: 1px solid #e8eef5;
+  border-top: 2px solid var(--gold);
+  padding: 16px 18px; border-radius: 2px;
+  font-size: .82rem; color: var(--text-mid); line-height: 1.65;
+}
+.extra-card::before {
+  content: '＋'; color: var(--gold); font-size: .9rem; display: block;
+  margin-bottom: 6px; font-family: 'Cormorant Garamond', serif;
+}
+
+/* ── FOOTER ── */
+.site-footer {
+  background: var(--navy-deep); text-align: center; padding: 36px 24px;
+  margin-top: 60px; border-top: 2px solid rgba(212,168,67,.3);
+}
+.site-footer p { font-size: .75rem; color: rgba(255,255,255,.35); letter-spacing: .08em; }
+.site-footer strong { color: var(--gold); }
+
+/* ── FADE ── */
+.fade-up {
+  opacity: 0; transform: translateY(24px);
+  transition: opacity .55s ease, transform .55s ease;
+}
+.fade-up.visible { opacity: 1; transform: none; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 680px) {
+  .timeline::before { left: 16px; }
+  .day-marker { left: -46px; width: 28px; height: 28px; font-size: .55rem; }
+  .day-card { margin-left: 52px; }
+  .hero h1 { font-size: 1.7rem; }
+  .overview-flow { flex-direction: column; align-items: flex-start; }
+  .version-bar a { padding: 0 14px; font-size: .7rem; }
+}
+
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: var(--cream); }
+::-webkit-scrollbar-thumb { background: var(--navy-mid); border-radius: 3px; }
+</style>
+</head>
+<body>
+
+<!-- VERSION SWITCHER -->
+<nav class="version-bar">
+  <a href="travel_青森不含函館.html">不含函館版　弘前・白神・銀山温泉</a>
+  <a href="travel_青森含函館.html" class="active">含函館版　函館夜景・弘前・白神</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-deco"></div>
+  <div class="hero-inner">
+    <div class="hero-badge">HAKODATE · TOHOKU FAMILY JOURNEY · JULY 2026</div>
+    <h1>七月初函館・東北<br>青森・山形七天</h1>
+    <div class="hero-sub">父親與兩位女兒的夏日北海道東北紀行</div>
+    <div class="hero-highlight">✦ 含函館日本三大夜景</div>
+    <div class="hero-route">
+      函館 → 弘前 → 白神山地 → 奧入瀨 → 青森市 → 山寺 → 山形 → 東京
+    </div>
+    <div class="hero-meta">
+      <span>📅 <strong>2026年7月1日</strong> 出發</span>
+      <span>👨‍👧‍👧 父親 ＋ <strong>兩位女兒</strong>（3人）</span>
+      <span>🗓 <strong>7天6夜</strong></span>
+      <span>📌 <strong>含函館版</strong></span>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <span>SCROLL</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- STICKY NAV -->
+<nav class="sticky-nav">
+  <ul>
+    <li><a href="#overview">旅程概覽</a></li>
+    <li><a href="#itinerary">逐日行程</a></li>
+    <li><a href="#transport">交通規劃</a></li>
+    <li><a href="#hotels">住宿一覽</a></li>
+    <li><a href="#costs">費用概估</a></li>
+    <li><a href="#notes">注意事項</a></li>
+    <li><a href="#extras">備選景點</a></li>
+  </ul>
+</nav>
+
+<!-- OVERVIEW -->
+<section id="overview" class="section">
+  <div class="section-title fade-up">
+    <div><h2>旅程概覽</h2><div class="en">JOURNEY OVERVIEW</div></div>
+  </div>
+
+  <div class="overview-flow fade-up">
+    <div class="flow-item"><span class="flow-stop">🛫 台灣出發</span><span class="flow-arr">→</span></div>
+    <div class="flow-item"><span class="flow-stop hakodate">函館<br><small class="flow-nights">2晚</small></span><span class="flow-arr">→</span></div>
+    <div class="flow-item"><span class="flow-stop">弘前<br><small class="flow-nights">1晚</small></span><span class="flow-arr">→</span></div>
+    <div class="flow-item"><span class="flow-stop">青森市<br><small class="flow-nights">2晚</small></span><span class="flow-arr">→</span></div>
+    <div class="flow-item"><span class="flow-stop">山形<br><small class="flow-nights">1晚</small></span><span class="flow-arr">→</span></div>
+    <div class="flow-item"><span class="flow-stop">🛬 東京→台灣</span></div>
+  </div>
+
+  <div class="hakodate-banner fade-up">
+    <div class="icon">🌃</div>
+    <p>本版第1–2天停留北海道<strong>函館</strong>，涵蓋<strong>日本三大夜景之一</strong>（函館山）、函館朝市海膽毛蟹、五稜郭、元町洋館群。函館氣候涼爽無梅雨，是七月初最宜人的出發地之一。</p>
+  </div>
+
+  <div class="climate-grid fade-up">
+    <div class="climate-card hakodate">
+      <div class="region">函館 HAKODATE</div>
+      <div class="temp">16–22°C</div>
+      <div class="desc">北海道夏季涼爽，<strong>無梅雨</strong>，早晚需薄外套，海風宜人</div>
+    </div>
+    <div class="climate-card">
+      <div class="region">青森 AOMORI</div>
+      <div class="temp">18–25°C</div>
+      <div class="desc">梅雨尾聲，奧入瀨溪流新綠盛況，雨天反有霧中之美</div>
+    </div>
+    <div class="climate-card">
+      <div class="region">山形 YAMAGATA</div>
+      <div class="temp">20–28°C</div>
+      <div class="desc">仍有梅雨，山寺翠綠壯觀，建議備折疊傘</div>
+    </div>
+    <div class="climate-card">
+      <div class="region">建議裝備</div>
+      <div class="temp" style="font-size:1rem;margin-top:6px">☂ 折疊傘</div>
+      <div class="desc">薄外套（函館用）、舒適運動鞋（山寺石階必備）</div>
+    </div>
+  </div>
+</section>
+
+<!-- ITINERARY -->
+<section id="itinerary" class="section">
+  <div class="section-title fade-up">
+    <div><h2>逐日行程</h2><div class="en">DAY BY DAY</div></div>
+  </div>
+
+  <div class="timeline">
+
+    <!-- Day 1 -->
+    <div class="day-card hakodate-day fade-up open" onclick="toggleDay(this)">
+      <div class="day-marker">D1</div>
+      <div class="day-header">
+        <div class="day-title-wrap">
+          <span class="day-num">Day 1 · 7/1</span>
+          <span class="day-title-text">台灣出發 → 抵達函館</span>
+        </div>
+        <span class="day-toggle">▾</span>
+      </div>
+      <div class="day-body">
+        <ul class="day-items">
+          <li>出發：台灣桃園機場飛東京成田／羽田（約3.5–4小時）</li>
+          <li>移動：東北・北海道新幹線 東京 → 新函館北斗（はやぶさ，約4小時）</li>
+          <li>移動：道南いさりび鉄道 新函館北斗 → 函館（約20分鐘）</li>
+          <li>傍晚：函館元町區域漫步，坂道風景、教會群初覽</li>
+        </ul>
+        <div class="day-stay">
+          <span class="stay-label">▶ 住宿</span>
+          <span class="stay-name">La Vista Hakodate Bay（函館灣景、早餐著名、強推）</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Day 2 -->
+    <div class="day-card hakodate-day fade-up" onclick="toggleDay(this)">
+      <div class="day-marker">D2</div>
+      <div class="day-header">
+        <div class="day-title-wrap">
+          <span class="day-num">Day 2 · 7/2</span>
+          <span class="day-title-text">函館深度遊 ★ 日本三大夜景</span>
+        </div>
+        <span class="day-toggle">▾</span>
+      </div>
+      <div class="day-body">
+        <ul class="day-items">
+          <li class="star">早晨：函館朝市（6–10時，海膽・毛蟹・烏賊，新鮮直送）</li>
+          <li>上午：五稜郭公園（明治時代西式星形城廓，塔上俯瞰最佳）</li>
+          <li>下午：元町洋館群（天主教教會・舊函館公會堂・坡道街景）</li>
+          <li>傍晚：湯之川温泉或立待岬眺望（任選）</li>
+          <li class="star">夜間：函館山夜景（日本三大夜景之一，纜車或步行登頂）</li>
+        </ul>
+        <div class="day-stay">
+          <span class="stay-label">▶ 住宿</span>
+          <span class="stay-name">La Vista Hakodate Bay</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Day 3 -->
+    <div class="day-card fade-up" onclick="toggleDay(this)">
+      <div class="day-marker">D3</div>
+      <div class="day-header">
+        <div class="day-title-wrap">
+          <span class="day-num">Day 3 · 7/3</span>
+          <span class="day-title-text">函館 → 弘前（新幹線移動日）</span>
+        </div>
+        <span class="day-toggle">▾</span>
+      </div>
+      <div class="day-body">
+        <ul class="day-items">
+          <li>早晨：函館朝市二訪或旅館知名早餐（La Vista早餐口碑極佳）</li>
+          <li>上午：東北・北海道新幹線 新函館北斗 → 新青森（はやぶさ，約1小時）</li>
+          <li>中午：奧羽本線 新青森 → 弘前（約40分）</li>
+          <li>下午：弘前城夕照・追手門廣場散策</li>
+          <li>下午：津輕藩ねぷた村（弘前ねぷた燈籠文化體驗）</li>
+        </ul>
+        <div class="day-stay">
+          <span class="stay-label">▶ 住宿</span>
+          <span class="stay-name">JR Inn 弘前（近弘前車站・新穎舒適）</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Day 4 -->
+    <div class="day-card fade-up" onclick="toggleDay(this)">
+      <div class="day-marker">D4</div>
+      <div class="day-header">
+        <div class="day-title-wrap">
+          <span class="day-num">Day 4 · 7/4</span>
+          <span class="day-title-text">白神山地 ★ UNESCO 世界遺產</span>
+        </div>
+        <span class="day-toggle">▾</span>
+      </div>
+      <div class="day-body">
+        <ul class="day-items">
+          <li>早晨：租車出發（弘前 → 白神山地十二湖，約1.5–2小時）</li>
+          <li class="star">上午：青池（十二湖中最知名，鈷藍色神秘湖泊）</li>
+          <li>上午：十二湖湖岸步道散步（平緩好走，約1–2小時）</li>
+          <li>下午：千畳敷海岸（日本海奇岩海蝕平台）</li>
+          <li>傍晚：還車，移動至青森市入住</li>
+        </ul>
+        <div class="day-stay">
+          <span class="stay-label">▶ 住宿</span>
+          <span class="stay-name">Richmond Hotel 青森（大型連鎖・位置優・CP值高）</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Day 5 -->
+    <div class="day-card fade-up" onclick="toggleDay(this)">
+      <div class="day-marker">D5</div>
+      <div class="day-header">
+        <div class="day-title-wrap">
+          <span class="day-num">Day 5 · 7/5</span>
+          <span class="day-title-text">奧入瀨溪流 &amp; 十和田湖</span>
+        </div>
+        <span class="day-toggle">▾</span>
+      </div>
+      <div class="day-body">
+        <ul class="day-items">
+          <li>早晨：租車出發（青森 → 奧入瀨溪流 約1小時）</li>
+          <li class="star">上午–下午：奧入瀨溪流（9km步道，雲井瀑布・玉簾瀑布・銚子大瀑布）</li>
+          <li>下午：十和田湖（火山口湖，湖岸散步＋遊覽船可選）</li>
+          <li>傍晚：WA-RASSE 睡魔祭博物館（全年開放，門票¥600/人）</li>
+        </ul>
+        <div class="day-stay">
+          <span class="stay-label">▶ 住宿</span>
+          <span class="stay-name">Richmond Hotel 青森</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Day 6 -->
+    <div class="day-card fade-up" onclick="toggleDay(this)">
+      <div class="day-marker">D6</div>
+      <div class="day-header">
+        <div class="day-title-wrap">
+          <span class="day-num">Day 6 · 7/6</span>
+          <span class="day-title-text">青森市 → 山形・山寺</span>
+        </div>
+        <span class="day-toggle">▾</span>
+      </div>
+      <div class="day-body">
+        <ul class="day-items">
+          <li class="star">上午：青森縣立美術館（奈良美智「青森犬」，門票¥510/人）</li>
+          <li>上午：青森魚菜中心のっけ丼（代幣自選，海鮮蓋飯體驗）</li>
+          <li>中午：東北新幹線 新青森 → 仙台（約1小時）</li>
+          <li>中午：仙山線 仙台 → 山寺（約1小時）</li>
+          <li class="star">下午：山寺・立石寺（1,015段石階登頂，俯瞰山谷，芭蕉俳句聖地）</li>
+          <li>傍晚：仙山線移動至山形市入住</li>
+        </ul>
+        <div class="day-stay">
+          <span class="stay-label">▶ 住宿</span>
+          <span class="stay-name">ドーミーイン山形（天然溫泉大浴場・近車站）</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Day 7 -->
+    <div class="day-card fade-up" onclick="toggleDay(this)">
+      <div class="day-marker">D7</div>
+      <div class="day-header">
+        <div class="day-title-wrap">
+          <span class="day-num">Day 7 · 7/7</span>
+          <span class="day-title-text">山形巡遊 → 回台灣</span>
+        </div>
+        <span class="day-toggle">▾</span>
+      </div>
+      <div class="day-body">
+        <ul class="day-items">
+          <li>早晨：霞城公園（山形城遺跡・荷花池・歷史氛圍）</li>
+          <li>上午：山形文翔館（大正7年建造英式石造建築，免費參觀）</li>
+          <li>上午：山形縣鄉土館（山形歷史展示）</li>
+          <li>中午：山形新幹線 山形 → 東京（つばさ，約2.5小時）</li>
+          <li>下午：東京成田／羽田轉機回台灣</li>
+        </ul>
+        <div class="day-stay">
+          <span class="stay-label">▶ 住宿</span>
+          <span class="stay-name">—（返程）</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- TRANSPORT -->
+<section id="transport" class="section">
+  <div class="section-title fade-up">
+    <div><h2>交通規劃</h2><div class="en">TRANSPORTATION</div></div>
+  </div>
+  <div class="fade-up">
+    <table class="data-table">
+      <thead>
+        <tr><th>交通工具</th><th>區間</th><th>備註</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>東北・北海道新幹線</td><td>東京 → 新函館北斗</td><td>JR Pass 涵蓋，約4小時</td></tr>
+        <tr><td>道南いさりび鉄道</td><td>新函館北斗 → 函館</td><td>JR Pass 不涵蓋，約¥360/人</td></tr>
+        <tr><td>東北・北海道新幹線</td><td>新函館北斗 → 新青森</td><td>JR Pass 涵蓋，約1小時</td></tr>
+        <tr><td>奧羽本線</td><td>新青森 → 弘前</td><td>JR Pass 涵蓋，約40分</td></tr>
+        <tr><td>東北新幹線</td><td>新青森 → 仙台</td><td>JR Pass 涵蓋，約1小時</td></tr>
+        <tr><td>仙山線</td><td>仙台 → 山寺 → 山形</td><td>JR Pass 涵蓋，各約1小時</td></tr>
+        <tr><td>山形新幹線（つばさ）</td><td>山形 → 東京</td><td>JR Pass 涵蓋，約2.5小時</td></tr>
+        <tr><td>租車</td><td>Day 4–5（白神山地・奧入瀨）</td><td>需備台灣國際駕照＋駕照正本</td></tr>
+      </tbody>
+    </table>
+    <div class="table-notes">
+      <div class="table-note">推薦 JR Pass：JR東日本・北海道パス（東北＋北海道），約¥30,000/人</div>
+      <div class="table-note">道南いさりび鐵道不含 JR Pass，但費用極少，約¥360/人單程</div>
+      <div class="table-note">租車建議：青森市租車行，Day 4–5使用約¥8,000–12,000/天</div>
+    </div>
+  </div>
+</section>
+
+<!-- HOTELS -->
+<section id="hotels" class="section">
+  <div class="section-title fade-up">
+    <div><h2>住宿一覽</h2><div class="en">ACCOMMODATIONS</div></div>
+  </div>
+  <div class="fade-up">
+    <table class="data-table">
+      <thead>
+        <tr><th>地點</th><th>推薦住宿</th><th>特色</th><th>估價/晚（3人）</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>函館（2晚）</td><td>La Vista Hakodate Bay</td><td>海灣景・早餐著名</td><td>¥30,000–45,000</td></tr>
+        <tr><td>弘前（1晚）</td><td>JR Inn 弘前</td><td>近車站・新穎舒適</td><td>¥15,000–20,000</td></tr>
+        <tr><td>青森市（2晚）</td><td>Richmond Hotel 青森</td><td>大型連鎖・CP值高</td><td>¥18,000–25,000</td></tr>
+        <tr><td>山形市（1晚）</td><td>ドーミーイン山形</td><td>天然溫泉大浴場</td><td>¥20,000–28,000</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- COSTS -->
+<section id="costs" class="section">
+  <div class="section-title fade-up">
+    <div><h2>費用概估</h2><div class="en">BUDGET ESTIMATE · PER PERSON</div></div>
+  </div>
+  <div class="fade-up">
+    <table class="data-table">
+      <thead>
+        <tr><th>項目</th><th>金額（新台幣）</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>機票（台灣往返，轉東京）</td><td>NT$ 18,000–28,000</td></tr>
+        <tr><td>JR Pass（東北＋北海道），約¥30,000</td><td>NT$ 7,000–8,000</td></tr>
+        <tr><td>住宿（6晚，均分3人）</td><td>NT$ 16,000–24,000</td></tr>
+        <tr><td>餐飲（每日約NT$1,500，含函館海鮮）</td><td>NT$ 10,500</td></tr>
+        <tr><td>租車（2天，均分3人）</td><td>NT$ 2,500</td></tr>
+        <tr><td>景點門票・雜費</td><td>NT$ 2,000</td></tr>
+        <tr><td><strong>合計/人</strong></td><td><strong>約 NT$ 56,000–75,000</strong></td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- NOTES -->
+<section id="notes" class="section">
+  <div class="section-title fade-up">
+    <div><h2>重要注意事項</h2><div class="en">TRAVEL NOTES</div></div>
+  </div>
+  <ul class="notes-list fade-up">
+    <li data-n="1">La Vista Hakodate Bay 早餐超有名，建議提前訂<strong>含早餐房型</strong></li>
+    <li data-n="2">函館山夜景：旺季（7月）纜車等待時間長，建議<strong>17:30前</strong>上山佔位</li>
+    <li data-n="3">函館朝市：最新鮮時段是<strong>6–9時</strong>，過10時後部分攤位收攤</li>
+    <li data-n="4">七月初青森、山形仍有梅雨，請備折疊傘（函館則無梅雨，涼爽舒適）</li>
+    <li data-n="5">山寺（立石寺）1,015段石階，建議穿<strong>舒適運動鞋</strong>，預留2–3小時</li>
+    <li data-n="6">台灣國際駕照申辦：出發前至各縣市監理站，費用約NT$250，當日可取</li>
+    <li data-n="7">道南いさりび鐵道（新函館北斗→函館）約¥360/人，不需另購票</li>
+  </ul>
+</section>
+
+<!-- EXTRAS -->
+<section id="extras" class="section">
+  <div class="section-title fade-up">
+    <div><h2>備選景點</h2><div class="en">OPTIONAL DETOURS</div></div>
+  </div>
+  <div class="extras-grid fade-up">
+    <div class="extra-card">銀山温泉（山形，大正浪漫溫泉街，可改Day 7白天體驗，住宿不易）</div>
+    <div class="extra-card">蔵王御釜（山形，火山口湖，7–10月開放，自駕約1小時）</div>
+    <div class="extra-card">青森棟方志功紀念館（版畫巨匠，門票¥600）</div>
+    <div class="extra-card">立待岬（函館，海崖眺望津輕海峽，日落最美）</div>
+    <div class="extra-card">恐山（靈場，下北半島，如多一天可加入）</div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <p>七月初東北七天親子旅行 · <strong>含函館版</strong> · 2026年7月1日出發</p>
+  <p style="margin-top:8px">切換版本：<a href="travel_青森不含函館.html" style="color:var(--gold);text-decoration:none;">→ 不含函館版（弘前・白神・銀山温泉）</a></p>
+</footer>
+
+<script>
+function toggleDay(card) {
+  card.classList.toggle('open');
+}
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.08 });
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
