@@ -6,6 +6,7 @@
 <title>七月初東北七天・函館・青森・山形（含函館版）</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Noto+Serif+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
 <style>
 :root {
   --navy:       #1A3557;
@@ -379,6 +380,25 @@ body {
 ::-webkit-scrollbar { width: 6px; height: 6px; }
 ::-webkit-scrollbar-track { background: var(--cream); }
 ::-webkit-scrollbar-thumb { background: var(--navy-mid); border-radius: 3px; }
+
+/* ── MAP ── */
+#travel-map { height: 520px; border: 1px solid rgba(26,200,200,.25); border-radius: 2px; z-index: 1; }
+.day-pin {
+  width: 32px; height: 32px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 700; font-size: 11px; color: #fff;
+  border: 2px solid rgba(255,255,255,.8);
+  box-shadow: 0 2px 8px rgba(0,0,0,.35);
+  font-family: 'Cormorant Garamond', serif;
+}
+.leaflet-popup-content-wrapper {
+  font-family: 'Noto Serif TC', serif; font-size: 13px;
+  border-radius: 2px; border-top: 3px solid var(--teal);
+}
+.leaflet-popup-content { margin: 10px 14px; line-height: 1.7; }
+.popup-day { font-size: 11px; color: var(--teal); letter-spacing: .08em; margin-bottom: 2px; }
+.popup-name { font-weight: 700; color: var(--navy); font-size: 14px; }
+.popup-note { font-size: 12px; color: var(--text-mid); margin-top: 4px; }
 </style>
 </head>
 <body>
@@ -423,6 +443,7 @@ body {
     <li><a href="#costs">費用概估</a></li>
     <li><a href="#notes">注意事項</a></li>
     <li><a href="#extras">備選景點</a></li>
+    <li><a href="#map">行程地圖</a></li>
   </ul>
 </nav>
 
@@ -764,11 +785,20 @@ body {
   </div>
 </section>
 
+<!-- MAP -->
+<section id="map" class="section">
+  <div class="section-title fade-up">
+    <div><h2>行程地圖</h2><div class="en">ROUTE MAP</div></div>
+  </div>
+  <div id="travel-map" class="fade-up"></div>
+</section>
+
 <footer class="site-footer">
   <p>七月初東北七天親子旅行 · <strong>含函館版</strong> · 2026年7月1日出發</p>
   <p style="margin-top:8px">切換版本：<a href="travel_青森不含函館.html" style="color:var(--gold);text-decoration:none;">→ 不含函館版（弘前・白神・銀山温泉）</a></p>
 </footer>
 
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
 function toggleDay(card) {
   card.classList.toggle('open');
@@ -778,6 +808,67 @@ const observer = new IntersectionObserver(entries => {
   entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
 }, { threshold: 0.08 });
 document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+// ── Leaflet Map ──
+const DAY_COLORS = ['#0a2a2a','#0e5454','#1A3557','#1a7a4a','#0e6b6b','#8b5e3c','#6d3a9e'];
+
+const spots = [
+  { day:1, label:'D1', name:'函館市', note:'抵達函館・元町坂道漫步', lat:41.7688, lng:140.7290 },
+  { day:2, label:'D2', name:'函館朝市・五稜郭', note:'朝市海鮮・五稜郭・元町洋館', lat:41.7966, lng:140.7566 },
+  { day:2, label:'D2', name:'函館山夜景', note:'日本三大夜景・纜車登頂', lat:41.7606, lng:140.6975 },
+  { day:3, label:'D3', name:'弘前市', note:'弘前城・ねぷた村', lat:40.6025, lng:140.4637 },
+  { day:4, label:'D4', name:'青池・十二湖', note:'UNESCO 世界遺產・鈷藍神秘湖', lat:40.4817, lng:140.0547 },
+  { day:4, label:'D4', name:'千畳敷海岸', note:'日本海奇岩景觀', lat:40.4358, lng:139.8931 },
+  { day:5, label:'D5', name:'奧入瀨溪流', note:'9km步道・新綠瀑布', lat:40.5520, lng:140.9258 },
+  { day:5, label:'D5', name:'十和田湖', note:'火山口湖・遊覽船', lat:40.4660, lng:140.9092 },
+  { day:6, label:'D6', name:'青森市', note:'WA-RASSE・のっけ丼・奈良美智', lat:40.8244, lng:140.7400 },
+  { day:7, label:'D7', name:'八甲田山', note:'ロープウェイ・毛無岱濕原', lat:40.6576, lng:140.8822 },
+  { day:7, label:'D7', name:'酸ヶ湯温泉', note:'全國名湯百選・千人風呂', lat:40.6634, lng:140.8783 },
+  { day:7, label:'D7', name:'青森機場(AOJ)', note:'✈ 飛東京羽田 ¥10,800', lat:40.7337, lng:140.6900 },
+];
+
+function initMap() {
+  const map = L.map('travel-map', { zoomControl: true }).setView([40.9, 140.6], 7);
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+    maxZoom: 18
+  }).addTo(map);
+
+  const routeCoords = spots.map(s => [s.lat, s.lng]);
+  L.polyline(routeCoords, { color: '#1a9a9a', weight: 2.5, opacity: 0.6, dashArray: '6,4' }).addTo(map);
+
+  spots.forEach(s => {
+    const color = DAY_COLORS[(s.day - 1) % DAY_COLORS.length];
+    const icon = L.divIcon({
+      className: '',
+      html: `<div class="day-pin" style="background:${color}">${s.label}</div>`,
+      iconSize: [32, 32], iconAnchor: [16, 16], popupAnchor: [0, -18]
+    });
+    L.marker([s.lat, s.lng], { icon })
+      .bindPopup(`<div class="popup-day">${s.label}</div><div class="popup-name">${s.name}</div><div class="popup-note">${s.note}</div>`)
+      .addTo(map);
+  });
+
+  const legend = L.control({ position: 'bottomright' });
+  legend.onAdd = () => {
+    const d = L.DomUtil.create('div');
+    d.style.cssText = 'background:#fff;padding:10px 14px;border:1px solid #D6E8F7;border-radius:2px;font-family:Noto Serif TC,serif;font-size:12px;line-height:1.9;min-width:130px;';
+    const rows = [
+      ['D1–D2','#0a2a2a','函館'],['D3','#1A3557','弘前'],
+      ['D4','#1a7a4a','白神山地'],['D5','#0e6b6b','奧入瀨・十和田'],
+      ['D6','#8b5e3c','青森市'],['D7','#6d3a9e','八甲田・AOJ']
+    ];
+    d.innerHTML = rows.map(([l,c,n]) =>
+      `<span style="display:inline-block;width:18px;height:18px;border-radius:50%;background:${c};vertical-align:middle;margin-right:6px;border:2px solid #fff;box-shadow:0 1px 3px rgba(0,0,0,.25)"></span>${l} ${n}<br>`
+    ).join('');
+    return d;
+  };
+  legend.addTo(map);
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initMap);
+} else { initMap(); }
 </script>
 </body>
 </html>
