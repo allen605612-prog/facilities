@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI 工具實作工作坊｜活動報名</title>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #0f1117;
+      color: #e2e8f0;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+    .container { width: 100%; max-width: 520px; }
+    h1 { font-size: 1.5rem; color: #90cdf4; margin-bottom: 6px; }
+    .subtitle { font-size: 0.85rem; color: #718096; margin-bottom: 24px; line-height: 1.6; }
+    .card {
+      background: #1a202c;
+      border-radius: 12px;
+      padding: 28px;
+      border: 1px solid #2d3748;
+    }
+    label {
+      display: block;
+      font-size: 0.8rem;
+      color: #a0aec0;
+      margin: 16px 0 6px;
+    }
+    label:first-of-type { margin-top: 0; }
+    .required::after { content: ' *'; color: #fc8181; }
+    input, select, textarea {
+      width: 100%;
+      padding: 10px 14px;
+      background: #0f1117;
+      border: 1px solid #2d3748;
+      border-radius: 8px;
+      color: #e2e8f0;
+      font-size: 0.95rem;
+      font-family: inherit;
+    }
+    input:focus, select:focus, textarea:focus {
+      outline: none;
+      border-color: #2b6cb0;
+    }
+    textarea { resize: vertical; min-height: 72px; }
+    button {
+      width: 100%;
+      margin-top: 24px;
+      padding: 12px;
+      background: #2b6cb0;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    button:hover { background: #2c5282; }
+    button:disabled { background: #4a5568; cursor: not-allowed; }
+    .msg {
+      margin-top: 16px;
+      padding: 12px 16px;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      display: none;
+    }
+    .msg.ok { display: block; background: #1c4532; color: #68d391; }
+    .msg.err { display: block; background: #3b1a1a; color: #fc8181; }
+    footer {
+      margin-top: 16px;
+      text-align: center;
+      font-size: 0.75rem;
+      color: #4a5568;
+    }
+    footer a { color: #718096; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🛠️ AI 工具實作工作坊</h1>
+    <div class="subtitle">免費報名，額滿為止。填妥以下資料後送出，我們會以 Email 通知錄取結果。</div>
+
+    <div class="card">
+      <form id="signup-form">
+        <label class="required" for="name">姓名</label>
+        <input id="name" type="text" required maxlength="50" placeholder="王小明" />
+
+        <label class="required" for="email">Email</label>
+        <input id="email" type="email" required maxlength="100" placeholder="you@example.com" />
+
+        <label for="phone">聯絡電話</label>
+        <input id="phone" type="tel" maxlength="20" placeholder="0912-345-678（選填）" />
+
+        <label class="required" for="session">報名場次</label>
+        <select id="session" required>
+          <option value="">請選擇場次</option>
+          <option>7/18（六）上午場 09:00–12:00</option>
+          <option>7/18（六）下午場 13:30–16:30</option>
+          <option>7/25（六）上午場 09:00–12:00</option>
+        </select>
+
+        <label class="required" for="attendees">參加人數</label>
+        <select id="attendees" required>
+          <option value="1">1 人</option>
+          <option value="2">2 人</option>
+          <option value="3">3 人</option>
+          <option value="4">4 人</option>
+          <option value="5">5 人</option>
+        </select>
+
+        <label for="note">備註</label>
+        <textarea id="note" maxlength="500" placeholder="飲食需求、想學的主題……（選填）"></textarea>
+
+        <button type="submit" id="submit-btn">送出報名</button>
+      </form>
+      <div class="msg" id="msg"></div>
+    </div>
+
+    <footer><a href="admin.html">管理者登入</a></footer>
+  </div>
+
+  <script>
+    const SUPABASE_URL = 'https://zupszmcwtkbdbavkzsqu.supabase.co';
+    const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inp1cHN6bWN3dGtiZGJhdmt6c3F1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODI2ODU2NzMsImV4cCI6MjA5ODI2MTY3M30.HvXQUh7B2l0esE5WSWiSr20UGQZluwFHMwKRFYbdhyQ';
+    const sb = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+    const form = document.getElementById('signup-form');
+    const btn = document.getElementById('submit-btn');
+    const msg = document.getElementById('msg');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      btn.disabled = true;
+      btn.textContent = '送出中...';
+      msg.className = 'msg';
+
+      const { error } = await sb.from('survey_responses').insert({
+        name: document.getElementById('name').value.trim(),
+        email: document.getElementById('email').value.trim(),
+        phone: document.getElementById('phone').value.trim() || null,
+        session: document.getElementById('session').value,
+        attendees: parseInt(document.getElementById('attendees').value, 10),
+        note: document.getElementById('note').value.trim() || null,
+      });
+
+      if (error) {
+        msg.className = 'msg err';
+        msg.textContent = '❌ 送出失敗：' + error.message;
+      } else {
+        msg.className = 'msg ok';
+        msg.textContent = '✅ 報名成功！我們已收到你的資料，將以 Email 通知後續事項。';
+        form.reset();
+      }
+      btn.disabled = false;
+      btn.textContent = '送出報名';
+    });
+  </script>
+</body>
+</html>
