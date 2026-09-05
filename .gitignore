@@ -4,3 +4,5 @@ __pycache__/
 .claude/
 .agents/
 skills-lock.json
+股票看盤.html
+node_modules/
