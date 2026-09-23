@@ -13,6 +13,17 @@ SURFACE_REF = r"C:\Users\user\Downloads\113學年度surfacego名稱與機碼.xls
 NOW = datetime.now()
 YEAR_MONTH = NOW.strftime("%Y-%m")  # e.g. "2026-03"
 
+# iPad 車號 → 存放位置
+IPAD_CART_LOC = {
+    "A": "印刷室",
+    "B": "探究教室",
+    "C": "圖書館",
+    "D": "會卿三樓",
+    "E": "誠意樓二樓導師室",
+    "F": "多功能教室A",
+    "G": "設備組",
+}
+
 # 找最新的載具清單檔案
 pattern = os.path.join(DOWNLOADS, "*_載具清單_*.xlsx")
 files = glob.glob(pattern)
@@ -63,7 +74,11 @@ surface_go = surface_go.sort_values("Surface GO 編號")
 
 # 依 OS 工作表：只保留 iOS 裝置，依載具名稱自然排序
 by_os = offline[offline["作業系統"].astype(str).str.contains("iOS", case=False, na=False)].copy()
-by_os = by_os.drop(columns=[c for c in DROP_COLS if c in by_os.columns])
+by_os = by_os.drop(columns=[c for c in DROP_COLS + ["Surface GO 編號", "位置"] if c in by_os.columns])
+# iPad 位置：依載具名稱第一個字母（車號）對照
+car = by_os["載具名稱"].astype(str).str[0]
+by_os.insert(by_os.columns.get_loc("載具名稱") + 1, "位置",
+             (car + "車（" + car.map(IPAD_CART_LOC).fillna("未知") + "）").values)
 by_os = by_os.iloc[sorted(range(len(by_os)), key=lambda i: natural_key(by_os["載具名稱"].iloc[i]))]
 
 # ── 輸出 Excel ───────────────────────────────────────────────────
@@ -83,6 +98,6 @@ with pd.ExcelWriter(output_file, engine="openpyxl") as writer:
         ws.sheet_properties.pageSetUpPr.fitToPage = True
 
 print(f"\n  Surface GO 未上網：{len(surface_go)} 台")
-print(f"  全部未上網（依OS）：{len(by_os)} 台")
+print(f"  iOS 未上網（依OS）：{len(by_os)} 台")
 print(f"\n輸出檔案：{output_file}")
 print("工作表：「Surface GO 位置」、「依OS分類」")
