@@ -6,3 +6,35 @@ __pycache__/
 skills-lock.json
 股票看盤.html
 node_modules/
+
+# 大型與封存
+*.7z.tmp
+_cleanup_archive/
+*.lnk
+
+# 學生個資與成績（絕對不上傳）
+*.xls
+*.xlsx
+*定期評量*
+*成績*
+*名條*.xlsx
+students.csv
+
+# 私人資料（郵件、行程、投資、個人筆記與設定）
+這禮拜的郵件整理.md
+下週工作整理.md
+同步.md
+修復claude.*
+travel_*
+_gen_travel_*
+雪梨旅行*
+股票分析/
+NVDA_*
+00929_*
+_gen_00929_*
+work/
+
+# Office 暫存與系統檔
+~$*
+Thumbs.db
+desktop.ini
