@@ -47,9 +47,13 @@ df["最後連線_dt"] = pd.to_datetime(df["最後連線"], errors="coerce")
 is_empty = df["最後連線_dt"].isna()
 not_this_month = df["最後連線_dt"].dt.to_period("M") != YEAR_MONTH
 
-offline = df[is_empty | not_this_month].copy()
-offline.loc[is_empty[is_empty].index, "未上網原因"] = "從未連線"
-offline.loc[(~is_empty & not_this_month)[~is_empty & not_this_month].index, "未上網原因"] = "當月未連線"
+# 報廢機：不列入未上網統計
+EXCLUDE_SERIALS = {"0B33RTH222333F"}  # Surface Go 3，2025-05 後未連線，已報廢
+is_retired = df["serialNumber"].astype(str).str.strip().isin(EXCLUDE_SERIALS)
+
+offline = df[(is_empty | not_this_month) & ~is_retired].copy()
+offline.loc[is_empty[offline.index], "未上網原因"] = "從未連線"
+offline.loc[~is_empty[offline.index], "未上網原因"] = "當月未連線"
 offline = offline.drop(columns=["最後連線_dt"])
 
 print(f"當月未上網平板：共 {len(offline)} 台")
